@@ -18,6 +18,7 @@
     <ClCompile Include="..\src\sage\interpreter\logic\ActionDispatcher.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\Actions.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\FlagCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\InitializationCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\TestCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\DispatcherContainer.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="..\src\sage\interpreter\logic\ActionDispatcher.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\Actions.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.h" />
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\FlagCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\InitializationCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\TestCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\DispatcherBase.h" />

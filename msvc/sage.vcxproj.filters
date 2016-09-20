@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\sage\main.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp">
+      <Filter>interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp">
+      <Filter>interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\AgiStringHelper.cpp">
+      <Filter>interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\AgiFileReader.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\AgiLogic.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\Resource.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\AgiVersion.cpp">
+      <Filter>interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\DispatcherContainer.cpp">
+      <Filter>interpreter\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\LogicProcessor.cpp">
+      <Filter>interpreter\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\Actions.cpp">
+      <Filter>interpreter\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\TestDispatcher.cpp">
+      <Filter>interpreter\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\ActionDispatcher.cpp">
+      <Filter>interpreter\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\InitializationCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\TestCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="interpreter">
+      <UniqueIdentifier>{8b35fabb-67c0-4e31-a818-320747002936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\logic">
+      <UniqueIdentifier>{c1f22525-f5ad-4aac-8b3e-97a30b8a8a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\resources">
+      <UniqueIdentifier>{aabda6f8-fa0e-418f-a276-04dfedc8dc6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\logic\commands">
+      <UniqueIdentifier>{403fd8ce-8f96-4a1f-9892-7116b3df53bd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h">
+      <Filter>interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h">
+      <Filter>interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h">
+      <Filter>interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\AgiStringHelper.h">
+      <Filter>interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\AgiFileReader.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\AgiLogic.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Resource.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\AgiVersion.h">
+      <Filter>interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\DispatcherContainer.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\LogicCallbacks.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\LogicProcessor.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\Actions.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\TestDispatcher.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\DispatcherBase.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\ActionDispatcher.h">
+      <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\InitializationCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\TestCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

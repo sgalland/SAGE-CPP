@@ -6,6 +6,7 @@ uint8_t AgiInterpreter::flags[256];
 std::string AgiInterpreter::strings[12];
 std::string AgiInterpreter::gameID;
 AgiLogic* AgiInterpreter::currentLogic;
+AgiLogic* AgiInterpreter::logics[256];
 
 sage::agi::AgiInterpreter::AgiInterpreter()
 {

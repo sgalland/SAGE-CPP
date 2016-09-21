@@ -52,9 +52,9 @@ void LogicProcessor::ProcessIf()
 				std::vector<uint8_t> args = GetArguments(condition->getArgumentCount());
 
 				if (orCondition)
-					processActions = processActions || testDispatcher.Execute(currentByte, args);
+					processActions = processActions || testDispatcher.ExecuteTest(currentByte, args);
 				else
-					processActions = processActions && testDispatcher.Execute(currentByte, args);
+					processActions = processActions && testDispatcher.ExecuteTest(currentByte, args);
 
 				if (notCondition)
 					processActions = !processActions;
@@ -73,12 +73,11 @@ void LogicProcessor::ProcessIf()
 
 void LogicProcessor::ProcessAction(uint8_t currentByte)
 {
-	DispatcherContainer* condition = this->actionDispatcher[currentByte];
-	if (condition != nullptr)
+	DispatcherContainer* action = this->actionDispatcher[currentByte];
+	if (action != nullptr)
 	{
-		//auto pp = actionDispatcher[0];
-		//var args = GetArguments(condition.ArgumentCount);
-		//Action.InvokeMethod(condition.TargetMethod, args);
+		std::vector<uint8_t> args = GetArguments(action->getArgumentCount());
+		actionDispatcher.ExecuteAction(currentByte, args);
 	}	
 }
 

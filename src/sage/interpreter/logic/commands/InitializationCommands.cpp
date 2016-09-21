@@ -1,6 +1,6 @@
 #include "InitializationCommands.h"
 
-void InitializationCommands::setgameid(uint8_t arg1)
+void InitializationCommands::set_game_id(uint8_t arg1)
 {
 	if (AgiInterpreter::currentLogic != nullptr)
 	{

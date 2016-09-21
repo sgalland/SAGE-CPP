@@ -53,6 +53,12 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ResourceCommands.cpp">
       <Filter>interpreter\logic\commands</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\ProgramControlCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -127,6 +133,12 @@
       <Filter>interpreter\logic\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ResourceCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ProgramControlCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.h">
       <Filter>interpreter\logic\commands</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,6 +24,7 @@ namespace sage
 			~AgiLogic();
 
 			std::string GetMessage(int messageIndex);
+			std::vector<std::string> GetMessages();
 			std::vector<uint8_t> GetLogicData();
 		};
 

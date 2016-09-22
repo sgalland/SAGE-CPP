@@ -28,6 +28,8 @@ namespace sage
 			AgiInterpreter();
 			~AgiInterpreter();
 
+			static std::string ReadGameID();
+
 			//bool ConfirmInterpreterVersion()
 			//{
 			//	std::string version = AgiVersion::GetVersion();

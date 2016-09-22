@@ -1,4 +1,7 @@
 #include "AgiVersion.h"
+#include "resources\AgiFileReader.h"
+#include "resources\AgiLogic.h"
+
 
 std::string sage::agi::AgiVersion::GetVersion()
 {
@@ -39,4 +42,38 @@ std::string sage::agi::AgiVersion::GetVersion()
 	}
 
 	return version;
+}
+
+std::string sage::agi::AgiVersion::GetGameID()
+{
+	const std::vector<std::string> gameIDs = { "BC", "GR","KQ","KQ","KQ","KQ","LSL", "MG", "MH1", "PQ","SQ" };
+	AgiFileReader logicReader(AgiFileType::Logic);
+
+	std::vector<std::string> likelyGameIDs;
+	// search each resource id until we find a two byte string and record it
+	for (auto directoryEntry : logicReader.GetDirectoryEntries())
+	{
+		if (directoryEntry.dataOffset != EMPTY_DIRECTORY)
+		{
+			AgiFile file = logicReader.GetFile(directoryEntry.resourceId);
+			AgiLogic logic(file, directoryEntry.resourceId);
+
+			if (logic.GetMessages().size() > 0)
+			{
+				for (auto message : logic.GetMessages())
+				{
+					auto it = std::find(gameIDs.begin(), gameIDs.end(), message);
+					if (message.size() == 2 && isalpha(message[0]) && isalpha(message[1]) && it != gameIDs.end())
+					{
+						likelyGameIDs.push_back(message);
+					}
+				}
+			}
+		}
+	}
+
+	if (likelyGameIDs.size() == 0)
+		return "UD";
+
+	return likelyGameIDs[0];
 }

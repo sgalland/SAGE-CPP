@@ -46,6 +46,7 @@ private:
 	std::vector<AgiDirectoryEntry> directoryEntries;
 	AgiFileType fileType;
 
+	void LoadDirectoryEntries(AgiFileType fileType);
 	std::string GetAgiFileName();
 	std::string GetAgiFileFullName();
 public:
@@ -53,7 +54,7 @@ public:
 	AgiFileReader(AgiFileType fileType);
 	~AgiFileReader();
 
-	void GetDirectoryEntries(AgiFileType fileType);
+	std::vector<AgiDirectoryEntry> GetDirectoryEntries();
 	AgiFile GetFile(uint8_t resourceId);
 
 	void ExtractFile(uint8_t resourceId, fs::path filePath);

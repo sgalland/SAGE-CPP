@@ -19,6 +19,11 @@ std::string sage::agi::AgiLogic::GetMessage(int messageIndex)
 	return this->messages.at(messageIndex);
 }
 
+std::vector<std::string> sage::agi::AgiLogic::GetMessages()
+{
+	return this->messages;
+}
+
 std::vector<uint8_t> sage::agi::AgiLogic::GetLogicData()
 {
 	return this->logicData;
@@ -27,9 +32,15 @@ std::vector<uint8_t> sage::agi::AgiLogic::GetLogicData()
 
 void sage::agi::AgiLogic::ExtractLogicCode()
 {
-	int codeSize = file.data[0] + (file.data[1] << 8);
-	logicData.resize(codeSize);
-	std::copy(file.data.begin() + 2, file.data.begin() + codeSize, logicData.begin());
+	if (file.data.size() > 0)
+	{
+		int codeSize = file.data[0] + (file.data[1] << 8);
+		if (codeSize > 1) // why is this 1???
+		{
+			logicData.resize(codeSize);
+			std::copy(file.data.begin() + 2, file.data.begin() + codeSize, logicData.begin());
+		}
+	}
 }
 
 

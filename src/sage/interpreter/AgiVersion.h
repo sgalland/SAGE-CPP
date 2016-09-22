@@ -15,6 +15,7 @@ namespace sage
 		{
 		public:
 			static std::string GetVersion();
+			static std::string GetGameID();
 		};
 
 	}

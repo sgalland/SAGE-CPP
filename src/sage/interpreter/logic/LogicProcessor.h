@@ -7,19 +7,15 @@
 #include "ActionDispatcher.h"
 #include "TestDispatcher.h"
 
-using namespace sage::agi;
-
 namespace sage
 {
 	namespace agi
 	{
 		class LogicProcessor
 		{
-			friend class InitializationCommands;
-			friend class TestCommands;
 		private:
-			TestDispatcher testDispatcher;
 			ActionDispatcher actionDispatcher;
+			TestDispatcher testDispatcher;
 			int logicIndex;
 			bool processActions;
 			int codeBlockSize;
@@ -32,7 +28,6 @@ namespace sage
 		public:
 			LogicProcessor();
 			void Execute(uint8_t resourceID);
-
 		};
 	}
 }

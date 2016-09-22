@@ -4,8 +4,6 @@
 
 #include "LogicCallbacks.h"
 
-using namespace sage::agi;
-
 namespace sage
 {
 	namespace agi

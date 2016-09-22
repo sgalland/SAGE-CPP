@@ -5,8 +5,6 @@
 
 #include "../../AgiInterpreter.h"
 
-using namespace sage::agi;
-
 namespace sage
 {
 	namespace agi

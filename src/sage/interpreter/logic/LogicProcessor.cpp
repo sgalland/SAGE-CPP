@@ -73,12 +73,12 @@ void LogicProcessor::ProcessIf()
 
 void LogicProcessor::ProcessAction(uint8_t currentByte)
 {
-	DispatcherContainer* action = this->actionDispatcher[currentByte];
+	/*DispatcherContainer* action = this->actionDispatcher[currentByte];
 	if (action != nullptr)
 	{
 		std::vector<uint8_t> args = GetArguments(action->getArgumentCount());
 		actionDispatcher.ExecuteAction(currentByte, args);
-	}	
+	}	*/
 }
 
 int LogicProcessor::ReadCodeBlockSize()

@@ -11,6 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\backend\base\BaseEngine.cpp" />
+    <ClCompile Include="..\src\backend\base\BaseGraphics.cpp" />
+    <ClCompile Include="..\src\backend\base\BaseTexture.cpp" />
+    <ClCompile Include="..\src\backend\sdl2\Engine.cpp" />
+    <ClCompile Include="..\src\backend\sdl2\Graphics.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiStringHelper.cpp" />
@@ -33,6 +38,11 @@
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\backend\base\BaseEngine.h" />
+    <ClInclude Include="..\src\backend\base\BaseGraphics.h" />
+    <ClInclude Include="..\src\backend\base\BaseTexture.h" />
+    <ClInclude Include="..\src\backend\sdl2\Engine.h" />
+    <ClInclude Include="..\src\backend\sdl2\Graphics.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h" />

@@ -46,10 +46,10 @@ std::string sage::agi::AgiVersion::GetVersion()
 
 std::string sage::agi::AgiVersion::GetGameID()
 {
-	const std::vector<std::string> gameIDs = { "BC", "GR","KQ","KQ","KQ","KQ","LSL", "MG", "MH1", "PQ","SQ" };
+	const std::vector<std::string> gameIDs = { "BC", "GR", "KQ", "KQ1", "KQ2", "KQ3", "KQ4", "LSL", "MG", "MH1", "PQ", "SQ" };
 	AgiFileReader logicReader(AgiFileType::Logic);
 
-	std::vector<std::string> likelyGameIDs;
+	std::string gameID;
 	// search each resource id until we find a two byte string and record it
 	for (auto directoryEntry : logicReader.GetDirectoryEntries())
 	{
@@ -58,22 +58,22 @@ std::string sage::agi::AgiVersion::GetGameID()
 			AgiFile file = logicReader.GetFile(directoryEntry.resourceId);
 			AgiLogic logic(file, directoryEntry.resourceId);
 
-			if (logic.GetMessages().size() > 0)
+			for (auto message : logic.GetMessages())
 			{
-				for (auto message : logic.GetMessages())
+				auto it = std::find(gameIDs.begin(), gameIDs.end(), message);
+
+				if (message != "" && message.length() >= 2 && message.length() <= 3)
 				{
-					auto it = std::find(gameIDs.begin(), gameIDs.end(), message);
-					if (message.size() == 2 && isalpha(message[0]) && isalpha(message[1]) && it != gameIDs.end())
-					{
-						likelyGameIDs.push_back(message);
-					}
+					int i = 0;
+				}
+
+				if (message.length() >= 2 && message.length() <= 3 && isalpha(message[0]) && isalpha(message[1]) && it != gameIDs.end())
+				{
+					gameID = message;
 				}
 			}
 		}
 	}
 
-	if (likelyGameIDs.size() == 0)
-		return "UD";
-
-	return likelyGameIDs[0];
+	return gameID;
 }

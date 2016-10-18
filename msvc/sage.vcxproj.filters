@@ -78,6 +78,9 @@
       <Filter>backend\base</Filter>
     </ClCompile>
     <ClCompile Include="..\src\backend\sdl2\Event.cpp" />
+    <ClCompile Include="..\src\backend\sdl2\Texture.cpp">
+      <Filter>backend\sdl2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -188,6 +191,9 @@
       <Filter>backend\base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\Event.h">
+      <Filter>backend\sdl2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\backend\sdl2\Texture.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
   </ItemGroup>

@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		if (event.getEventType() == EventType::QUIT)
 			isRunning = false;
 
-		engine.graphics->clear(0x255, 0x255, 0x255, 0x255);
+		engine.graphics->clear(0x125, 0x125, 0x125, 0x255);
 		// queue sprites
 		engine.graphics->render();
 	}

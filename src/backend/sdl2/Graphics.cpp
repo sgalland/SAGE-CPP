@@ -57,10 +57,10 @@ void Graphics::render()
 {
 	SDL_Rect destSize = { 0 };
 
-	//for (auto texture : batchList)
-	//{
-	//	SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
-	//}
+	/*for (auto texture : batchList)
+	{
+		SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
+	}*/
 
 	//batchList.clear();
 

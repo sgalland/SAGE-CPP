@@ -1,6 +1,7 @@
 #include "Graphics.h"
 
 SDL_Renderer *Graphics::renderer = nullptr;
+SDL_Window *Graphics::window = nullptr;
 
 Graphics::Graphics(int width, int height)
 {
@@ -9,6 +10,11 @@ Graphics::Graphics(int width, int height)
 
 Graphics::~Graphics()
 {
+}
+
+void Graphics::push(Texture * texture)
+{
+	this->batchList.push_back(texture);
 }
 
 void Graphics::initialize(int width, int height)
@@ -57,10 +63,11 @@ void Graphics::render()
 {
 	SDL_Rect destSize = { 0 };
 
-	/*for (auto texture : batchList)
+	for (auto texture : batchList)
 	{
+		texture->UpdateTexture();
 		SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
-	}*/
+	}
 
 	//batchList.clear();
 

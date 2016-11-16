@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "DisplayMode.h"
+
 class BaseGraphics
 {
 protected:
@@ -19,6 +21,7 @@ public:
 	virtual void fullscreen() = 0;
 	virtual void windowed() = 0;
 	virtual bool getIsFullscreen() = 0;
+	virtual std::vector<DisplayMode> getDisplayModes() = 0;
 
 	//Texture *createTexture(int width, int height);
 	//Texture *createTexture(std::string filePath);

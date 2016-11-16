@@ -78,17 +78,41 @@ void Graphics::render()
 
 void Graphics::fullscreen()
 {
-	SDL_SetWindowFullscreen(this->window, SDL_WINDOW_FULLSCREEN);
+	SDL_SetWindowFullscreen(this->window, SDL_TRUE);
 	isFullscreen = true;
 }
 
 void Graphics::windowed()
 {
-	SDL_SetWindowFullscreen(this->window, 0);
+	SDL_SetWindowFullscreen(this->window, SDL_FALSE);
 	isFullscreen = false;
 }
 
 bool Graphics::getIsFullscreen()
 {
 	return this->isFullscreen;
+}
+
+std::vector<DisplayMode> Graphics::getDisplayModes()
+{
+	std::vector<DisplayMode> displayModes;
+	int displayIndex = 0; // using the first display
+	int displayModeCount = SDL_GetNumDisplayModes(displayIndex);
+
+	for (int modeIndex = 0; modeIndex < displayModeCount; modeIndex++)
+	{
+		DisplayMode mode;
+		SDL_DisplayMode sdlMode;
+		if (SDL_GetDisplayMode(displayIndex, modeIndex, &sdlMode) != 0)
+		{
+			throw "Unable to obtain display modes";
+		}
+
+		mode.width = sdlMode.w;
+		mode.height = sdlMode.h;
+		mode.refreshRate = sdlMode.refresh_rate;
+		displayModes.push_back(mode);
+	}
+
+	return displayModes;
 }

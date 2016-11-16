@@ -83,6 +83,9 @@
     <ClCompile Include="..\src\backend\sdl2\Event.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\backend\sdl2\DisplayMode.cpp">
+      <Filter>backend\sdl2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -202,6 +205,12 @@
       <Filter>backend\base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\Keyboard.h">
+      <Filter>backend\sdl2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\backend\base\BaseDisplayMode.h">
+      <Filter>backend\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\backend\sdl2\DisplayMode.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
   </ItemGroup>

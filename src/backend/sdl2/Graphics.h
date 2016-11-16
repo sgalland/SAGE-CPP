@@ -27,5 +27,6 @@ public:
 	virtual void fullscreen() override;
 	virtual void windowed() override;
 	virtual bool getIsFullscreen() override;
+	virtual std::vector<DisplayMode> getDisplayModes() override;
 
 };

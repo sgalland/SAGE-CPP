@@ -1,6 +1,6 @@
-#ifdef WIN32 && _DEBUG
+//#ifdef define(WIN32) && define(_DEBUG)
 #include <vld.h>
-#endif
+//#endif
 
 #include <SDL.h>
 
@@ -22,23 +22,12 @@ namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
+	fs::current_path("C:\\Users\\s_gal\\Desktop\\Stuff\\The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
 	Engine engine(320, 200);
 	Texture t(320, 200);
-
-	for (int i = 0; i < 320 * 200; i++)
-	{
-		if (i % 24 == 0)
-		{
-			int v = 16711680;
-			t[i] = v;
-		}
-		else
-			t[i] = 0;
-	}
 
 	game::LogicProcessor processor;
 	processor.Execute(0);
@@ -53,8 +42,15 @@ int main(int argc, char *argv[])
 		case EventType::QUIT: isRunning = false; break;
 		case EventType::KEYBOARD_EVENT:
 			Keyboard::getKeyState();
-			if (Keyboard::isKeyDown(Key::A) && Keyboard::isKeyDown(Key::B))
-				std::cout << "A+B" << std::endl;
+
+			if (Keyboard::isKeyDown(Key::LeftShift)) printf("left shift\n");
+			if (Keyboard::isKeyDown(Key::RightShift)) printf("right shift\n");
+			if (Keyboard::isKeyDown(Key::Enter)) printf("enter\n");
+
+			if ((Keyboard::isKeyDown(Key::LeftShift) || Keyboard::isKeyDown(Key::RightShift)) && Keyboard::isKeyDown(Key::Enter))
+				if (!engine.graphics->getIsFullscreen())
+					engine.graphics->fullscreen();
+				else engine.graphics->windowed();
 			break;
 		}
 

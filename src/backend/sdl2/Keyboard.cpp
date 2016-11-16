@@ -11,6 +11,10 @@ void Keyboard::initialize()
 	keyboardMapping.insert(std::pair<Key, SDL_Scancode>(Key::B, SDL_SCANCODE_B));
 	keyboardMapping.insert(std::pair<Key, SDL_Scancode>(Key::C, SDL_SCANCODE_C));
 
+	keyboardMapping.insert(std::pair<Key, SDL_Scancode>(Key::Enter, SDL_SCANCODE_RETURN));
+	keyboardMapping.insert(std::pair<Key, SDL_Scancode>(Key::LeftShift, SDL_SCANCODE_LSHIFT));
+	keyboardMapping.insert(std::pair<Key, SDL_Scancode>(Key::RightShift, SDL_SCANCODE_RSHIFT));
+
 	isInitialized = true;
 }
 

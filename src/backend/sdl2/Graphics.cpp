@@ -21,6 +21,7 @@ void Graphics::initialize(int width, int height)
 {
 	window = nullptr;
 	renderer = nullptr;
+	isFullscreen = false;
 
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0)
 	{
@@ -56,6 +57,7 @@ void Graphics::clear()
 void Graphics::clear(int r, int g, int b)
 {
 	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+
 	SDL_RenderClear(renderer);
 }
 
@@ -72,4 +74,21 @@ void Graphics::render()
 	batchList.clear();
 
 	SDL_RenderPresent(renderer);
+}
+
+void Graphics::fullscreen()
+{
+	SDL_SetWindowFullscreen(this->window, SDL_WINDOW_FULLSCREEN);
+	isFullscreen = true;
+}
+
+void Graphics::windowed()
+{
+	SDL_SetWindowFullscreen(this->window, 0);
+	isFullscreen = false;
+}
+
+bool Graphics::getIsFullscreen()
+{
+	return this->isFullscreen;
 }

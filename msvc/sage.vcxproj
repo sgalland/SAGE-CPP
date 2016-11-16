@@ -13,7 +13,6 @@
   <ItemGroup>
     <ClCompile Include="..\src\backend\base\BaseEngine.cpp" />
     <ClCompile Include="..\src\backend\base\BaseEvent.cpp" />
-    <ClCompile Include="..\src\backend\base\BaseGraphics.cpp" />
     <ClCompile Include="..\src\backend\base\BaseTexture.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Engine.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Event.cpp" />

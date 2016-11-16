@@ -22,8 +22,8 @@ public:
 	// Inherited via BaseTexture
 	virtual void initialize() override;
 	virtual void quit() override;
-	virtual uint32_t getWidth() override;
-	virtual uint32_t getHeight() override;
-	virtual uint32_t getXPosition() override;
-	virtual uint32_t getYPosition() override;
+	virtual int32_t getWidth() override;
+	virtual int32_t getHeight() override;
+	virtual int32_t getXPosition() override;
+	virtual int32_t getYPosition() override;
 };

@@ -24,5 +24,8 @@ public:
 	virtual void clear() override;
 	virtual void clear(int r, int g, int b) override;
 	virtual void render() override;
+	virtual void fullscreen() override;
+	virtual void windowed() override;
+	virtual bool getIsFullscreen() override;
 
 };

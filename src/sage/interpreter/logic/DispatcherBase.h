@@ -73,21 +73,25 @@ namespace sage
 			{
 			case 1:
 				arg1 = args.at(0);
+				return ExecuteTest(id, arg1);
 				break;
 			case 2:
 				arg1 = args.at(0);
 				arg2 = args.at(1);
+				return ExecuteTest(id, arg1, arg2);
 				break;
 			case 3:
 				arg1 = args.at(0);
 				arg2 = args.at(1);
 				arg3 = args.at(2);
+				return ExecuteTest(id, arg1, arg2, arg3);
 				break;
 			case 4:
 				arg1 = args.at(0);
 				arg2 = args.at(1);
 				arg3 = args.at(2);
 				arg4 = args.at(3);
+				return ExecuteTest(id, arg1, arg2, arg3, arg4);
 				break;
 			case 5:
 				arg1 = args.at(0);
@@ -95,18 +99,11 @@ namespace sage
 				arg3 = args.at(2);
 				arg4 = args.at(3);
 				arg5 = args.at(4);
+				return ExecuteTest(id, arg1, arg2, arg3, arg4, arg5);
 				break;
 			}
 
-			switch (this->containers[id]->getArgumentCount())
-			{
-			case 0: return ExecuteTest(id); break;
-			case 1: return ExecuteTest(id, arg1); break;
-			case 2: return ExecuteTest(id, arg1, arg2); break;
-			case 3: return ExecuteTest(id, arg1, arg2, arg3); break;
-			case 4: return ExecuteTest(id, arg1, arg2, arg3, arg4); break;
-			case 5: return ExecuteTest(id, arg1, arg2, arg3, arg4, arg5); break;
-			}
+			return ExecuteTest(id);
 		}
 		template<typename R>
 		inline R DispatcherBase<R>::ExecuteTest(int id)

@@ -65,9 +65,6 @@
     <ClCompile Include="..\src\backend\base\BaseEngine.cpp">
       <Filter>backend\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\backend\base\BaseGraphics.cpp">
-      <Filter>backend\base</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\backend\sdl2\Graphics.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>

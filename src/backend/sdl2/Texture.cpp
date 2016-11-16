@@ -56,22 +56,22 @@ void Texture::quit()
 {
 }
 
-uint32_t Texture::getWidth()
+int32_t Texture::getWidth()
 {
 	return this->width;
 }
 
-uint32_t Texture::getHeight()
+int32_t Texture::getHeight()
 {
 	return this->height;
 }
 
-uint32_t Texture::getXPosition()
+int32_t Texture::getXPosition()
 {
 	return this->xPosition;
 }
 
-uint32_t Texture::getYPosition()
+int32_t Texture::getYPosition()
 {
 	return this->yPosition;
 }

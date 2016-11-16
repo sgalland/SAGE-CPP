@@ -4,6 +4,8 @@
 
 class BaseGraphics
 {
+protected:
+	bool isFullscreen;
 public:
 	//virtual ~BaseGraphics() = 0;
 
@@ -14,6 +16,9 @@ public:
 	virtual void clear(int r, int g, int b) = 0;
 	//void addToBatch(Texture *texture);
 	virtual void render() = 0;
+	virtual void fullscreen() = 0;
+	virtual void windowed() = 0;
+	virtual bool getIsFullscreen() = 0;
 
 	//Texture *createTexture(int width, int height);
 	//Texture *createTexture(std::string filePath);

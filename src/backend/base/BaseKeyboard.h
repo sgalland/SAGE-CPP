@@ -46,7 +46,8 @@ enum class Key
 	LeftShift,
 	RightShift,
 	LeftControl,
-	RightControl
+	RightControl,
+	Enter
 };
 
 template<typename IntegerKeyCodeType, typename APIKeyCodeType>

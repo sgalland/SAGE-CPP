@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "DisplayMode.h"
+#include "BaseDisplayMode.h"
 
 class BaseGraphics
 {
@@ -16,12 +16,14 @@ public:
 
 	virtual void clear() = 0;
 	virtual void clear(int r, int g, int b) = 0;
-	//void addToBatch(Texture *texture);
+	//virtual void addToBatch(Texture *texture) = 0;
 	virtual void render() = 0;
 	virtual void fullscreen() = 0;
 	virtual void windowed() = 0;
 	virtual bool getIsFullscreen() = 0;
-	virtual std::vector<DisplayMode> getDisplayModes() = 0;
+	//virtual std::vector<BaseDisplayMode> getDisplayModes() = 0;
+	//virtual void setGraphicsMode(int width, int height, int refreshRate) = 0;
+	//virtual void setGraphicsMode(GraphicsMode displayMode) = 0;
 
 	//Texture *createTexture(int width, int height);
 	//Texture *createTexture(std::string filePath);

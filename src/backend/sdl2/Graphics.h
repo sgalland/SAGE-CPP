@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../base/BaseGraphics.h"
+#include "DisplayMode.h"
 #include "Texture.h"
 
 #include <iostream>
@@ -27,6 +28,6 @@ public:
 	virtual void fullscreen() override;
 	virtual void windowed() override;
 	virtual bool getIsFullscreen() override;
-	virtual std::vector<DisplayMode> getDisplayModes() override;
+	std::vector<DisplayMode> getDisplayModes();
 
 };

@@ -95,23 +95,19 @@ bool Graphics::getIsFullscreen()
 
 std::vector<DisplayMode> Graphics::getDisplayModes()
 {
-	std::vector<DisplayMode> displayModes;
+	std::vector<DisplayMode> displayModes;	
 	int displayIndex = 0; // using the first display
 	int displayModeCount = SDL_GetNumDisplayModes(displayIndex);
 
 	for (int modeIndex = 0; modeIndex < displayModeCount; modeIndex++)
 	{
-		DisplayMode mode;
 		SDL_DisplayMode sdlMode;
 		if (SDL_GetDisplayMode(displayIndex, modeIndex, &sdlMode) != 0)
 		{
-			throw "Unable to obtain display modes";
+			throw "Unable to obtain display mode";
 		}
 
-		mode.width = sdlMode.w;
-		mode.height = sdlMode.h;
-		mode.refreshRate = sdlMode.refresh_rate;
-		displayModes.push_back(mode);
+		displayModes.push_back({ sdlMode.w, sdlMode.h, sdlMode.refresh_rate });
 	}
 
 	return displayModes;

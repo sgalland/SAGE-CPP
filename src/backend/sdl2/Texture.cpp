@@ -3,11 +3,27 @@
 
 Texture::Texture(int width, int height)
 {
+	this->xPosition = 0;
+	this->yPosition = 0;
 	this->width = width;
 	this->height = height;
 
-	texture = SDL_CreateTexture(Graphics::renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, width, height);
-	pixelBuffer.resize(width * height);
+	initialize();
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height)
+{
+	this->xPosition = xPosition;
+	this->yPosition = yPosition;
+	this->width = width;
+	this->height = height;
+
+	this->initialize();
+}
+
+Texture::~Texture()
+{
+	SDL_DestroyTexture(this->texture);
 }
 
 uint32_t & Texture::operator[](int index)
@@ -22,11 +38,18 @@ Uint32 Texture::getPixelFormat()
 
 void Texture::UpdateTexture()
 {
-	SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * 4); // is the times 4 necessary?
+	// NOTE: This pitch is width * bits per pixel. This is required for Windows. 
+	// Apparently other platforms (such as OpenGL) allow the pitch to be set to 0 as a default.
+	SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * sizeof(uint32_t));
 }
 
 void Texture::initialize()
 {
+	this->width = width;
+	this->height = height;
+
+	texture = SDL_CreateTexture(Graphics::renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, width, height);
+	pixelBuffer.resize(width * height);
 }
 
 void Texture::quit()

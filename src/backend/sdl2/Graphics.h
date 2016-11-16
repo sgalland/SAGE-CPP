@@ -22,7 +22,7 @@ public:
 	virtual void initialize(int width, int height) override;
 	virtual void quit() override;
 	virtual void clear() override;
-	virtual void clear(int r, int g, int b, int a) override;
+	virtual void clear(int r, int g, int b) override;
 	virtual void render() override;
 
 };

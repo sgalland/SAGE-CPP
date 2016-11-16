@@ -18,6 +18,7 @@
     <ClCompile Include="..\src\backend\sdl2\Engine.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Event.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Graphics.cpp" />
+    <ClCompile Include="..\src\backend\sdl2\Keyboard.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Texture.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
@@ -44,10 +45,12 @@
     <ClInclude Include="..\src\backend\base\BaseEngine.h" />
     <ClInclude Include="..\src\backend\base\BaseEvent.h" />
     <ClInclude Include="..\src\backend\base\BaseGraphics.h" />
+    <ClInclude Include="..\src\backend\base\BaseKeyboard.h" />
     <ClInclude Include="..\src\backend\base\BaseTexture.h" />
     <ClInclude Include="..\src\backend\sdl2\Engine.h" />
     <ClInclude Include="..\src\backend\sdl2\Event.h" />
     <ClInclude Include="..\src\backend\sdl2\Graphics.h" />
+    <ClInclude Include="..\src\backend\sdl2\Keyboard.h" />
     <ClInclude Include="..\src\backend\sdl2\Texture.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />

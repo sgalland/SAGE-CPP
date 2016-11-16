@@ -4,7 +4,8 @@ enum class EventType
 {
 	NOT_SET,
 	QUIT,
-	WINDOW_EVENT
+	WINDOW_EVENT,
+	KEYBOARD_EVENT
 };
 
 class BaseEvent

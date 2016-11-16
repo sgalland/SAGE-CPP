@@ -15,6 +15,7 @@
 #include "../backend/sdl2/Graphics.h"
 #include "../backend/sdl2/Event.h"
 #include "../backend/sdl2/Texture.h"
+#include "../backend/sdl2/Keyboard.h"
 
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
@@ -27,13 +28,12 @@ int main(int argc, char *argv[])
 
 	Engine engine(320, 200);
 	Texture t(320, 200);
-	SDL_PixelFormat *format;
 
 	for (int i = 0; i < 320 * 200; i++)
 	{
-		if (i % 2 == 0) 
+		if (i % 24 == 0)
 		{
-			int v = 16750080;
+			int v = 16711680;
 			t[i] = v;
 		}
 		else
@@ -47,11 +47,18 @@ int main(int argc, char *argv[])
 	while (isRunning)
 	{
 		Event event = Event::pollEvent();
-		if (event.getEventType() == EventType::QUIT)
-			isRunning = false;
 
-		engine.graphics->clear(0x125, 0x125, 0x125, 0x255);
-		// queue sprites
+		switch (event.getEventType())
+		{
+		case EventType::QUIT: isRunning = false; break;
+		case EventType::KEYBOARD_EVENT:
+			Keyboard::getKeyState();
+			if (Keyboard::isKeyDown(Key::A) && Keyboard::isKeyDown(Key::B))
+				std::cout << "A+B" << std::endl;
+			break;
+		}
+
+		engine.graphics->clear(0, 0, 0);
 		engine.graphics->push(&t);
 		engine.graphics->render();
 	}

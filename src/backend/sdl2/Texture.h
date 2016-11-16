@@ -12,6 +12,8 @@ class Texture : public BaseTexture
 	SDL_Surface *surface;
 public:
 	Texture(int width, int height);
+	Texture(int xPosition, int yPosition, int width, int height);
+	~Texture();
 	uint32_t & operator[](int index);
 	// temp hack for testing, this probably doesn't need to be in the final version
 	Uint32 getPixelFormat();

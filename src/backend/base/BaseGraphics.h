@@ -11,7 +11,7 @@ public:
 	virtual void quit() = 0;
 
 	virtual void clear() = 0;
-	virtual void clear(int r, int g, int b, int a) = 0;
+	virtual void clear(int r, int g, int b) = 0;
 	//void addToBatch(Texture *texture);
 	virtual void render() = 0;
 

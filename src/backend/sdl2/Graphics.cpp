@@ -50,26 +50,26 @@ void Graphics::quit()
 
 void Graphics::clear()
 {
-	clear(0x00, 0x00, 0x00, 0x00);
+	clear(0x00, 0x00, 0x00);
 }
 
-void Graphics::clear(int r, int g, int b, int a)
+void Graphics::clear(int r, int g, int b)
 {
-	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 	SDL_RenderClear(renderer);
 }
 
 void Graphics::render()
 {
-	SDL_Rect destSize = { 0 };
-
 	for (auto texture : batchList)
 	{
 		texture->UpdateTexture();
+
+		SDL_Rect destSize = { texture->getXPosition(), texture->getYPosition(), texture->getWidth(), texture->getHeight() };
 		SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
 	}
 
-	//batchList.clear();
+	batchList.clear();
 
 	SDL_RenderPresent(renderer);
 }

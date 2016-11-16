@@ -7,6 +7,8 @@ void Event::initializeEventTypeEnum()
 {
 	eventMap.insert(std::pair<SDL_EventType, EventType>(SDL_QUIT, EventType::QUIT));
 	eventMap.insert(std::pair<SDL_EventType, EventType>(SDL_WINDOWEVENT, EventType::WINDOW_EVENT));
+	eventMap.insert(std::pair<SDL_EventType, EventType>(SDL_KEYDOWN, EventType::KEYBOARD_EVENT));
+	eventMap.insert(std::pair<SDL_EventType, EventType>(SDL_KEYUP, EventType::KEYBOARD_EVENT));
 
 	isEventTypeInitialized = true;
 }

@@ -1,16 +1,16 @@
 #pragma once
 
-#include "../base/BaseDisplayMode.h"
-
-class DisplayMode : public BaseDisplayMode
+class DisplayMode
 {
 	friend class Graphics;
 protected:
+	int width;
+	int height;
+	int refreshRate;
+
 	DisplayMode(int width, int height, int refreshRate);
 public:
-	
-	// Inherited via BaseDisplayMode
-	virtual int getWidth() override;
-	virtual int getHeight() override;
-	virtual int getRefreshRate() override;
+	int getWidth();
+	int getHeight();
+	int getRefreshRate();
 };

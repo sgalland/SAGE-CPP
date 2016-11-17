@@ -11,9 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\backend\base\BaseEngine.cpp" />
-    <ClCompile Include="..\src\backend\base\BaseEvent.cpp" />
-    <ClCompile Include="..\src\backend\base\BaseTexture.cpp" />
     <ClCompile Include="..\src\backend\sdl2\DisplayMode.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Engine.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Event.cpp" />
@@ -42,14 +39,8 @@
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\backend\base\BaseEngine.h" />
-    <ClInclude Include="..\src\backend\base\BaseEvent.h" />
-    <ClInclude Include="..\src\backend\base\BaseGraphics.h" />
-    <ClInclude Include="..\src\backend\base\BaseKeyboard.h" />
-    <ClInclude Include="..\src\backend\base\BaseTexture.h" />
-    <ClInclude Include="..\src\backend\base\BaseDisplayMode.h" />
     <ClInclude Include="..\src\backend\sdl2\DisplayMode.h" />
-    <ClInclude Include="..\src\backend\sdl2\Engine.h" />
+    <ClInclude Include="..\src\backend\sdl2\engine.h" />
     <ClInclude Include="..\src\backend\sdl2\Event.h" />
     <ClInclude Include="..\src\backend\sdl2\Graphics.h" />
     <ClInclude Include="..\src\backend\sdl2\Keyboard.h" />

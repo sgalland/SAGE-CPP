@@ -59,31 +59,22 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.cpp">
       <Filter>interpreter\logic\commands</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\backend\sdl2\DisplayMode.cpp">
+      <Filter>backend\sdl2</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\backend\sdl2\Engine.cpp">
-      <Filter>backend\sdl2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\base\BaseEngine.cpp">
-      <Filter>backend\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\sdl2\Graphics.cpp">
-      <Filter>backend\sdl2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\base\BaseTexture.cpp">
-      <Filter>backend\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\base\BaseEvent.cpp">
-      <Filter>backend\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\sdl2\Texture.cpp">
-      <Filter>backend\sdl2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\backend\sdl2\Keyboard.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
     <ClCompile Include="..\src\backend\sdl2\Event.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\backend\sdl2\DisplayMode.cpp">
+    <ClCompile Include="..\src\backend\sdl2\Graphics.cpp">
+      <Filter>backend\sdl2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\backend\sdl2\Keyboard.cpp">
+      <Filter>backend\sdl2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\backend\sdl2\Texture.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,13 +92,10 @@
       <UniqueIdentifier>{403fd8ce-8f96-4a1f-9892-7116b3df53bd}</UniqueIdentifier>
     </Filter>
     <Filter Include="backend">
-      <UniqueIdentifier>{c4457b54-5ecd-45ed-9f5e-c52826fb67d4}</UniqueIdentifier>
+      <UniqueIdentifier>{a4a5c56b-5a73-4802-8150-161cbaaaea22}</UniqueIdentifier>
     </Filter>
     <Filter Include="backend\sdl2">
-      <UniqueIdentifier>{0ffc9061-fa07-4175-9ec5-0a40b88af4f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="backend\base">
-      <UniqueIdentifier>{6b1aa925-3da2-4f98-a837-1cf0f02724b5}</UniqueIdentifier>
+      <UniqueIdentifier>{1077967e-be7a-4eac-b3fa-a3ca793370db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,40 +165,22 @@
     <ClInclude Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.h">
       <Filter>interpreter\logic\commands</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\backend\sdl2\Engine.h">
+    <ClInclude Include="..\src\backend\sdl2\DisplayMode.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseEngine.h">
-      <Filter>backend\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseGraphics.h">
-      <Filter>backend\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\sdl2\Graphics.h">
+    <ClInclude Include="..\src\backend\sdl2\engine.h">
       <Filter>backend\sdl2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseTexture.h">
-      <Filter>backend\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseEvent.h">
-      <Filter>backend\base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\Event.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\backend\sdl2\Texture.h">
+    <ClInclude Include="..\src\backend\sdl2\Graphics.h">
       <Filter>backend\sdl2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseKeyboard.h">
-      <Filter>backend\base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\Keyboard.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\backend\base\BaseDisplayMode.h">
-      <Filter>backend\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\backend\sdl2\DisplayMode.h">
+    <ClInclude Include="..\src\backend\sdl2\Texture.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,11 +2,16 @@
 
 #include <SDL.h>
 #include <vector>
-#include "../base/BaseTexture.h"
 
-class Texture : public BaseTexture
+class Texture
 {
 	friend class Graphics;
+protected:
+	int32_t width;
+	int32_t height;
+	int32_t xPosition;
+	int32_t yPosition;
+
 	std::vector<uint32_t> pixelBuffer;
 	SDL_Texture *texture;
 	SDL_Surface *surface;
@@ -20,10 +25,10 @@ public:
 	void UpdateTexture();
 
 	// Inherited via BaseTexture
-	virtual void initialize() override;
-	virtual void quit() override;
-	virtual int32_t getWidth() override;
-	virtual int32_t getHeight() override;
-	virtual int32_t getXPosition() override;
-	virtual int32_t getYPosition() override;
+	 void initialize();
+	 void quit();
+	 int32_t getWidth();
+	 int32_t getHeight();
+	 int32_t getXPosition();
+	 int32_t getYPosition();
 };

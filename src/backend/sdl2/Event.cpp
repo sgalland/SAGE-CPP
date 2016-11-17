@@ -29,3 +29,8 @@ Event Event::pollEvent()
 
 	return retEvent;
 }
+
+EventType Event::getEventType()
+{
+	return this->eventType;
+}

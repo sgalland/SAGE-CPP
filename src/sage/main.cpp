@@ -17,6 +17,8 @@
 #include "../backend/sdl2/Texture.h"
 #include "../backend/sdl2/Keyboard.h"
 
+#include "interpreter/resources/ViewLoop.h"
+
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
 

@@ -77,6 +77,18 @@
     <ClCompile Include="..\src\backend\sdl2\Texture.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\ViewCell.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\ViewLoop.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\AgiView.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\BitConverter.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -96,6 +108,9 @@
     </Filter>
     <Filter Include="backend\sdl2">
       <UniqueIdentifier>{1077967e-be7a-4eac-b3fa-a3ca793370db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{0552978d-19de-4de9-9402-c37cd87bf8b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +197,18 @@
     </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\Texture.h">
       <Filter>backend\sdl2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\ViewCell.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\AgiView.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\ViewLoop.h">
+      <Filter>interpreter\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\BitConverter.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

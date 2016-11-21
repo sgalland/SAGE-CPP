@@ -17,6 +17,7 @@
     <ClCompile Include="..\src\backend\sdl2\Graphics.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Keyboard.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Texture.cpp" />
+    <ClCompile Include="..\src\core\BitConverter.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiStringHelper.cpp" />
@@ -35,7 +36,10 @@
     <ClCompile Include="..\src\sage\interpreter\logic\TestDispatcher.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\AgiFileReader.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\AgiLogic.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\AgiView.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\Resource.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\ViewCell.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\ViewLoop.cpp" />
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +49,7 @@
     <ClInclude Include="..\src\backend\sdl2\Graphics.h" />
     <ClInclude Include="..\src\backend\sdl2\Keyboard.h" />
     <ClInclude Include="..\src\backend\sdl2\Texture.h" />
+    <ClInclude Include="..\src\core\BitConverter.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h" />
@@ -66,7 +71,10 @@
     <ClInclude Include="..\src\sage\interpreter\logic\TestDispatcher.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\AgiLogic.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\AgiView.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\Resource.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\ViewCell.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\ViewLoop.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

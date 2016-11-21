@@ -6,8 +6,8 @@
 
 #include <iostream>
 
-#include "interpreter\AgiInterpreter.h"
-#include "interpreter\logic\LogicProcessor.h"
+#include "interpreter/AgiInterpreter.h"
+#include "interpreter/logic/LogicProcessor.h"
 
 #include <boost/filesystem.hpp>
 

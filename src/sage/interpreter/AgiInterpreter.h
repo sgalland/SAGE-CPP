@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "resources\AgiLogic.h"
+#include "resources/AgiLogic.h"
 #include "AgiVersion.h"
 
 using namespace sage::agi;

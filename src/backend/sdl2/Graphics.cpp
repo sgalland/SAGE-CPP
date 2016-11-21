@@ -36,6 +36,24 @@ void Graphics::initialize(int width, int height)
 		std::cout << "Error initializing Video Subsystem: " << SDL_GetError() << std::endl;
 		exit(1);
 	}
+
+	std::vector<DisplayMode> displayModes = this->getDisplayModes();
+	std::vector<DisplayMode> locatedDisplayModes;
+	int displayModeCount = SDL_GetNumDisplayModes(0); // get display modes of the first monitor
+	for (int displayModeIndex = 0; displayModeIndex < displayModeCount; displayModeIndex++)
+	{
+		DisplayMode displayMode = displayModes[displayModeIndex];
+		if (displayMode.width == width && displayMode.height == height)
+		{
+			locatedDisplayModes.push_back(displayMode);
+		}
+	}
+
+	if (!locatedDisplayModes.empty())
+	{
+		std::vector<DisplayMode>::iterator displayMode = locatedDisplayModes.begin();
+		SDL_SetWindowDisplayMode(this->window, displayMode->displayMode);
+	}
 }
 
 void Graphics::quit()
@@ -107,7 +125,7 @@ std::vector<DisplayMode> Graphics::getDisplayModes()
 			throw "Unable to obtain display mode";
 		}
 
-		displayModes.push_back({ sdlMode.w, sdlMode.h, sdlMode.refresh_rate });
+		displayModes.push_back({ sdlMode.w, sdlMode.h, sdlMode.refresh_rate, &sdlMode });
 	}
 
 	return displayModes;

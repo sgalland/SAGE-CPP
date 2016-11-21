@@ -1,6 +1,6 @@
 #include "AgiVersion.h"
-#include "resources\AgiFileReader.h"
-#include "resources\AgiLogic.h"
+#include "resources/AgiFileReader.h"
+#include "resources/AgiLogic.h"
 
 
 std::string sage::agi::AgiVersion::GetVersion()

@@ -1,12 +1,12 @@
 ﻿#include "ActionDispatcher.h"
 
 #include "DispatcherContainer.h"
-#include "commands\InitializationCommands.h"
-#include "commands\ArithmeticCommands.h"
-#include "commands\FlagCommands.h"
-#include "commands\ProgramControlCommands.h"
-#include "commands\ResourceCommands.h"
-#include "commands\SubroutineCommands.h"
+#include "commands/InitializationCommands.h"
+#include "commands/ArithmeticCommands.h"
+#include "commands/FlagCommands.h"
+#include "commands/ProgramControlCommands.h"
+#include "commands/ResourceCommands.h"
+#include "commands/SubroutineCommands.h"
 
 sage::agi::ActionDispatcher::ActionDispatcher()
 {

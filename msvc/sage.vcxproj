@@ -18,9 +18,9 @@
     <ClCompile Include="..\src\backend\sdl2\Keyboard.cpp" />
     <ClCompile Include="..\src\backend\sdl2\Texture.cpp" />
     <ClCompile Include="..\src\core\BitConverter.cpp" />
+    <ClCompile Include="..\src\core\BitSetHelper.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
-    <ClCompile Include="..\src\sage\interpreter\AgiStringHelper.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiVersion.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\ActionDispatcher.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\Actions.cpp" />
@@ -50,11 +50,12 @@
     <ClInclude Include="..\src\backend\sdl2\Keyboard.h" />
     <ClInclude Include="..\src\backend\sdl2\Texture.h" />
     <ClInclude Include="..\src\core\BitConverter.h" />
+    <ClInclude Include="..\src\core\BitSetHelper.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h" />
-    <ClInclude Include="..\src\sage\interpreter\AgiStringHelper.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiVersion.h" />
+    <ClInclude Include="..\src\sage\interpreter\helpers\AgiStringHelper.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\ActionDispatcher.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\Actions.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.h" />

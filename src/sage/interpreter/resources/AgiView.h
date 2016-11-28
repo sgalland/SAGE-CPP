@@ -6,6 +6,7 @@
 
 #include "../resources/AgiFileReader.h"
 #include "ViewLoop.h"
+#include "../../../core/BitConverter.h"
 
 const unsigned char MAX_CEL = 255;
 
@@ -13,9 +14,9 @@ class AgiView
 {
 protected:
 	uint8_t loopCount;
-	std::string description;
+	std::string Description;
 	int celLocations[MAX_CEL][MAX_CEL];
-	int loopLocations[MAX_CEL];
+	uint8_t loopLocations[MAX_CEL];
 	int celsInLoopCount[MAX_CEL];
 	//AgiColors agiColors;
 	std::vector<ViewLoop> viewLoops;

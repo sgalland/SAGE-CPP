@@ -8,9 +8,6 @@
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp">
       <Filter>interpreter</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\sage\interpreter\AgiStringHelper.cpp">
-      <Filter>interpreter</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\sage\interpreter\resources\AgiFileReader.cpp">
       <Filter>interpreter\resources</Filter>
     </ClCompile>
@@ -89,6 +86,9 @@
     <ClCompile Include="..\src\core\BitConverter.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\core\BitSetHelper.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -112,6 +112,9 @@
     <Filter Include="core">
       <UniqueIdentifier>{0552978d-19de-4de9-9402-c37cd87bf8b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="interpreter\helpers">
+      <UniqueIdentifier>{603fbf8f-5c11-4794-8159-b85a79475aa8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\sage\interpreter\AgiEncryption.h">
@@ -121,9 +124,6 @@
       <Filter>interpreter</Filter>
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h">
-      <Filter>interpreter</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\sage\interpreter\AgiStringHelper.h">
       <Filter>interpreter</Filter>
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\resources\AgiFileReader.h">
@@ -208,6 +208,12 @@
       <Filter>interpreter\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\BitConverter.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\helpers\AgiStringHelper.h">
+      <Filter>interpreter\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\BitSetHelper.h">
       <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>

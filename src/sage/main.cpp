@@ -18,18 +18,28 @@
 #include "../backend/sdl2/Keyboard.h"
 
 #include "interpreter/resources/ViewLoop.h"
+#include "interpreter/resources/AgiFileReader.h"
+#include "interpreter/resources/AgiView.h"
 
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
+	fs::current_path("C:\\Users\\s_gal\\Desktop\\Stuff\\The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
 	Engine engine(320, 200);
 	Texture t(320, 200);
+
+	AgiFileReader reader(AgiFileType::View);
+	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
+	
+	for (auto e : entries)
+	{
+		AgiView view(reader.GetFile(e.resourceId));
+	}
 
 	std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
 

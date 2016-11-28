@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "../AgiEncryption.h"
-#include "../AgiStringHelper.h"
+#include "../helpers/AgiStringHelper.h"
 #include "Resource.h"
 
 namespace sage

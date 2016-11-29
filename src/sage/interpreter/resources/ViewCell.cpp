@@ -1,12 +1,32 @@
 #include "ViewCell.h"
 
-ViewCell::ViewCell(uint8_t width, uint8_t height, bool mirrored, std::vector<uint32_t> data, uint8_t mirroredLoopID)
+//ViewCell::ViewCell(AgiColor color, uint8_t width, uint8_t height, bool mirrored, std::vector<uint32_t> data, uint8_t mirroredLoopID)
+//{
+//	this->color = color;
+//	this->width = width;
+//	this->height = height;
+//	this->mirrored = mirrored;
+//	this->data = data;
+//	this->mirroredLoopID = mirroredLoopID;
+//}
+
+ViewCell::ViewCell(AgiColor *color, uint8_t width, uint8_t height, bool mirrored, uint8_t ** data, uint8_t mirroredLoopID)
 {
+	this->color = color;
 	this->width = width;
 	this->height = height;
 	this->mirrored = mirrored;
 	this->data = data;
 	this->mirroredLoopID = mirroredLoopID;
+}
+
+ViewCell::~ViewCell()
+{
+	/*if (this->data != nullptr)
+	{
+		delete[] data;
+		data = nullptr;
+	}*/
 }
 
 uint8_t ViewCell::getWidth()
@@ -19,7 +39,12 @@ uint8_t ViewCell::getHeight()
 	return this->height;
 }
 
-std::vector<uint32_t> ViewCell::getData()
+//std::vector<uint32_t> ViewCell::getData()
+//{
+//	return this->data;
+//}
+
+uint8_t ** ViewCell::getData()
 {
 	return this->data;
 }
@@ -44,7 +69,12 @@ void ViewCell::setHeight(uint8_t height)
 	this->height = height;
 }
 
-void ViewCell::setData(std::vector<uint32_t> data)
+//void ViewCell::setData(std::vector<uint32_t> data)
+//{
+//	this->data = data;
+//}
+
+void ViewCell::setData(uint8_t ** data)
 {
 	this->data = data;
 }

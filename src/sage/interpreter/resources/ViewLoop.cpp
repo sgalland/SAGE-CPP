@@ -1,5 +1,10 @@
 #include "ViewLoop.h"
 
+ViewLoop::ViewLoop(uint8_t loopID)
+{
+	this->setLoopID(loopID);
+}
+
 uint8_t ViewLoop::getLoopID()
 {
 	return this->loopID;

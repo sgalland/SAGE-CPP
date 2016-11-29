@@ -26,12 +26,11 @@ namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\s_gal\\Desktop\\Stuff\\The Black Cauldron.1987");
+	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
 	Engine engine(320, 200);
-	Texture t(320, 200);
 
 	AgiFileReader reader(AgiFileType::View);
 	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
@@ -39,6 +38,20 @@ int main(int argc, char *argv[])
 	for (auto e : entries)
 	{
 		AgiView view(reader.GetFile(e.resourceId));
+	}
+	AgiView view(reader.GetFile(entries.at(0).resourceId));
+	auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
+	auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
+	Texture t(0, 0, width, height);
+	auto data = view.getViewLoops().at(0).cels().at(0).getData();
+
+	int k = 0;
+	for (int w = 0; w < width; w++)
+	{
+		for (int h = 0; h < height; h++)
+		{
+			t[k++] = static_cast<uint32_t>(data[width][height]);
+		}
 	}
 
 	std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
@@ -63,7 +76,6 @@ int main(int argc, char *argv[])
 			break;
 		}
 
-		t[rand() % (320 * 200)] = rand() % 250000;
 		engine.graphics->clear(255, 255, 255);
 		engine.graphics->push(&t);
 		engine.graphics->render();

@@ -16,7 +16,7 @@ protected:
 	uint8_t loopCount;
 	std::string Description;
 	int celLocations[MAX_CEL][MAX_CEL];
-	uint8_t loopLocations[MAX_CEL];
+	int16_t loopLocations[MAX_CEL];
 	int celsInLoopCount[MAX_CEL];
 	//AgiColors agiColors;
 	std::vector<ViewLoop> viewLoops;
@@ -26,4 +26,5 @@ protected:
 	void ReadCelHeader(AgiFile file);
 public:
 	AgiView(AgiFile file);
+	std::vector<ViewLoop> getViewLoops();
 };

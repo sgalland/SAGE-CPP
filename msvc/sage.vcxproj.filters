@@ -89,6 +89,9 @@
     <ClCompile Include="..\src\core\BitSetHelper.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\helpers\AgiColor.cpp">
+      <Filter>interpreter\helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -215,6 +218,9 @@
     </ClInclude>
     <ClInclude Include="..\src\core\BitSetHelper.h">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\helpers\AgiColor.h">
+      <Filter>interpreter\helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

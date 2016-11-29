@@ -22,6 +22,7 @@
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiVersion.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\helpers\AgiColor.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\ActionDispatcher.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\Actions.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiVersion.h" />
+    <ClInclude Include="..\src\sage\interpreter\helpers\AgiColor.h" />
     <ClInclude Include="..\src\sage\interpreter\helpers\AgiStringHelper.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\ActionDispatcher.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\Actions.h" />

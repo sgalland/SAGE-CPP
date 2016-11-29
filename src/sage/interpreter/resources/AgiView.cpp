@@ -45,8 +45,8 @@ void AgiView::ReadCelHeader(AgiFile file)
 {
 	for (uint8_t loopIndex = 0; loopIndex < this->loopCount; loopIndex++)
 	{
-		ViewLoop viewLoop;// { LoopId = loopIndex };
-		//ViewLoops.Add(viewLoop);
+		ViewLoop viewLoop(loopIndex);
+		viewLoops.push_back(viewLoop);
 
 		for (uint8_t celIndex = 0; celIndex < celsInLoopCount[loopIndex]; celIndex++)
 		{
@@ -62,53 +62,42 @@ void AgiView::ReadCelHeader(AgiFile file)
 			//	2-4	Loop indice that is not mirrored
 			//	
 			BitSetHelper<8> bitset(file.data[celPosition + ++offset]);
-			/*std::bitset<8> bits(file.data[celPosition + ++offset]);
-			const std::bitset<8> mask("00001111");*/
-			uint64_t transparentColor = bitset.get_range_ulong(4, 7); //(bits & mask).to_ulong();
-
+			uint8_t transparentColor = bitset.get_range_byte(0, 3);
 			// this mirroring appears correct but needs to be better tested
-			//bool isMirrored = bits[7] == 1 && (bits & std::bitset<8>("00001110")).to_ulong() != loopIndex;
-			//uint8_t mirroredLoopId = (bits & std::bitset<8>("00001110")).to_ulong();
-			//var pixelData = Enumerable.Repeat((uint)transparentColor, width * height).ToArray();
+			uint8_t mirroredLoopId = bitset.get_range_byte(4, 6);
+			bool isMirrored = bitset[7] == 1 && mirroredLoopId != loopIndex;
 
-			//for (var celDataIndex = 0; celDataIndex < height; celDataIndex++)
+			uint8_t** pixelData = new uint8_t*[width * height];
+			for (uint8_t celDataIndex = 0; celDataIndex < height; celDataIndex++)
 			{
-				/*var x = 0;
-				byte chunk = 0;
-*/
-				/*while ((chunk = file.Data[celPosition + ++offset]) != 0)
+				uint16_t x = 0;
+				uint8_t chunk = 0;
+
+				while ((chunk = file.data[celPosition + ++offset]) != 0)
 				{
-					var bitArray = new BitArray(new[] { chunk });
-					var pixelCount = bitArray.ConvertBitArrayToByte(0, 3);
-					var pixelColor = bitArray.ConvertBitArrayToByte(4, 7);
+					BitSetHelper<8> bitArray(chunk);
+					uint8_t pixelCount = bitArray.get_range_byte(0, 3);
+					uint8_t pixelColor = bitArray.get_range_byte(4, 7);
 					if (!isMirrored)
 					{
-						for (var originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
+						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + x] = pixelColor;
-							pixelData[(celDataIndex * width) + x + 1] = pixelColor;
+							pixelData[(celDataIndex * width) + x] = &pixelColor;
+							pixelData[(celDataIndex * width) + x + 1] = &pixelColor;
 						}
 					}
 					else
 					{
-						for (var originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
+						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + width - x - 1] = pixelColor;
-							pixelData[(celDataIndex * width) + width - x - 2] = pixelColor;
+							pixelData[(celDataIndex * width) + width - x - 1] = &pixelColor;
+							pixelData[(celDataIndex * width) + width - x - 2] = &pixelColor;
 						}
 					}
-				}*/
+				}
 			}
 
-	//		viewLoop.Cels.Add(new ViewCell()
-	//		{
-	//			Color = agiColors.First(c = > c.ColorId == transparentColor),
-	//			Width = width,
-	//			Height = height,
-	//			IsMirrored = isMirrored,
-	//			Data = pixelData,
-	//			MirroredLoopId = mirroredLoopId
-	//		});
+			viewLoop.cels().push_back(ViewCell(AgiColor::getColorByDosColor(transparentColor), width, height, isMirrored, pixelData, mirroredLoopId));
 		}
 	}
 }
@@ -118,4 +107,9 @@ AgiView::AgiView(AgiFile file)
 	LoadViewHeader(file);
 	ReadLoopHeaders(file);
 	ReadCelHeader(file);
+}
+
+std::vector<ViewLoop> AgiView::getViewLoops()
+{
+	return this->viewLoops;
 }

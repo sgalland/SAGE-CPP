@@ -5,7 +5,7 @@
 
 class AgiColor
 {
-	static std::vector<AgiColor*> colors;
+	static std::vector<AgiColor> colors;
 	std::string name;
 	uint8_t r;
 	uint8_t g;
@@ -15,5 +15,6 @@ public:
 	AgiColor();
 	AgiColor(uint8_t dosColor, std::string name, uint8_t r, uint8_t g, uint8_t b);
 
-	static AgiColor* getColorByDosColor(int dosColor);
+	static const AgiColor getColorByDosColor(int dosColor);
 };
+

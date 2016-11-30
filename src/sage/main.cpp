@@ -1,6 +1,6 @@
-//#ifdef define(WIN32) && define(_DEBUG)
+#ifdef define(WIN32) && define(_DEBUG)
 #include <vld.h>
-//#endif
+#endif
 
 #include <SDL.h>
 
@@ -26,7 +26,7 @@ namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
+	fs::current_path("C:\\Users\\s_gal\\Desktop\\Stuff\\The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
@@ -37,7 +37,8 @@ int main(int argc, char *argv[])
 	
 	for (auto e : entries)
 	{
-		AgiView view(reader.GetFile(e.resourceId));
+		if (e.dataOffset != EMPTY_DIRECTORY)
+			AgiView view(reader.GetFile(e.resourceId));
 	}
 	AgiView view(reader.GetFile(entries.at(0).resourceId));
 	auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
@@ -45,14 +46,15 @@ int main(int argc, char *argv[])
 	Texture t(0, 0, width, height);
 	auto data = view.getViewLoops().at(0).cels().at(0).getData();
 
-	int k = 0;
-	for (int w = 0; w < width; w++)
-	{
-		for (int h = 0; h < height; h++)
-		{
-			t[k++] = static_cast<uint32_t>(data[width][height]);
-		}
-	}
+	t.setData(data);
+	//int k = 0;
+	//for (int w = 0; w < width; w++)
+	//{
+	//	for (int h = 0; h < height; h++)
+	//	{
+	//		t[k++] = data[width * h + height];
+	//	}
+	//}
 
 	std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
 

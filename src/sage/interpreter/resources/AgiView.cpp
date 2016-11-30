@@ -46,28 +46,21 @@ void AgiView::ReadCelHeader(AgiFile file)
 	for (uint8_t loopIndex = 0; loopIndex < this->loopCount; loopIndex++)
 	{
 		ViewLoop viewLoop(loopIndex);
-		viewLoops.push_back(viewLoop);
-
+		
 		for (uint8_t celIndex = 0; celIndex < celsInLoopCount[loopIndex]; celIndex++)
 		{
-			uint8_t offset = 0;
-			uint8_t celPosition = this->loopLocations[loopIndex] + this->celLocations[loopIndex][celIndex];
+			uint16_t offset = 0;
+			uint16_t celPosition = this->loopLocations[loopIndex] + this->celLocations[loopIndex][celIndex];
 			uint8_t width = file.data[celPosition] * 2;
 			uint8_t height = file.data[celPosition + ++offset];
 
-			// This byte has the following format:
-			// Bit	What it does
-			//	0	Transparency Color
-			//	1	Bit indicating if mirroring is enabled
-			//	2-4	Loop indice that is not mirrored
-			//	
 			BitSetHelper<8> bitset(file.data[celPosition + ++offset]);
 			uint8_t transparentColor = bitset.get_range_byte(0, 3);
 			// this mirroring appears correct but needs to be better tested
 			uint8_t mirroredLoopId = bitset.get_range_byte(4, 6);
 			bool isMirrored = bitset[7] == 1 && mirroredLoopId != loopIndex;
 
-			uint8_t** pixelData = new uint8_t*[width * height];
+			std::vector<uint8_t> pixelData(width * height, transparentColor);
 			for (uint8_t celDataIndex = 0; celDataIndex < height; celDataIndex++)
 			{
 				uint16_t x = 0;
@@ -82,23 +75,25 @@ void AgiView::ReadCelHeader(AgiFile file)
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + x] = &pixelColor;
-							pixelData[(celDataIndex * width) + x + 1] = &pixelColor;
+							pixelData[(celDataIndex * width) + x] = pixelColor;
+							pixelData[(celDataIndex * width) + x + 1] = pixelColor;
 						}
 					}
 					else
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + width - x - 1] = &pixelColor;
-							pixelData[(celDataIndex * width) + width - x - 2] = &pixelColor;
+							pixelData[(celDataIndex * width) + width - x - 1] = pixelColor;
+							pixelData[(celDataIndex * width) + width - x - 2] = pixelColor;
 						}
 					}
 				}
 			}
 
-			viewLoop.cels().push_back(ViewCell(AgiColor::getColorByDosColor(transparentColor), width, height, isMirrored, pixelData, mirroredLoopId));
+			viewLoop.cels().emplace_back(AgiColor::getColorByDosColor(transparentColor), width, height, isMirrored, pixelData, mirroredLoopId);
 		}
+
+		viewLoops.push_back(viewLoop);
 	}
 }
 

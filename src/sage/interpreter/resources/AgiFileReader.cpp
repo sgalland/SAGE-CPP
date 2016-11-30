@@ -71,9 +71,11 @@ void AgiFileReader::LoadDirectoryEntries(AgiFileType fileType)
 
 			if (data.dataOffset != EMPTY_DIRECTORY)
 			{
-				data.resourceId = resourceCount++;
+				data.resourceId = resourceCount;
 				directoryEntries.push_back(data);
 			}
+
+			resourceCount++;
 		}
 	}
 }
@@ -85,7 +87,7 @@ std::vector<AgiDirectoryEntry> AgiFileReader::GetDirectoryEntries()
 
 AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 {
-	if (resourceId < 0 || resourceId>255)
+	if (resourceId < 0 || resourceId > 255)
 	{
 		// blow up
 	}
@@ -94,7 +96,12 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 		// blow up
 	}
 
-	AgiDirectoryEntry dirEntry = directoryEntries.at(resourceId);
+	AgiDirectoryEntry dirEntry;
+	for (auto entry : directoryEntries)
+		if (entry.resourceId == resourceId)
+			dirEntry = entry;
+
+	//AgiDirectoryEntry dirEntry = directoryEntries.at(resourceId);
 	std::string fileName = "VOL." + boost::lexical_cast<std::string>(static_cast<int>(dirEntry.volNumber));
 	fs::path filePath{ fs::current_path() / fileName };
 	fs::ifstream file(filePath, fs::ifstream::binary);
@@ -103,8 +110,6 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 	if (file.is_open())
 	{
 		file.seekg(dirEntry.dataOffset, std::ifstream::beg);
-
-		//int16_t signature = 0;
 		file.read(reinterpret_cast<char*>(&dirEntry.signature), sizeof(int16_t));
 		if (dirEntry.signature == VALID_SIGNATURE)
 		{
@@ -124,7 +129,6 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 
 void AgiFileReader::ExtractFile(uint8_t resourceId, fs::path filePath)
 {
-	resourceId = 1;
 	AgiFile agiData = GetFile(resourceId);
 	boost::format formatter("%03i");
 	std::string fileName = GetAgiFileFullName() + "." + boost::str(formatter % static_cast<int>(resourceId)); //boost::lexical_cast<std::string>(static_cast<int>(resourceId));

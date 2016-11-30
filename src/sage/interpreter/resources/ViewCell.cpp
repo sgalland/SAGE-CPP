@@ -1,22 +1,22 @@
 #include "ViewCell.h"
 
-//ViewCell::ViewCell(AgiColor color, uint8_t width, uint8_t height, bool mirrored, std::vector<uint32_t> data, uint8_t mirroredLoopID)
-//{
-//	this->color = color;
-//	this->width = width;
-//	this->height = height;
-//	this->mirrored = mirrored;
-//	this->data = data;
-//	this->mirroredLoopID = mirroredLoopID;
-//}
-
-ViewCell::ViewCell(AgiColor *color, uint8_t width, uint8_t height, bool mirrored, uint8_t ** data, uint8_t mirroredLoopID)
+ViewCell::ViewCell(AgiColor color, uint8_t width, uint8_t height, bool mirrored, std::vector<uint8_t> data, uint8_t mirroredLoopID)
 {
 	this->color = color;
 	this->width = width;
 	this->height = height;
 	this->mirrored = mirrored;
 	this->data = data;
+	this->mirroredLoopID = mirroredLoopID;
+}
+
+ViewCell::ViewCell(AgiColor color, uint8_t width, uint8_t height, bool mirrored, uint8_t ** data, uint8_t mirroredLoopID)
+{
+	this->color = color;
+	this->width = width;
+	this->height = height;
+	this->mirrored = mirrored;
+	//this->data = data;
 	this->mirroredLoopID = mirroredLoopID;
 }
 
@@ -44,7 +44,12 @@ uint8_t ViewCell::getHeight()
 //	return this->data;
 //}
 
-uint8_t ** ViewCell::getData()
+AgiColor ViewCell::getColor()
+{
+	return this->color;
+}
+
+std::vector<uint8_t> ViewCell::getData()
 {
 	return this->data;
 }
@@ -69,15 +74,20 @@ void ViewCell::setHeight(uint8_t height)
 	this->height = height;
 }
 
-//void ViewCell::setData(std::vector<uint32_t> data)
-//{
-//	this->data = data;
-//}
-
-void ViewCell::setData(uint8_t ** data)
+void ViewCell::setData(std::vector<uint8_t> data)
 {
 	this->data = data;
 }
+
+void ViewCell::setColor(AgiColor color)
+{
+	this->color = color;
+}
+
+//void ViewCell::setData(uint8_t ** data)
+//{
+//	this->data = data;
+//}
 
 void ViewCell::setMirrored(bool mirrored)
 {

@@ -23,7 +23,7 @@ Texture::Texture(int xPosition, int yPosition, int width, int height)
 
 Texture::~Texture()
 {
-	SDL_DestroyTexture(this->texture);
+	this->quit();
 }
 
 uint32_t & Texture::operator[](int index)
@@ -39,7 +39,7 @@ Uint32 Texture::getPixelFormat()
 void Texture::UpdateTexture()
 {
 	// NOTE: This pitch is width * bits per pixel. This is required for Windows. 
-	// Apparently other platforms (such as OpenGL) allow the pitch to be set to 0 as a default.
+	// Apparently other platforms (that uses OpenGL) allow the pitch to be set to 0 as a default.
 	SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * sizeof(uint32_t));
 }
 
@@ -54,6 +54,8 @@ void Texture::initialize()
 
 void Texture::quit()
 {
+	if (this->texture != nullptr)
+		SDL_DestroyTexture(this->texture);
 }
 
 int32_t Texture::getWidth()

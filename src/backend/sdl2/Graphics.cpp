@@ -2,6 +2,44 @@
 
 SDL_Renderer *Graphics::renderer = nullptr;
 SDL_Window *Graphics::window = nullptr;
+SDL_Palette *Graphics::palette = nullptr;
+
+void Graphics::initializeColors()
+{
+	AgiColor::colors.emplace_back(0, "Black", 0x00, 0x00, 0x00);
+	AgiColor::colors.emplace_back(1, "Green", 0x00, 0x00, 0x2A);
+	AgiColor::colors.emplace_back(2, "Green", 0x00, 0x2A, 0x00);
+	AgiColor::colors.emplace_back(3, "Cyan", 0x00, 0x2A, 0x2A);
+	AgiColor::colors.emplace_back(4, "Red", 0x2A, 0x00, 0x00);
+	AgiColor::colors.emplace_back(5, "Magenta", 0x2A, 0x00, 0x2A);
+	AgiColor::colors.emplace_back(6, "Brown", 0x2A, 0x15, 0x00);
+	AgiColor::colors.emplace_back(7, "Light Grey", 0x2A, 0x2A, 0x2A);
+	AgiColor::colors.emplace_back(8, "Dark Grey", 0x15, 0x15, 0x15);
+	AgiColor::colors.emplace_back(9, "Light Green", 0x15, 0x15, 0x3F);
+	AgiColor::colors.emplace_back(10, "Light Green", 0x15, 0x3F, 0x15);
+	AgiColor::colors.emplace_back(11, "Light Cyan", 0x15, 0x3F, 0x3F);
+	AgiColor::colors.emplace_back(12, "Light Red", 0x3F, 0x15, 0x15);
+	AgiColor::colors.emplace_back(13, "Light Magenta", 0x3F, 0x15, 0x3F);
+	AgiColor::colors.emplace_back(14, "Yellow", 0x3F, 0x3F, 0x15);
+	AgiColor::colors.emplace_back(15, "White", 0x3F, 0x3F, 0x3F);
+
+	std::vector<SDL_Color> sdlColors;
+	for (auto color : AgiColor::colors)
+	{
+		SDL_Color c = { color.r, color.g, color.b, SDL_ALPHA_OPAQUE };
+		sdlColors.push_back(c);
+	}
+
+	palette = SDL_AllocPalette(sdlColors.size());
+	if (SDL_SetPixelFormatPalette(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888), palette) != 0)
+	{
+		std::cout << "SDL_SetPixelFormatPalette Error:\n\t" << SDL_GetError() << std::endl;
+	}
+	if (SDL_SetPaletteColors(palette, &sdlColors[0], 0, sdlColors.size()) != 0)
+	{
+		std::cout << "SDL_SetPaletteColors Error:\n\t" << SDL_GetError() << std::endl;
+	}
+}
 
 Graphics::Graphics(int width, int height)
 {
@@ -54,6 +92,8 @@ void Graphics::initialize(int width, int height)
 		std::vector<DisplayMode>::iterator displayMode = locatedDisplayModes.begin();
 		SDL_SetWindowDisplayMode(this->window, displayMode->displayMode);
 	}
+
+	initializeColors();
 }
 
 void Graphics::quit()

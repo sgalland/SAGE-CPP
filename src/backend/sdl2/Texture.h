@@ -11,16 +11,13 @@ protected:
 	int32_t height;
 	int32_t xPosition;
 	int32_t yPosition;
-
 	std::vector<uint32_t> pixelBuffer;
 	SDL_Texture *texture;
-	SDL_Surface *surface;
 public:
 	Texture(int width, int height);
 	Texture(int xPosition, int yPosition, int width, int height);
 	~Texture();
 	uint32_t & operator[](int index);
-	// temp hack for testing, this probably doesn't need to be in the final version
 	Uint32 getPixelFormat();
 	void UpdateTexture();
 

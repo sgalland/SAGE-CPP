@@ -2,6 +2,7 @@
 
 #include "DisplayMode.h"
 #include "Texture.h"
+#include "../../sage/interpreter/helpers/AgiColor.h"
 
 #include <iostream>
 #include <SDL.h>
@@ -12,8 +13,11 @@ class Graphics
 private:
 	static SDL_Window *window;
 	static SDL_Renderer *renderer;
+	static SDL_Palette *palette;
 	std::vector<Texture*> batchList;
 	bool isFullscreen;
+
+	void initializeColors();
 public:
 	Graphics(int width, int height);
 	~Graphics();

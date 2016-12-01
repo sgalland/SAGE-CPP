@@ -2,9 +2,12 @@
 
 #include <string>
 #include <vector>
+#include <SDL.h>
 
 class AgiColor
 {
+	friend class Graphics;
+protected:
 	static std::vector<AgiColor> colors;
 	std::string name;
 	uint8_t r;

@@ -60,7 +60,7 @@ void AgiView::ReadCelHeader(AgiFile file)
 			uint8_t mirroredLoopId = bitset.get_range_byte(4, 6);
 			bool isMirrored = bitset[7] == 1 && mirroredLoopId != loopIndex;
 
-			std::vector<uint8_t> pixelData(width * height, transparentColor);
+			std::vector<uint32_t> pixelData(width * height, transparentColor);
 			for (uint8_t celDataIndex = 0; celDataIndex < height; celDataIndex++)
 			{
 				uint16_t x = 0;
@@ -75,16 +75,18 @@ void AgiView::ReadCelHeader(AgiFile file)
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + x] = pixelColor;
-							pixelData[(celDataIndex * width) + x + 1] = pixelColor;
+							AgiColor color = AgiColor::getColorByDosColor(pixelColor);
+							pixelData[(celDataIndex * width) + x] = color.getRGBValue();
+							pixelData[(celDataIndex * width) + x + 1] = color.getRGBValue();
 						}
 					}
 					else
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							pixelData[(celDataIndex * width) + width - x - 1] = pixelColor;
-							pixelData[(celDataIndex * width) + width - x - 2] = pixelColor;
+							AgiColor color = AgiColor::getColorByDosColor(pixelColor);
+							pixelData[(celDataIndex * width) + width - x - 1] = color.getRGBValue();
+							pixelData[(celDataIndex * width) + width - x - 2] = color.getRGBValue();
 						}
 					}
 				}

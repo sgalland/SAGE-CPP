@@ -2,6 +2,11 @@
 
 std::vector<AgiColor> AgiColor::colors;
 
+uint32_t AgiColor::getRGBValue()
+{
+	return this->rgb;
+}
+
 AgiColor::AgiColor()
 {
 }
@@ -13,7 +18,19 @@ AgiColor::AgiColor(uint8_t dosColor, std::string name, uint8_t r, uint8_t g, uin
 	this->r = r;
 	this->b = b;
 	this->g = g;
+	this->rgb = CreateRGBValue();
 }
+
+uint32_t AgiColor::CreateRGBValue()
+{
+	uint32_t rgb = this->r;
+	rgb = (rgb << 8) + this->g;
+	rgb = (rgb << 8) + this->b;
+
+	return rgb;
+}
+
+
 
 const AgiColor AgiColor::getColorByDosColor(int dosColor)
 {

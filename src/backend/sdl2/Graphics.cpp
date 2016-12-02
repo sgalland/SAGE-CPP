@@ -23,7 +23,7 @@ void Graphics::initializeColors()
 	AgiColor::colors.emplace_back(14, "Yellow", 0x3F, 0x3F, 0x15);
 	AgiColor::colors.emplace_back(15, "White", 0x3F, 0x3F, 0x3F);
 
-	std::vector<SDL_Color> sdlColors;
+	/*std::vector<SDL_Color> sdlColors;
 	for (auto color : AgiColor::colors)
 	{
 		SDL_Color c = { color.r, color.g, color.b, SDL_ALPHA_OPAQUE };
@@ -38,7 +38,7 @@ void Graphics::initializeColors()
 	if (SDL_SetPaletteColors(palette, &sdlColors[0], 0, sdlColors.size()) != 0)
 	{
 		std::cout << "SDL_SetPaletteColors Error:\n\t" << SDL_GetError() << std::endl;
-	}
+	}*/
 }
 
 Graphics::Graphics(int width, int height)

@@ -16,9 +16,9 @@ AgiColor::AgiColor(uint8_t dosColor, std::string name, uint8_t r, uint8_t g, uin
 {
 	this->dosColor = dosColor;
 	this->name = name;
-	this->r = r<<2;
-	this->b = b<<2;
-	this->g = g<<2;
+	this->r = r;// << 2;
+	this->b = b;// << 2;
+	this->g = g;// << 2;
 	//this->rgb = 
 	CreateRGBValue();
 }

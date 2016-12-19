@@ -13,6 +13,7 @@ protected:
 	int32_t yPosition;
 	std::vector<uint32_t> pixelBuffer;
 	SDL_Texture *texture;
+	SDL_Surface *surface;
 public:
 	Texture(int width, int height);
 	Texture(int xPosition, int yPosition, int width, int height);

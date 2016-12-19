@@ -7,21 +7,21 @@ SDL_Palette *Graphics::palette = nullptr;
 void Graphics::initializeColors()
 {
 	AgiColor::colors.emplace_back(0, "Black", 0x00, 0x00, 0x00);
-	AgiColor::colors.emplace_back(1, "Green", 0x00, 0x00, 0x2A);
-	AgiColor::colors.emplace_back(2, "Green", 0x00, 0x2A, 0x00);
-	AgiColor::colors.emplace_back(3, "Cyan", 0x00, 0x2A, 0x2A);
-	AgiColor::colors.emplace_back(4, "Red", 0x2A, 0x00, 0x00);
-	AgiColor::colors.emplace_back(5, "Magenta", 0x2A, 0x00, 0x2A);
-	AgiColor::colors.emplace_back(6, "Brown", 0x2A, 0x15, 0x00);
-	AgiColor::colors.emplace_back(7, "Light Grey", 0x2A, 0x2A, 0x2A);
-	AgiColor::colors.emplace_back(8, "Dark Grey", 0x15, 0x15, 0x15);
-	AgiColor::colors.emplace_back(9, "Light Green", 0x15, 0x15, 0x3F);
-	AgiColor::colors.emplace_back(10, "Light Green", 0x15, 0x3F, 0x15);
-	AgiColor::colors.emplace_back(11, "Light Cyan", 0x15, 0x3F, 0x3F);
-	AgiColor::colors.emplace_back(12, "Light Red", 0x3F, 0x15, 0x15);
-	AgiColor::colors.emplace_back(13, "Light Magenta", 0x3F, 0x15, 0x3F);
-	AgiColor::colors.emplace_back(14, "Yellow", 0x3F, 0x3F, 0x15);
-	AgiColor::colors.emplace_back(15, "White", 0x3F, 0x3F, 0x3F);
+	AgiColor::colors.emplace_back(1, "Green", 0x00, 0x00, 168);
+	AgiColor::colors.emplace_back(2, "Green", 0x00, 168, 0x00);
+	AgiColor::colors.emplace_back(3, "Cyan", 0x00, 168, 168);
+	AgiColor::colors.emplace_back(4, "Red", 168, 0x00, 0x00);
+	AgiColor::colors.emplace_back(5, "Magenta", 168, 0x00, 168);
+	AgiColor::colors.emplace_back(6, "Brown", 168, 84, 0x00);
+	AgiColor::colors.emplace_back(7, "Light Grey", 168, 168, 168);
+	AgiColor::colors.emplace_back(8, "Dark Grey", 84, 84, 84);
+	AgiColor::colors.emplace_back(9, "Light Blue", 84, 84, 252);
+	AgiColor::colors.emplace_back(10, "Light Green", 84, 252, 84);
+	AgiColor::colors.emplace_back(11, "Light Cyan", 84, 252, 252);
+	AgiColor::colors.emplace_back(12, "Light Red", 252, 84, 84);
+	AgiColor::colors.emplace_back(13, "Light Magenta", 252, 84, 252);
+	AgiColor::colors.emplace_back(14, "Yellow", 252, 252, 84);
+	AgiColor::colors.emplace_back(15, "White", 252, 252, 252);
 
 	/*std::vector<SDL_Color> sdlColors;
 	for (auto color : AgiColor::colors)

@@ -38,17 +38,35 @@ Uint32 Texture::getPixelFormat()
 
 void Texture::UpdateTexture()
 {
+	SDL_RenderSetScale(Graphics::renderer, 4, 4);
+
+	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h);
+
+	if (this->texture != nullptr)
+	{
+		SDL_DestroyTexture(this->texture);
+		this->texture = nullptr;
+	}
+
+	this->texture = SDL_CreateTextureFromSurface(Graphics::renderer, this->surface);
+
 	// NOTE: This pitch is width * bits per pixel. This is required for Windows. 
 	// Apparently other platforms (that uses OpenGL) allow the pitch to be set to 0 as a default.
-	SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * sizeof(uint32_t));
+	//SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * sizeof(uint32_t));
 }
 
 void Texture::initialize()
 {
 	this->width = width;
 	this->height = height;
+	this->texture = nullptr;
 
-	texture = SDL_CreateTexture(Graphics::renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, width, height);
+	if ((this->surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0)) == nullptr)
+	{
+		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		exit(1);
+	}
+
 	pixelBuffer.resize(width * height);
 }
 
@@ -56,6 +74,9 @@ void Texture::quit()
 {
 	if (this->texture != nullptr)
 		SDL_DestroyTexture(this->texture);
+
+	if (this->surface != nullptr)
+		SDL_FreeSurface(this->surface);
 }
 
 int32_t Texture::getWidth()

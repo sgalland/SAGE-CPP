@@ -22,23 +22,6 @@ void Graphics::initializeColors()
 	AgiColor::colors.emplace_back(13, "Light Magenta", 252, 84, 252);
 	AgiColor::colors.emplace_back(14, "Yellow", 252, 252, 84);
 	AgiColor::colors.emplace_back(15, "White", 252, 252, 252);
-
-	/*std::vector<SDL_Color> sdlColors;
-	for (auto color : AgiColor::colors)
-	{
-		SDL_Color c = { color.r, color.g, color.b, SDL_ALPHA_OPAQUE };
-		sdlColors.push_back(c);
-	}
-
-	palette = SDL_AllocPalette(sdlColors.size());
-	if (SDL_SetPixelFormatPalette(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888), palette) != 0)
-	{
-		std::cout << "SDL_SetPixelFormatPalette Error:\n\t" << SDL_GetError() << std::endl;
-	}
-	if (SDL_SetPaletteColors(palette, &sdlColors[0], 0, sdlColors.size()) != 0)
-	{
-		std::cout << "SDL_SetPaletteColors Error:\n\t" << SDL_GetError() << std::endl;
-	}*/
 }
 
 Graphics::Graphics(int width, int height)
@@ -93,6 +76,8 @@ void Graphics::initialize(int width, int height)
 		SDL_SetWindowDisplayMode(this->window, displayMode->displayMode);
 	}
 
+	SDL_RenderSetScale(Graphics::renderer, 4, 4);
+
 	initializeColors();
 }
 
@@ -121,10 +106,11 @@ void Graphics::clear(int r, int g, int b)
 
 void Graphics::render()
 {
+	SDL_SetRenderTarget(this->renderer, nullptr);
+	SDL_SetRenderDrawColor(this->renderer, 0x00, 0x00, 0x00, 0x00);
+
 	for (auto texture : batchList)
 	{
-		texture->UpdateTexture();
-
 		SDL_Rect destSize = { texture->getXPosition(), texture->getYPosition(), texture->getWidth(), texture->getHeight() };
 		SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
 	}

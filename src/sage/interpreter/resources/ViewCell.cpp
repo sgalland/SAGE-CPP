@@ -98,3 +98,8 @@ void ViewCell::setMirroredLoopID(uint8_t mirroredLoopID)
 {
 	this->mirroredLoopID = mirroredLoopID;
 }
+
+AgiColor ViewCell::getTransparentColor()
+{
+	return this->transparentColor;
+}

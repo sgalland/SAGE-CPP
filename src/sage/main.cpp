@@ -34,24 +34,27 @@ int main(int argc, char *argv[])
 
 	AgiFileReader reader(AgiFileType::View);
 	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
-	
+
 	AgiView view(reader.GetFile(entries.at(0).resourceId));
 	auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
 	auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
-	Texture t(0, 0, width, height);
-	auto data = view.getViewLoops().at(0).cels().at(0).getData();
+	
+	Texture t(0, 0, width, height, view.getViewLoops().at(0).cels().at(0).getTransparentColor());
 
-	t.setData(data);
 
-	std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
+	//std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
 
 	game::LogicProcessor processor;
 	processor.Execute(0);
 
 	bool isRunning = true;
+	int x = 0, y = 0;
 	while (isRunning)
 	{
 		Event event = Event::pollEvent();
+
+		auto viewCel = view.getViewLoops().at(y).cels().at(x);
+		t.setData(viewCel.getData());
 
 		switch (event.getEventType())
 		{
@@ -62,7 +65,15 @@ int main(int argc, char *argv[])
 				if (!engine.graphics->getIsFullscreen())
 					engine.graphics->fullscreen();
 				else engine.graphics->windowed();
-			break;
+				if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
+					y++;
+				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
+					y--;
+				else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
+					x--;
+				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
+					x++;
+				break;
 		}
 
 		engine.graphics->clear(255, 255, 255);

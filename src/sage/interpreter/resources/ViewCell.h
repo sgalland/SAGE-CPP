@@ -35,4 +35,5 @@ public:
 	//void setData(uint8_t** data);
 	void setMirrored(bool mirrored);
 	void setMirroredLoopID(uint8_t mirroredLoopID);
+	AgiColor getTransparentColor();
 };

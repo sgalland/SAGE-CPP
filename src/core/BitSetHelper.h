@@ -10,16 +10,19 @@ public:
 
 	inline uint8_t get_range_byte(int startPosition, int endPosition)
 	{
-		uint8_t mask = 1;
-		uint8_t result = 0;
-
-		for (size_t i = startPosition; i < endPosition; i++)
+		uint8_t r = 0;
+		int idx = 0;
+		for (int i = startPosition; i < this->size() && i <= endPosition; i++)
 		{
+			bool wtf = this[i] == true;
+			bool pp = this->test(i);
 			if (this->test(i))
-				result |= mask;
-			mask <<= 1;
+			{
+				r |= (uint8_t)(1 << idx);
+			}
+			idx++;
 		}
 
-		return result;
+		return r;
 	}
 };

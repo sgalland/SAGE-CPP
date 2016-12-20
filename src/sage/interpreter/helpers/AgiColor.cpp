@@ -3,10 +3,10 @@
 
 std::vector<AgiColor> AgiColor::colors;
 
-uint32_t AgiColor::getRGBValue()
-{
-	return this->rgb;
-}
+//uint32_t AgiColor::getRGBValue()
+//{
+//	return this->rgb;
+//}
 
 AgiColor::AgiColor()
 {
@@ -20,14 +20,14 @@ AgiColor::AgiColor(uint8_t dosColor, std::string name, uint8_t r, uint8_t g, uin
 	this->b = b;// << 2;
 	this->g = g;// << 2;
 	//this->rgb = 
-	CreateRGBValue();
+	//CreateRGBValue();
 }
 
-uint32_t AgiColor::CreateRGBValue()
-{
-	this->rgb = SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), this->r, this->g, this->b);
-	return this->rgb;
-}
+//uint32_t AgiColor::CreateRGBValue()
+//{
+//	//this->rgb = SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), this->r, this->g, this->b);
+//	return this->rgb;
+//}
 
 const AgiColor AgiColor::getColorByDosColor(int dosColor)
 {

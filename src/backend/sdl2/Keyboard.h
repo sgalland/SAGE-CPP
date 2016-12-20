@@ -47,7 +47,11 @@ enum class Key
 	RightShift,
 	LeftControl,
 	RightControl,
-	Enter
+	Enter,
+	UpArrow,
+	DownArrow,
+	LeftArrow,
+	RightArrow
 };
 
 class Keyboard

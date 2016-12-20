@@ -5,6 +5,7 @@
 
 #include <bitset>
 #include <iostream>
+#include <fstream>
 
 void AgiView::LoadViewHeader(AgiFile file)
 {
@@ -75,23 +76,31 @@ void AgiView::ReadCelHeader(AgiFile file)
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							AgiColor color = AgiColor::getColorByDosColor(pixelColor);
-							pixelData[(celDataIndex * width) + x] = color.getRGBValue();
-							pixelData[(celDataIndex * width) + x + 1] = color.getRGBValue();
+							pixelData[(celDataIndex * width) + x] = pixelColor;
+							pixelData[(celDataIndex * width) + x + 1] = pixelColor;
 						}
 					}
 					else
 					{
 						for (uint16_t originalCelx = x; x < originalCelx + pixelCount * 2; x += 2)
 						{
-							AgiColor color = AgiColor::getColorByDosColor(pixelColor);
-							pixelData[(celDataIndex * width) + width - x - 1] = color.getRGBValue();
-							pixelData[(celDataIndex * width) + width - x - 2] = color.getRGBValue();
+							pixelData[(celDataIndex * width) + width - x - 1] = pixelColor;
+							pixelData[(celDataIndex * width) + width - x - 2] = pixelColor;
 						}
 					}
 				}
 			}
 
+			std::vector<char> vv(pixelData.size());
+			std::copy(pixelData.begin(), pixelData.end(), vv.begin());
+
+			std::ofstream f("C:\\Users\\sgalland\\Desktop\\tmpfile.tmp", std::ios::out | std::ios::binary);
+			if (!f)
+			{
+				f.write(&vv[0], vv.size());
+				f.close();
+				exit(0);
+			}
 			viewLoop.cels().emplace_back(AgiColor::getColorByDosColor(transparentColor), width, height, isMirrored, pixelData, mirroredLoopId);
 		}
 

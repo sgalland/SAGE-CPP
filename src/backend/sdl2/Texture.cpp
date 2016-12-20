@@ -1,22 +1,30 @@
 #include "Texture.h"
 #include "Graphics.h"
 
-Texture::Texture(int width, int height)
+Texture::Texture(int width, int height) :Texture(width, height, AgiColor::getColorByDosColor(0))
 {
-	this->xPosition = 0;
-	this->yPosition = 0;
-	this->width = width;
-	this->height = height;
-
-	initialize();
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height)
+Texture::Texture(int width, int height, AgiColor transparentColor) : Texture(0, 0, width, height, true, transparentColor)
+{
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height) : Texture(xPosition, yPosition, width, height, false, AgiColor::getColorByDosColor(0))
+{
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height, AgiColor transparentColor) : Texture(xPosition, yPosition, width, height, true, transparentColor)
+{
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height, bool transparent, AgiColor transparentColor)
 {
 	this->xPosition = xPosition;
 	this->yPosition = yPosition;
 	this->width = width;
 	this->height = height;
+	this->transparent = transparent;
+	this->transparentColor = transparentColor;
 
 	this->initialize();
 }
@@ -38,9 +46,16 @@ Uint32 Texture::getPixelFormat()
 
 void Texture::UpdateTexture()
 {
-	SDL_RenderSetScale(Graphics::renderer, 4, 4);
-
 	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h);
+
+	if (this->transparent)
+	{
+		if (SDL_SetColorKey(this->surface, SDL_TRUE, SDL_MapRGB(this->surface->format, transparentColor.r, transparentColor.g, transparentColor.b)) != 0)
+		{
+			std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+			exit(1);
+		}
+	}
 
 	if (this->texture != nullptr)
 	{
@@ -49,10 +64,6 @@ void Texture::UpdateTexture()
 	}
 
 	this->texture = SDL_CreateTextureFromSurface(Graphics::renderer, this->surface);
-
-	// NOTE: This pitch is width * bits per pixel. This is required for Windows. 
-	// Apparently other platforms (that uses OpenGL) allow the pitch to be set to 0 as a default.
-	//SDL_UpdateTexture(this->texture, NULL, &this->pixelBuffer[0], this->width * sizeof(uint32_t));
 }
 
 void Texture::initialize()
@@ -60,6 +71,7 @@ void Texture::initialize()
 	this->width = width;
 	this->height = height;
 	this->texture = nullptr;
+	this->pixelBuffer.resize(width * height);
 
 	if ((this->surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0)) == nullptr)
 	{
@@ -67,7 +79,13 @@ void Texture::initialize()
 		exit(1);
 	}
 
-	pixelBuffer.resize(width * height);
+	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->width, this->height)) == nullptr)
+	{
+		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		exit(1);
+	}
+
+	SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
 }
 
 void Texture::quit()
@@ -104,7 +122,28 @@ std::vector<uint32_t> Texture::getData()
 	return this->pixelBuffer;
 }
 
+void Texture::setTransparentColor(AgiColor transparentColor)
+{
+	this->transparent = true;
+	this->transparentColor = transparentColor;
+}
+
+AgiColor Texture::getTransparentColor()
+{
+	return this->transparentColor;
+}
+
 void Texture::setData(std::vector<uint32_t> data)
 {
-	this->pixelBuffer = data;
+	this->pixelBuffer.clear();
+
+	// Convert the pixel color from DOS to RGB.
+	for (int index = 0; index < data.size(); index++)
+	{
+		AgiColor color = AgiColor::getColorByDosColor(data.at(index));
+		uint32_t convColor = SDL_MapRGB(this->surface->format, color.r, color.g, color.b);
+		this->pixelBuffer.push_back(convColor);
+	}
+
+	UpdateTexture();
 }

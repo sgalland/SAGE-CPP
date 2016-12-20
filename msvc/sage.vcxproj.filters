@@ -74,12 +74,6 @@
     <ClCompile Include="..\src\backend\sdl2\Texture.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\sage\interpreter\resources\ViewCell.cpp">
-      <Filter>interpreter\resources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\sage\interpreter\resources\ViewLoop.cpp">
-      <Filter>interpreter\resources</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\sage\interpreter\resources\AgiView.cpp">
       <Filter>interpreter\resources</Filter>
     </ClCompile>
@@ -91,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="..\src\sage\interpreter\helpers\AgiColor.cpp">
       <Filter>interpreter\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewLoop.cpp">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewCell.cpp">
+      <Filter>interpreter\resources\Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,9 @@
     </Filter>
     <Filter Include="interpreter\helpers">
       <UniqueIdentifier>{603fbf8f-5c11-4794-8159-b85a79475aa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\resources\Views">
+      <UniqueIdentifier>{dd17e2e2-79cb-4f7d-89bd-8bca26866805}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,13 +204,7 @@
     <ClInclude Include="..\src\backend\sdl2\Texture.h">
       <Filter>backend\sdl2</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\sage\interpreter\resources\ViewCell.h">
-      <Filter>interpreter\resources</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\resources\AgiView.h">
-      <Filter>interpreter\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\sage\interpreter\resources\ViewLoop.h">
       <Filter>interpreter\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\BitConverter.h">
@@ -221,6 +218,12 @@
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\helpers\AgiColor.h">
       <Filter>interpreter\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewCell.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewLoop.h">
+      <Filter>interpreter\resources\Views</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

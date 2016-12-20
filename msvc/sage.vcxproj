@@ -39,8 +39,8 @@
     <ClCompile Include="..\src\sage\interpreter\resources\AgiLogic.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\AgiView.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\Resource.cpp" />
-    <ClCompile Include="..\src\sage\interpreter\resources\ViewCell.cpp" />
-    <ClCompile Include="..\src\sage\interpreter\resources\ViewLoop.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewCell.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewLoop.cpp" />
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -76,8 +76,8 @@
     <ClInclude Include="..\src\sage\interpreter\resources\AgiLogic.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\AgiView.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\Resource.h" />
-    <ClInclude Include="..\src\sage\interpreter\resources\ViewCell.h" />
-    <ClInclude Include="..\src\sage\interpreter\resources\ViewLoop.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewCell.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewLoop.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

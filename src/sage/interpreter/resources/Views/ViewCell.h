@@ -3,7 +3,7 @@
 #include <cinttypes>
 #include <vector>
 
-#include "../helpers/AgiColor.h"
+#include "../../helpers/AgiColor.h"
 
 class ViewCell
 {

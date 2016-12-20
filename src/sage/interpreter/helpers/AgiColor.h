@@ -7,6 +7,7 @@
 class AgiColor
 {
 	friend class Graphics;
+	friend class Texture;
 protected:
 	static std::vector<AgiColor> colors;
 	std::string name;

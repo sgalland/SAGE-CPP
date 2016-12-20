@@ -17,7 +17,7 @@
 #include "../backend/sdl2/Texture.h"
 #include "../backend/sdl2/Keyboard.h"
 
-#include "interpreter/resources/ViewLoop.h"
+#include "interpreter/resources/Views/ViewLoop.h"
 #include "interpreter/resources/AgiFileReader.h"
 #include "interpreter/resources/AgiView.h"
 

@@ -91,16 +91,6 @@ void AgiView::ReadCelHeader(AgiFile file)
 				}
 			}
 
-			std::vector<char> vv(pixelData.size());
-			std::copy(pixelData.begin(), pixelData.end(), vv.begin());
-
-			std::ofstream f("C:\\Users\\sgalland\\Desktop\\tmpfile.tmp", std::ios::out | std::ios::binary);
-			if (!f)
-			{
-				f.write(&vv[0], vv.size());
-				f.close();
-				exit(0);
-			}
 			viewLoop.cels().emplace_back(AgiColor::getColorByDosColor(transparentColor), width, height, isMirrored, pixelData, mirroredLoopId);
 		}
 

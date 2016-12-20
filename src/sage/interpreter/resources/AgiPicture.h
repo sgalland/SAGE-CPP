@@ -1,0 +1,5 @@
+class AgiPicture
+{
+public:
+	AgiPicture();
+};

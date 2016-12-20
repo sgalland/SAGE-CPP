@@ -92,6 +92,9 @@
     <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewCell.cpp">
       <Filter>interpreter\resources\Views</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\AgiPicture.cpp">
+      <Filter>interpreter\resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -224,6 +227,9 @@
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewLoop.h">
       <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\AgiPicture.h">
+      <Filter>interpreter\resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

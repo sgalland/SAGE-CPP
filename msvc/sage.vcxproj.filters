@@ -231,6 +231,9 @@
     <ClInclude Include="..\src\sage\interpreter\resources\AgiPicture.h">
       <Filter>interpreter\resources</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

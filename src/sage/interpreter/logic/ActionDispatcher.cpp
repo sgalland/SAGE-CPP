@@ -34,5 +34,10 @@ sage::agi::ActionDispatcher::ActionDispatcher()
 	this->InsertMethod(new DispatcherContainer(22, "call", SubroutineCommands::call));
 	this->InsertMethod(new DispatcherContainer(23, "call.v", SubroutineCommands::call_v));
 
+	this->InsertMethod(new DispatcherContainer(91, "set.scan.start", SubroutineCommands::set_scan_start));
+	this->InsertMethod(new DispatcherContainer(92, "reset.scan.start", SubroutineCommands::reset_scan_start));
+
 	this->InsertMethod(new DispatcherContainer(143, "set.game.id", InitializationCommands::set_game_id));
+
+	
 }

@@ -64,6 +64,7 @@
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\FlagCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\InitializationCommands.h" />
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ProgramControlCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ResourceCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.h" />

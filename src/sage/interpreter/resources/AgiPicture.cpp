@@ -10,7 +10,7 @@ void AgiPicture::plotPattern(uint8_t x, uint8_t y)
 	uint8_t penSize;
 	bitPos = SplatterStartPositions[patNum];
 
-	penSize = (uint8_t)(patCode & 7);
+	penSize = static_cast<uint8_t>(patCode & 7);
 
 	if (x < ((penSize / 2) + 1)) x = static_cast<uint8_t>((penSize / 2) + 1);
 	else if (x > 160 - ((penSize / 2) + 1)) x = static_cast<uint8_t>(160 - ((penSize / 2) + 1));
@@ -127,9 +127,6 @@ void AgiPicture::Render()
 		default: IsDrawing = false; break;
 		}
 	} while (VectorPosition < file.data.size() && IsDrawing);
-
-	/*currentScreen.SetData<UInt32>(pictureBuffer, 0, pictureBuffer.Length);
-	priorityScreen.SetData<UInt32>(priorityBuffer, 0, pictureBuffer.Length);*/
 }
 
 void AgiPicture::AbsoluteLine()

@@ -30,6 +30,7 @@ public:
 	void fullscreen();
 	void windowed();
 	bool getIsFullscreen();
+	void setWindowTitle(std::string windowTitle);
 	std::vector<DisplayMode> getDisplayModes();
 
 };

@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
 	Engine engine(320, 200);
+	engine.graphics->setWindowTitle("SAGE - " + game::AgiVersion::GetGameID() + " v" + game::AgiVersion::GetVersion());
 
 	/*AgiFileReader reader(AgiFileType::View);
 	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();*/

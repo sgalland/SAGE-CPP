@@ -113,6 +113,11 @@ bool Graphics::getIsFullscreen()
 	return this->isFullscreen;
 }
 
+void Graphics::setWindowTitle(std::string windowTitle)
+{
+	SDL_SetWindowTitle(Graphics::window, windowTitle.c_str());
+}
+
 std::vector<DisplayMode> Graphics::getDisplayModes()
 {
 	std::vector<DisplayMode> displayModes;	

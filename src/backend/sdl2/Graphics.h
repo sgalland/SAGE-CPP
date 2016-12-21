@@ -16,8 +16,6 @@ private:
 	static SDL_Palette *palette;
 	std::vector<Texture*> batchList;
 	bool isFullscreen;
-
-	void initializeColors();
 public:
 	Graphics(int width, int height);
 	~Graphics();

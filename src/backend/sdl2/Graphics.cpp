@@ -4,26 +4,6 @@ SDL_Renderer *Graphics::renderer = nullptr;
 SDL_Window *Graphics::window = nullptr;
 SDL_Palette *Graphics::palette = nullptr;
 
-void Graphics::initializeColors()
-{
-	AgiColor::colors.emplace_back(0, "Black", 0x00, 0x00, 0x00);
-	AgiColor::colors.emplace_back(1, "Green", 0x00, 0x00, 168);
-	AgiColor::colors.emplace_back(2, "Green", 0x00, 168, 0x00);
-	AgiColor::colors.emplace_back(3, "Cyan", 0x00, 168, 168);
-	AgiColor::colors.emplace_back(4, "Red", 168, 0x00, 0x00);
-	AgiColor::colors.emplace_back(5, "Magenta", 168, 0x00, 168);
-	AgiColor::colors.emplace_back(6, "Brown", 168, 84, 0x00);
-	AgiColor::colors.emplace_back(7, "Light Grey", 168, 168, 168);
-	AgiColor::colors.emplace_back(8, "Dark Grey", 84, 84, 84);
-	AgiColor::colors.emplace_back(9, "Light Blue", 84, 84, 252);
-	AgiColor::colors.emplace_back(10, "Light Green", 84, 252, 84);
-	AgiColor::colors.emplace_back(11, "Light Cyan", 84, 252, 252);
-	AgiColor::colors.emplace_back(12, "Light Red", 252, 84, 84);
-	AgiColor::colors.emplace_back(13, "Light Magenta", 252, 84, 252);
-	AgiColor::colors.emplace_back(14, "Yellow", 252, 252, 84);
-	AgiColor::colors.emplace_back(15, "White", 252, 252, 252);
-}
-
 Graphics::Graphics(int width, int height)
 {
 	initialize(width, height);
@@ -75,8 +55,6 @@ void Graphics::initialize(int width, int height)
 		std::vector<DisplayMode>::iterator displayMode = locatedDisplayModes.begin();
 		SDL_SetWindowDisplayMode(this->window, displayMode->displayMode);
 	}
-
-	initializeColors();
 }
 
 void Graphics::quit()

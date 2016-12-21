@@ -20,6 +20,7 @@
 #include "interpreter/resources/Views/ViewLoop.h"
 #include "interpreter/resources/AgiFileReader.h"
 #include "interpreter/resources/AgiView.h"
+#include "interpreter/resources/AgiPicture.h"
 
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
@@ -32,15 +33,22 @@ int main(int argc, char *argv[])
 
 	Engine engine(320, 200);
 
-	AgiFileReader reader(AgiFileType::View);
-	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
+	/*AgiFileReader reader(AgiFileType::View);
+	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();*/
 
-	AgiView view(reader.GetFile(entries.at(0).resourceId));
-	auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
-	auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
-	
-	Texture t(0, 0, width, height, view.getViewLoops().at(0).cels().at(0).getTransparentColor());
+	//AgiView view(reader.GetFile(entries.at(0).resourceId));
+	//auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
+	//auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
+	//
+	//Texture t(0, 0, width, height, view.getViewLoops().at(0).cels().at(0).getTransparentColor());
 
+	AgiFileReader pictureReader(AgiFileType::Picture);
+	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();
+	AgiPicture pic(pictureReader.GetFile(entries.at(0).resourceId));
+	Texture t(0, 0, 320, 200);
+	std::vector<uint32_t> picBuffer(320 * 200);
+	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200);
+	t.setData(picBuffer);
 
 	//std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
 
@@ -53,8 +61,8 @@ int main(int argc, char *argv[])
 	{
 		Event event = Event::pollEvent();
 
-		auto viewCel = view.getViewLoops().at(y).cels().at(x);
-		t.setData(viewCel.getData());
+		//auto viewCel = view.getViewLoops().at(y).cels().at(x);
+		//t.setData(viewCel.getData());
 
 		switch (event.getEventType())
 		{
@@ -65,14 +73,14 @@ int main(int argc, char *argv[])
 				if (!engine.graphics->getIsFullscreen())
 					engine.graphics->fullscreen();
 				else engine.graphics->windowed();
-				if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
-					y++;
-				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
-					y--;
-				else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
-					x--;
-				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
-					x++;
+				//if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
+				//	y++;
+				//else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
+				//	y--;
+				//else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
+				//	x--;
+				//else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
+				//	x++;
 				break;
 		}
 

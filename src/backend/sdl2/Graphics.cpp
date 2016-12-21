@@ -76,8 +76,6 @@ void Graphics::initialize(int width, int height)
 		SDL_SetWindowDisplayMode(this->window, displayMode->displayMode);
 	}
 
-	SDL_RenderSetScale(Graphics::renderer, 4, 4);
-
 	initializeColors();
 }
 

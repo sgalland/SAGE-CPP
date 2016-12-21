@@ -23,6 +23,11 @@ AgiColor::AgiColor(uint8_t dosColor, std::string name, uint8_t r, uint8_t g, uin
 	//CreateRGBValue();
 }
 
+uint8_t AgiColor::getDosColor()
+{
+	return this->dosColor;
+}
+
 //uint32_t AgiColor::CreateRGBValue()
 //{
 //	//this->rgb = SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB888), this->r, this->g, this->b);

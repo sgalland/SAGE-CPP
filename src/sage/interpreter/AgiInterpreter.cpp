@@ -6,6 +6,8 @@ std::string AgiInterpreter::strings[12];
 std::string AgiInterpreter::gameID;
 AgiLogic* AgiInterpreter::currentLogic;
 AgiLogic* AgiInterpreter::logics[256];
+AgiView* AgiInterpreter::views[256];
+LogicProcessor AgiInterpreter::logicProcessor;
 
 sage::agi::AgiInterpreter::AgiInterpreter()
 {
@@ -18,7 +20,7 @@ sage::agi::AgiInterpreter::~AgiInterpreter()
 
 std::string sage::agi::AgiInterpreter::ReadGameID()
 {
-	return "BS";
+	return AgiVersion::GetGameID();
 }
 
 void sage::agi::AgiInterpreter::Execute()

@@ -1,5 +1,5 @@
 #include "TestCommands.h"
-
+#include "../../AgiInterpreter.h"
 
 
 bool sage::agi::TestCommands::equaln(uint8_t variableID, uint8_t value)

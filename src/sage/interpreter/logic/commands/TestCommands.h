@@ -2,8 +2,6 @@
 
 #include <cinttypes>
 
-#include "../../AgiInterpreter.h"
-
 namespace sage
 {
 	namespace agi

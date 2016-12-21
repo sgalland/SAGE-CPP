@@ -1,4 +1,6 @@
 #include "LogicProcessor.h"
+#include "../resources/AgiLogic.h"
+#include "../AgiInterpreter.h"
 
 sage::agi::LogicProcessor::LogicProcessor()
 {

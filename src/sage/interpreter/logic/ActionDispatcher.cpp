@@ -31,8 +31,8 @@ sage::agi::ActionDispatcher::ActionDispatcher()
 	this->InsertMethod(new DispatcherContainer(19, "new.room.v", ProgramControlCommands::new_room_v));
 	this->InsertMethod(new DispatcherContainer(20, "load.logics", ResourceCommands::load_logic));
 	this->InsertMethod(new DispatcherContainer(21, "load.logics.v", ResourceCommands::load_logic_v));
-	this->InsertMethod(new DispatcherContainer(22, "call", SubroutingCommands::call));
-	this->InsertMethod(new DispatcherContainer(23, "call.v", SubroutingCommands::call_v));
+	this->InsertMethod(new DispatcherContainer(22, "call", SubroutineCommands::call));
+	this->InsertMethod(new DispatcherContainer(23, "call.v", SubroutineCommands::call_v));
 
 	this->InsertMethod(new DispatcherContainer(143, "set.game.id", InitializationCommands::set_game_id));
 }

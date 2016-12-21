@@ -1,8 +1,6 @@
 #pragma once
 
 #include "DispatcherBase.h"
-#include "DispatcherContainer.h"
-#include "commands/TestCommands.h"
 
 namespace sage
 {

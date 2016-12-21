@@ -3,7 +3,6 @@
 #include <boost/any.hpp> // TODO: Remove boost reference from code and make sure it is in the backend
 #include <cinttypes>
 
-#include "../resources/AgiLogic.h"
 #include "ActionDispatcher.h"
 #include "TestDispatcher.h"
 
@@ -13,6 +12,7 @@ namespace sage
 	{
 		class LogicProcessor
 		{
+			friend class SubroutineCommands;
 		private:
 			ActionDispatcher actionDispatcher;
 			TestDispatcher testDispatcher;

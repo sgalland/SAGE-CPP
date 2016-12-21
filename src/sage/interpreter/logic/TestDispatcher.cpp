@@ -1,5 +1,6 @@
 #include "TestDispatcher.h"
-
+#include "DispatcherContainer.h"
+#include "commands/TestCommands.h"
 
 
 sage::agi::TestDispatcher::TestDispatcher()

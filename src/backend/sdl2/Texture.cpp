@@ -46,7 +46,7 @@ Uint32 Texture::getPixelFormat()
 
 void Texture::UpdateTexture()
 {
-	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h);
+	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h); //pixelBuffer.size() * sizeof(uint32_t));//this->surface->pitch * this->surface->h);
 
 	if (this->transparent)
 	{

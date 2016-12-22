@@ -34,21 +34,19 @@ int main(int argc, char *argv[])
 	Engine engine(320, 200);
 	engine.graphics->setWindowTitle("SAGE - " + game::AgiVersion::GetGameID() + " v" + game::AgiVersion::GetVersion());
 
-	/*AgiFileReader reader(AgiFileType::View);
-	std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();*/
-
+	//AgiFileReader reader(AgiFileType::View);
+	//std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
 	//AgiView view(reader.GetFile(entries.at(0).resourceId));
 	//auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
 	//auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
-	//
 	//Texture t(0, 0, width, height, view.getViewLoops().at(0).cels().at(0).getTransparentColor());
 
 	AgiFileReader pictureReader(AgiFileType::Picture);
 	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();
-	AgiPicture pic(pictureReader.GetFile(entries.at(0).resourceId));
+	AgiPicture pic(pictureReader.GetFile(71));
 	Texture t(0, 0, 320, 200);
 	std::vector<uint32_t> picBuffer(320 * 200);
-	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200);
+	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200 * sizeof(picBuffer[0]));
 	t.setData(picBuffer);
 
 	//std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
@@ -62,8 +60,8 @@ int main(int argc, char *argv[])
 	{
 		Event event = Event::pollEvent();
 
-		//auto viewCel = view.getViewLoops().at(y).cels().at(x);
-		//t.setData(viewCel.getData());
+		/*auto viewCel = view.getViewLoops().at(y).cels().at(x);
+		t.setData(viewCel.getData());*/
 
 		switch (event.getEventType())
 		{

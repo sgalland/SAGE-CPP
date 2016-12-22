@@ -89,11 +89,11 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 {
 	if (resourceId < 0 || resourceId > 255)
 	{
-		// blow up
+		//TODO: blow up
 	}
 	else if (resourceId > directoryEntries.size())
 	{
-		// blow up
+		//TODO: blow up
 	}
 
 	AgiDirectoryEntry dirEntry;

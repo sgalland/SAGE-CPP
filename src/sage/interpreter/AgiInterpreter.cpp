@@ -7,6 +7,7 @@ std::string AgiInterpreter::gameID;
 AgiLogic* AgiInterpreter::currentLogic;
 AgiLogic* AgiInterpreter::logics[256];
 AgiView* AgiInterpreter::views[256];
+AgiPicture* AgiInterpreter::pictures[256];
 LogicProcessor AgiInterpreter::logicProcessor;
 
 sage::agi::AgiInterpreter::AgiInterpreter()

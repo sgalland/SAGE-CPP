@@ -34,13 +34,6 @@ int main(int argc, char *argv[])
 	Engine engine(320, 200);
 	engine.graphics->setWindowTitle("SAGE - " + game::AgiVersion::GetGameID() + " v" + game::AgiVersion::GetVersion());
 
-	//AgiFileReader reader(AgiFileType::View);
-	//std::vector<AgiDirectoryEntry> entries = reader.GetDirectoryEntries();
-	//AgiView view(reader.GetFile(entries.at(0).resourceId));
-	//auto width = view.getViewLoops().at(0).cels().at(0).getWidth();
-	//auto height = view.getViewLoops().at(0).cels().at(0).getHeight();
-	//Texture t(0, 0, width, height, view.getViewLoops().at(0).cels().at(0).getTransparentColor());
-
 	AgiFileReader pictureReader(AgiFileType::Picture);
 	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();
 	AgiPicture pic(pictureReader.GetFile(71));
@@ -49,7 +42,13 @@ int main(int argc, char *argv[])
 	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200 * sizeof(picBuffer[0]));
 	t.setData(picBuffer);
 
-	//std::vector<DisplayMode> modes = engine.graphics->getDisplayModes();
+	AgiFileReader reader(AgiFileType::View);
+	std::vector<AgiDirectoryEntry> entries1 = reader.GetDirectoryEntries();
+	AgiView view(reader.GetFile(0));
+	ViewCell cel = view.getViewLoops().at(0).cels().at(0);
+	auto width = cel.getWidth();
+	auto height = cel.getHeight();
+	Texture t1(0, 120, width, height, cel.getTransparentColor());
 
 	game::LogicProcessor processor;
 	processor.Execute(0);
@@ -60,8 +59,8 @@ int main(int argc, char *argv[])
 	{
 		Event event = Event::pollEvent();
 
-		/*auto viewCel = view.getViewLoops().at(y).cels().at(x);
-		t.setData(viewCel.getData());*/
+		cel = view.getViewLoops().at(0).cels().at(x);
+		t1.setData(cel.getData());
 
 		switch (event.getEventType())
 		{
@@ -72,19 +71,20 @@ int main(int argc, char *argv[])
 				if (!engine.graphics->getIsFullscreen())
 					engine.graphics->fullscreen();
 				else engine.graphics->windowed();
-				//if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
-				//	y++;
-				//else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
-				//	y--;
-				//else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
-				//	x--;
-				//else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
-				//	x++;
+				if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
+					y++;
+				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
+					y--;
+				else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
+					x--;
+				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
+					x++;
 				break;
 		}
 
 		engine.graphics->clear(255, 255, 255);
 		engine.graphics->push(&t);
+		engine.graphics->push(&t1);
 		engine.graphics->render();
 	}
 

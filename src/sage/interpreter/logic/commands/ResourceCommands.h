@@ -2,8 +2,7 @@
 
 #include <boost/type_traits.hpp>
 #include <cinttypes>
-
-#include "../../AgiInterpreter.h"
+#include "../../resources/AgiFileReader.h"
 
 namespace sage
 {
@@ -12,7 +11,7 @@ namespace sage
 		class ResourceCommands
 		{
 		private:
-			static void load_resource(uint8_t resourceID);
+			static AgiFile& load_resource(uint8_t resourceID, AgiFileType fileType);
 		public:
 			static void load_logic(uint8_t resourceID);
 			static void load_logic_v(uint8_t variableID);

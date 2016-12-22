@@ -5,6 +5,7 @@
 
 #include "resources/AgiLogic.h"
 #include "resources/AgiView.h"
+#include "resources/AgiPicture.h"
 #include "logic/LogicProcessor.h"
 #include "AgiVersion.h"
 
@@ -23,6 +24,7 @@ namespace sage
 		private:
 			static AgiLogic* logics[256];
 			static AgiView* views[256];
+			static AgiPicture* pictures[256];
 		public:
 			static uint8_t variables[256];
 			static uint8_t flags[256];

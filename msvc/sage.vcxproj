@@ -28,6 +28,7 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ArithmeticCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\FlagCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\InitializationCommands.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ProgramControlCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ResourceCommands.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="..\src\sage\interpreter\logic\commands\FlagCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\InitializationCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.h" />
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ProgramControlCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ResourceCommands.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\commands\SubroutineCommands.h" />
@@ -80,7 +82,12 @@
     <ClInclude Include="..\src\sage\interpreter\resources\AgiView.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\Resource.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewCell.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewCycle.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewDirection.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewFlags.h" />
     <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewLoop.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewMotion.h" />
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewTableEntry.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

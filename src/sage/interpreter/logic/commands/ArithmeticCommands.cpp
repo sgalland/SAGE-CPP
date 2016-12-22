@@ -1,4 +1,7 @@
 #include "ArithmeticCommands.h"
+#include <cmath>
+
+#include "../../AgiInterpreter.h"
 
 void ArithmeticCommands::increment(uint8_t variableID)
 {

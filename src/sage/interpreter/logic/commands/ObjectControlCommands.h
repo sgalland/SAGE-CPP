@@ -31,4 +31,5 @@ public:
 	static void end_of_loop();
 	static void reverse_loop();
 	static void cycle_time();
+
 };

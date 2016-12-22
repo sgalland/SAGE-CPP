@@ -28,16 +28,26 @@ sage::agi::ActionDispatcher::ActionDispatcher()
 	this->InsertMethod(new DispatcherContainer(16, "resetv", FlagCommands::resetv));
 	this->InsertMethod(new DispatcherContainer(17, "togglev", FlagCommands::togglev));
 	this->InsertMethod(new DispatcherContainer(18, "new.room", ProgramControlCommands::new_room));
-	this->InsertMethod(new DispatcherContainer(19, "new.room.v", ProgramControlCommands::new_room_v));
+	//this->InsertMethod(new DispatcherContainer(19, "new.room.v", ProgramControlCommands::new_room_v));
 	this->InsertMethod(new DispatcherContainer(20, "load.logics", ResourceCommands::load_logic));
 	this->InsertMethod(new DispatcherContainer(21, "load.logics.v", ResourceCommands::load_logic_v));
 	this->InsertMethod(new DispatcherContainer(22, "call", SubroutineCommands::call));
 	this->InsertMethod(new DispatcherContainer(23, "call.v", SubroutineCommands::call_v));
+	this->InsertMethod(new DispatcherContainer(24, "load.pic", ResourceCommands::load_pic));
+	// draw pic 25
+	// show pic 26
+	this->InsertMethod(new DispatcherContainer(27, "discard.pic", ResourceCommands::discard_pic));
+	// overlay pic 28
+	// show pri screen 29
+	this->InsertMethod(new DispatcherContainer(30, "load.view", ResourceCommands::load_view));
+	this->InsertMethod(new DispatcherContainer(31, "load.view.v", ResourceCommands::load_view_v));
+	this->InsertMethod(new DispatcherContainer(32, "discard.view", ResourceCommands::discard_view));
+
 
 	this->InsertMethod(new DispatcherContainer(91, "set.scan.start", SubroutineCommands::set_scan_start));
 	this->InsertMethod(new DispatcherContainer(92, "reset.scan.start", SubroutineCommands::reset_scan_start));
 
 	this->InsertMethod(new DispatcherContainer(143, "set.game.id", InitializationCommands::set_game_id));
 
-	
+	this->InsertMethod(new DispatcherContainer(153, "discard.view.v", ResourceCommands::discard_view_v));
 }

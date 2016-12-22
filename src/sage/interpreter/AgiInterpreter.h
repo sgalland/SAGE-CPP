@@ -5,6 +5,7 @@
 
 #include "resources/AgiLogic.h"
 #include "resources/AgiView.h"
+#include "resources/Views/ViewTableEntry.h"
 #include "resources/AgiPicture.h"
 #include "logic/LogicProcessor.h"
 #include "AgiVersion.h"
@@ -21,10 +22,15 @@ namespace sage
 		{
 			friend class ResourceCommands;
 			friend class SubroutineCommands;
+			friend class ProgramControlCommands;
+			friend class ObjectMotionControlCommands;
 		private:
-			static AgiLogic* logics[256];
-			static AgiView* views[256];
-			static AgiPicture* pictures[256];
+			const static int MAX_RESOURCES = 256;
+			const static int MAX_STRINGS = 12;
+			static AgiLogic* logics[MAX_RESOURCES];
+			static AgiView* views[MAX_RESOURCES];
+			static AgiPicture* pictures[MAX_RESOURCES];
+			static ViewTableEntry* viewTable[MAX_RESOURCES];
 		public:
 			static uint8_t variables[256];
 			static uint8_t flags[256];

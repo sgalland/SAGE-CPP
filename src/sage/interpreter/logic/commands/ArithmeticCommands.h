@@ -1,9 +1,7 @@
 #pragma once
 
 #include <cinttypes>
-#include <cmath>
 
-#include "../../AgiInterpreter.h"
 
 class ArithmeticCommands
 {

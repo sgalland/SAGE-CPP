@@ -95,6 +95,9 @@
     <ClCompile Include="..\src\sage\interpreter\resources\AgiPicture.cpp">
       <Filter>interpreter\resources</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -232,6 +235,24 @@
       <Filter>interpreter\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.h">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewTableEntry.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewFlags.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewDirection.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewCycle.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\resources\Views\ViewMotion.h">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.h">
       <Filter>interpreter\logic\commands</Filter>
     </ClInclude>
   </ItemGroup>

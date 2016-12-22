@@ -1,13 +1,14 @@
 #include "AgiInterpreter.h"
 
-uint8_t AgiInterpreter::variables[256];
-uint8_t AgiInterpreter::flags[256];
-std::string AgiInterpreter::strings[12];
+uint8_t AgiInterpreter::variables[AgiInterpreter::MAX_RESOURCES];
+uint8_t AgiInterpreter::flags[AgiInterpreter::MAX_RESOURCES];
+std::string AgiInterpreter::strings[MAX_STRINGS];
 std::string AgiInterpreter::gameID;
 AgiLogic* AgiInterpreter::currentLogic;
-AgiLogic* AgiInterpreter::logics[256];
-AgiView* AgiInterpreter::views[256];
-AgiPicture* AgiInterpreter::pictures[256];
+AgiLogic* AgiInterpreter::logics[AgiInterpreter::MAX_RESOURCES];
+AgiView* AgiInterpreter::views[AgiInterpreter::MAX_RESOURCES];
+ViewTableEntry* AgiInterpreter::viewTable[AgiInterpreter::MAX_RESOURCES];
+AgiPicture* AgiInterpreter::pictures[AgiInterpreter::MAX_RESOURCES];
 LogicProcessor AgiInterpreter::logicProcessor;
 
 sage::agi::AgiInterpreter::AgiInterpreter()

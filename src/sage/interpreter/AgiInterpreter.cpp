@@ -10,6 +10,7 @@ AgiView* AgiInterpreter::views[AgiInterpreter::MAX_RESOURCES];
 ViewTableEntry* AgiInterpreter::viewTable[AgiInterpreter::MAX_RESOURCES];
 AgiPicture* AgiInterpreter::pictures[AgiInterpreter::MAX_RESOURCES];
 LogicProcessor AgiInterpreter::logicProcessor;
+GameControl AgiInterpreter::gameControl;
 
 sage::agi::AgiInterpreter::AgiInterpreter()
 {

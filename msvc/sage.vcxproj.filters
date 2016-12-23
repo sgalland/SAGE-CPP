@@ -98,6 +98,9 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.cpp">
       <Filter>interpreter\logic\commands</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.cpp">
+      <Filter>interpreter\logic\commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -254,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\logic\commands\ObjectMotionControlCommands.h">
       <Filter>interpreter\logic\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\logic\GameControl.h">
+      <Filter>interpreter\logic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

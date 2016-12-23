@@ -5,7 +5,7 @@ namespace sage
 	namespace agi
 	{
 		// Are the enumeration id's correct??
-		enum class ViewFlags
+		enum class ViewFlags : int
 		{
 			// 0  ??
 			// 1  0 = observe blocks, 1 = ignore blocks
@@ -39,5 +39,40 @@ namespace sage
 			//29  ?? (storage for some view related command parameters)
 			//2A  ?? (storage for some view related command parameters)
 		};
+
+		inline ViewFlags operator |(ViewFlags l, ViewFlags r)
+		{
+			return static_cast<ViewFlags>(static_cast<int>(l) | static_cast<int>(r));
+		}
+
+		inline ViewFlags operator &(ViewFlags l, ViewFlags r)
+		{
+			return static_cast<ViewFlags>(static_cast<int>(l) & static_cast<int>(r));
+		}
+
+		inline ViewFlags operator ~(ViewFlags l)
+		{
+			return static_cast<ViewFlags>(~l);
+		}
+
+		inline ViewFlags operator ^(ViewFlags l, ViewFlags r)
+		{
+			return static_cast<ViewFlags>(static_cast<int>(l) ^ static_cast<int>(r));
+		}
+
+		inline ViewFlags& operator |=(ViewFlags& l, ViewFlags r)
+		{
+			return l = static_cast<ViewFlags>(static_cast<int>(l) | static_cast<int>(r));
+		}
+
+		inline ViewFlags& operator &=(ViewFlags& l, ViewFlags r)
+		{
+			return l = static_cast<ViewFlags>(static_cast<int>(l) & static_cast<int>(r));
+		}
+
+		inline ViewFlags& operator ^=(ViewFlags& l, ViewFlags r)
+		{
+			return l = static_cast<ViewFlags>(static_cast<int>(l) ^ static_cast<int>(r));
+		}
 	}
 }

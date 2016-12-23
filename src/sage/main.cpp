@@ -17,6 +17,7 @@
 #include "../backend/sdl2/Texture.h"
 #include "../backend/sdl2/Keyboard.h"
 
+#include "interpreter/resources/Views/ViewFlags.h"
 #include "interpreter/resources/Views/ViewLoop.h"
 #include "interpreter/resources/AgiFileReader.h"
 #include "interpreter/resources/AgiView.h"
@@ -52,6 +53,14 @@ int main(int argc, char *argv[])
 
 	game::LogicProcessor processor;
 	processor.Execute(0);
+
+	//int D_WIDTH = 320;
+	//int D_HEIGHT = 200;
+	//Texture t2(40, 20, D_WIDTH - 80, D_HEIGHT - 70, AgiColor::getColorByDosColor(0));
+	//std::vector<uint32_t> pixels(t2.getWidth()*t2.getHeight() * sizeof(uint32_t));
+	//for (int i = 0; i < pixels.size(); i++)
+	//	pixels[i] = AgiColor::getColorByDosColor(15).getDosColor();
+	//t2.setData(pixels);
 
 	bool isRunning = true;
 	int x = 0, y = 0;

@@ -4,7 +4,6 @@ namespace sage
 {
 	namespace agi
 	{
-		// Are the enumeration id's correct??
 		enum class ViewFlags : int
 		{
 			// 0  ??

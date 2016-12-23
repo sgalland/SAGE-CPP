@@ -22,6 +22,7 @@
     <ClCompile Include="..\src\sage\interpreter\AgiEncryption.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiInterpreter.cpp" />
     <ClCompile Include="..\src\sage\interpreter\AgiVersion.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\gui\MenuBar.cpp" />
     <ClCompile Include="..\src\sage\interpreter\helpers\AgiColor.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\ActionDispatcher.cpp" />
     <ClCompile Include="..\src\sage\interpreter\logic\Actions.cpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\backend\sdl2\BitmapFont.h" />
     <ClInclude Include="..\src\backend\sdl2\DisplayMode.h" />
     <ClInclude Include="..\src\backend\sdl2\engine.h" />
     <ClInclude Include="..\src\backend\sdl2\Event.h" />
@@ -59,6 +61,7 @@
     <ClInclude Include="..\src\sage\interpreter\AgiFileReader.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiInterpreter.h" />
     <ClInclude Include="..\src\sage\interpreter\AgiVersion.h" />
+    <ClInclude Include="..\src\sage\interpreter\gui\MenuBar.h" />
     <ClInclude Include="..\src\sage\interpreter\helpers\AgiColor.h" />
     <ClInclude Include="..\src\sage\interpreter\helpers\AgiStringHelper.h" />
     <ClInclude Include="..\src\sage\interpreter\logic\ActionDispatcher.h" />

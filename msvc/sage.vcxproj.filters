@@ -101,6 +101,9 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.cpp">
       <Filter>interpreter\logic\commands</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\gui\MenuBar.cpp">
+      <Filter>interpreter\gui\menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">
@@ -129,6 +132,12 @@
     </Filter>
     <Filter Include="interpreter\resources\Views">
       <UniqueIdentifier>{dd17e2e2-79cb-4f7d-89bd-8bca26866805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\gui">
+      <UniqueIdentifier>{705c2955-d7a0-4cf6-967b-ddf24f29d709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpreter\gui\menu">
+      <UniqueIdentifier>{68ffbc68-b281-44e2-b0d0-34398177a003}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +269,12 @@
     </ClInclude>
     <ClInclude Include="..\src\sage\interpreter\logic\GameControl.h">
       <Filter>interpreter\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\gui\MenuBar.h">
+      <Filter>interpreter\gui\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\backend\sdl2\BitmapFont.h">
+      <Filter>backend\sdl2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

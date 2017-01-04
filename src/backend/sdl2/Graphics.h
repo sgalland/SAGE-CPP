@@ -34,5 +34,7 @@ public:
 	bool getIsFullscreen();
 	void setWindowTitle(std::string windowTitle);
 	std::vector<DisplayMode> getDisplayModes();
-
+	void setWindowSize(int width, int height);
+	void setScale(int scale);
+	void recreateRenderer();
 };

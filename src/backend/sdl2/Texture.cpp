@@ -57,11 +57,6 @@ uint32_t & Texture::operator[](int index)
 	return pixelBuffer.at(index);
 }
 
-Uint32 Texture::getPixelFormat()
-{
-	return SDL_GetWindowPixelFormat(Graphics::window);
-}
-
 void Texture::updateTexture()
 {
 	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h);
@@ -98,7 +93,7 @@ void Texture::initialize(int width, int height)
 		exit(1);
 	}
 
-	//SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
+	SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
 	this->pixelBuffer.resize(width * height);
 }
 
@@ -116,7 +111,7 @@ void Texture::initialize(std::string filePath)
 		exit(1);
 	}
 
-	//SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
+	SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
 	this->pixelBuffer.resize(this->surface->w * this->surface->h);
 	memcpy(&this->pixelBuffer[0], this->surface->pixels, this->surface->pitch);
 }

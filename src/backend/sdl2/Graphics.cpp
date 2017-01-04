@@ -30,7 +30,7 @@ void Graphics::initialize(int width, int height)
 		exit(1);
 	}
 
-	SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN, &window, &renderer);
+	SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &window, &renderer);
 
 	if (window == nullptr || renderer == nullptr)
 	{
@@ -120,7 +120,7 @@ void Graphics::setWindowTitle(std::string windowTitle)
 
 std::vector<DisplayMode> Graphics::getDisplayModes()
 {
-	std::vector<DisplayMode> displayModes;	
+	std::vector<DisplayMode> displayModes;
 	int displayIndex = 0; // using the first display
 	int displayModeCount = SDL_GetNumDisplayModes(displayIndex);
 
@@ -136,4 +136,31 @@ std::vector<DisplayMode> Graphics::getDisplayModes()
 	}
 
 	return displayModes;
+}
+
+void Graphics::setWindowSize(int width, int height)
+{
+	SDL_SetWindowSize(this->window, width, height);
+	recreateRenderer();
+	SDL_RenderSetLogicalSize(this->renderer, width, height);
+}
+
+void Graphics::setScale(int scale)
+{
+	SDL_RenderSetScale(this->renderer, scale, scale);
+}
+
+void Graphics::recreateRenderer()
+{
+	if (this->renderer != nullptr)
+	{
+		SDL_DestroyRenderer(this->renderer);
+	}
+
+	this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
+	if (renderer == nullptr)
+	{
+		std::cout << "Error initializing renderer: " << SDL_GetError() << std::endl;
+		exit(1);
+	}
 }

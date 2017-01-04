@@ -68,13 +68,14 @@ int main(int argc, char *argv[])
 
 	bool isRunning = true;
 	int x = 0, y = 0;
+	int scale = 1;
 	while (isRunning)
 	{
-		Event event = Event::pollEvent();
-
 		cel = view.getViewLoops().at(0).cels().at(x);
 		taran.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(taran, cel.getData()));
-
+		
+		bool windowEventWaiting = false;
+		Event event = Event::pollEvent();
 		switch (event.getEventType())
 		{
 		case EventType::QUIT: isRunning = false; break;
@@ -84,22 +85,43 @@ int main(int argc, char *argv[])
 				if (!engine.graphics->getIsFullscreen())
 					engine.graphics->fullscreen();
 				else engine.graphics->windowed();
-				if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
+				/*if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
 					y++;
 				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
 					y--;
-				else if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
+				else*/ if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
 					x--;
 				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
 					x++;
+
+			if (Keyboard::isKeyDown(Key::UpArrow) && scale < 4)
+			{
+				scale++;
+				engine.graphics->setWindowSize(320 * scale, 200 * scale);
+				engine.graphics->setScale(scale);
+				t.updateTexture();
+				taran.updateTexture();
+				windowEventWaiting = true;
+			}
+			break;
+		case EventType::WINDOW_EVENT:
+			switch (event.window.eventType)
+			{
+			case WindowEvent::WINDOW_SIZE_CHANGED:
+				engine.graphics->render();
 				break;
+			}
+			break;
 		}
 
-		engine.graphics->clear(255, 255, 255);
-		engine.graphics->push(&t);
-		engine.graphics->push(&taran);
-		menuBar.Update();
-		engine.graphics->render();
+		if (!windowEventWaiting)
+		{
+			engine.graphics->clear(255, 255, 255);
+			engine.graphics->push(&t);
+			engine.graphics->push(&taran);
+			menuBar.Update();
+			engine.graphics->render();
+		}
 	}
 
 	return 0;

@@ -9,11 +9,7 @@ MenuBar::MenuBar(Engine &engine, AgiInterpreter &interpreter)
 	this->engine = &engine;
 
 	const int pixelCount = MENUBAR_WIDTH * MENUBAR_HEIGHT;
-	std::vector<uint32_t> pixels(pixelCount);
-	for (int index = 0; index < pixelCount; index++)
-	{
-		pixels[index] = 15;
-	}
+	std::vector<uint32_t> pixels(pixelCount, 15);
 
 	this->output = new Texture(0, 0, MENUBAR_WIDTH, MENUBAR_HEIGHT);
 

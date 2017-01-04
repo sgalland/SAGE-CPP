@@ -29,7 +29,6 @@ public:
 	Texture(int xPosition, int yPosition, bool transparent, std::string texturePath, uint32_t transparentColor);
 	~Texture();
 	uint32_t & operator[](int index);
-	Uint32 getPixelFormat();
 	void updateTexture();
 
 	

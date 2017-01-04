@@ -16,12 +16,18 @@
 #include "../backend/sdl2/Event.h"
 #include "../backend/sdl2/Texture.h"
 #include "../backend/sdl2/Keyboard.h"
+#include "../backend/sdl2/BitmapFont.h"
 
 #include "interpreter/resources/Views/ViewFlags.h"
 #include "interpreter/resources/Views/ViewLoop.h"
 #include "interpreter/resources/AgiFileReader.h"
 #include "interpreter/resources/AgiView.h"
 #include "interpreter/resources/AgiPicture.h"
+#include "interpreter/gui/menu/MenuBar.h"
+#include "interpreter/helpers/AgiColorConverter.h"
+
+#include <SDL.h>
+
 
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
@@ -35,13 +41,15 @@ int main(int argc, char *argv[])
 	Engine engine(320, 200);
 	engine.graphics->setWindowTitle("SAGE - " + game::AgiVersion::GetGameID() + " v" + game::AgiVersion::GetVersion());
 
+	AgiInterpreter interpreter;
+
 	AgiFileReader pictureReader(AgiFileType::Picture);
 	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();
 	AgiPicture pic(pictureReader.GetFile(71));
-	Texture t(0, 0, 320, 200);
+	Texture t(0, 9, 320, 200);
 	std::vector<uint32_t> picBuffer(320 * 200);
 	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200 * sizeof(picBuffer[0]));
-	t.setData(picBuffer);
+	t.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(t, picBuffer));
 
 	AgiFileReader reader(AgiFileType::View);
 	std::vector<AgiDirectoryEntry> entries1 = reader.GetDirectoryEntries();
@@ -49,18 +57,14 @@ int main(int argc, char *argv[])
 	ViewCell cel = view.getViewLoops().at(0).cels().at(0);
 	auto width = cel.getWidth();
 	auto height = cel.getHeight();
-	Texture t1(0, 120, width, height, cel.getTransparentColor());
+	Texture taran(0, 120, width, height);
+	AgiColor trans = cel.getTransparentColor();
+	taran.setTransparentColor(AgiColorConverter::toUint32(taran, trans));
 
 	game::LogicProcessor processor;
 	processor.Execute(0);
 
-	//int D_WIDTH = 320;
-	//int D_HEIGHT = 200;
-	//Texture t2(40, 20, D_WIDTH - 80, D_HEIGHT - 70, AgiColor::getColorByDosColor(0));
-	//std::vector<uint32_t> pixels(t2.getWidth()*t2.getHeight() * sizeof(uint32_t));
-	//for (int i = 0; i < pixels.size(); i++)
-	//	pixels[i] = AgiColor::getColorByDosColor(15).getDosColor();
-	//t2.setData(pixels);
+	MenuBar menuBar(engine, interpreter);
 
 	bool isRunning = true;
 	int x = 0, y = 0;
@@ -69,7 +73,7 @@ int main(int argc, char *argv[])
 		Event event = Event::pollEvent();
 
 		cel = view.getViewLoops().at(0).cels().at(x);
-		t1.setData(cel.getData());
+		taran.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(taran, cel.getData()));
 
 		switch (event.getEventType())
 		{
@@ -93,7 +97,8 @@ int main(int argc, char *argv[])
 
 		engine.graphics->clear(255, 255, 255);
 		engine.graphics->push(&t);
-		engine.graphics->push(&t1);
+		engine.graphics->push(&taran);
+		menuBar.Update();
 		engine.graphics->render();
 	}
 

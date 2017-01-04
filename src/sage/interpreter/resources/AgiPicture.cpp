@@ -332,7 +332,7 @@ int AgiPicture::GetPicturePixel(int x, int y)
 
 	uint32_t currentPixelColor = pictureBuffer[vx + vy * WIDTH];
 	AgiColor color = AgiColor::getColorByDosColor(currentPixelColor);
-	return color.getDosColor();
+	return color.dosColor;
 }
 
 int AgiPicture::GetPriorityPixel(int x, int y)
@@ -344,7 +344,7 @@ int AgiPicture::GetPriorityPixel(int x, int y)
 
 	uint32_t currentPixelColor = priorityBuffer[vx + vy * WIDTH];	
 	AgiColor color = AgiColor::getColorByDosColor(currentPixelColor);
-	return color.getDosColor();
+	return color.dosColor;
 }
 
 void AgiPicture::SetPixel(float x, float y)
@@ -381,12 +381,12 @@ void AgiPicture::InitializeDrawingSurface()
 	int bufferSize = HEIGHT * WIDTH;
 	pictureBuffer = new uint32_t[bufferSize];
 	for (int i = 0; i < bufferSize; i++)
-		pictureBuffer[i] = agiColor.getDosColor();
+		pictureBuffer[i] = agiColor.dosColor;
 
 	agiColor = AgiColor::getColorByDosColor(4);
 	priorityBuffer = new uint32_t[bufferSize];
 	for (int i = 0; i < bufferSize; i++)
-		priorityBuffer[i] = agiColor.getDosColor();
+		priorityBuffer[i] = agiColor.dosColor;
 }
 
 AgiPicture::AgiPicture(AgiFile file)

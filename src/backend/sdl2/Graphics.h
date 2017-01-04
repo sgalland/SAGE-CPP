@@ -10,6 +10,8 @@
 class Graphics
 {
 	friend class Texture;
+	friend class MenuBar;
+	friend class BitmapFont;
 private:
 	static SDL_Window *window;
 	static SDL_Renderer *renderer;

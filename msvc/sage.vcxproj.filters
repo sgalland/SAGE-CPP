@@ -101,8 +101,11 @@
     <ClCompile Include="..\src\sage\interpreter\logic\commands\ObjectControlCommands.cpp">
       <Filter>interpreter\logic\commands</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\sage\interpreter\gui\MenuBar.cpp">
+    <ClCompile Include="..\src\sage\interpreter\gui\menu\MenuBar.cpp">
       <Filter>interpreter\gui\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\backend\sdl2\BitmapFont.cpp">
+      <Filter>backend\sdl2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -270,11 +273,14 @@
     <ClInclude Include="..\src\sage\interpreter\logic\GameControl.h">
       <Filter>interpreter\logic</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\sage\interpreter\gui\MenuBar.h">
-      <Filter>interpreter\gui\menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\backend\sdl2\BitmapFont.h">
       <Filter>backend\sdl2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\gui\menu\MenuBar.h">
+      <Filter>interpreter\gui\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sage\interpreter\helpers\AgiColorConverter.h">
+      <Filter>interpreter\helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

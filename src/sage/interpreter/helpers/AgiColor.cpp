@@ -15,11 +15,6 @@ AgiColor::AgiColor(uint8_t dosColor, uint8_t r, uint8_t g, uint8_t b)
 	this->g = g;
 }
 
-uint8_t AgiColor::getDosColor()
-{
-	return this->dosColor;
-}
-
 AgiColor& AgiColor::getColorByDosColor(int dosColor)
 {
 	if (AgiColor::colors.empty())

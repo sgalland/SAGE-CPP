@@ -1,32 +1,50 @@
 #include "Texture.h"
 #include "Graphics.h"
+#include <SDL_image.h>
+#include <iterator>
 
-Texture::Texture(int width, int height) :Texture(width, height, AgiColor::getColorByDosColor(0))
+Texture::Texture(int width, int height) :Texture(width, height, 0)
 {
 }
 
-Texture::Texture(int width, int height, AgiColor transparentColor) : Texture(0, 0, width, height, true, transparentColor)
+Texture::Texture(int width, int height, uint32_t transparentColor) : Texture(0, 0, width, height, true, transparentColor)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height) : Texture(xPosition, yPosition, width, height, false, AgiColor::getColorByDosColor(0))
+Texture::Texture(std::string texturePath) : Texture(0, 0, true, texturePath, transparentColor)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height, AgiColor transparentColor) : Texture(xPosition, yPosition, width, height, true, transparentColor)
+Texture::Texture(std::string texturePath, bool transparent, uint32_t transparentColor) : Texture(0, 0, transparent, texturePath, transparentColor)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height, bool transparent, AgiColor transparentColor)
+Texture::Texture(int xPosition, int yPosition, int width, int height) : Texture(xPosition, yPosition, width, height, false, 0)
+{
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height, uint32_t transparentColor) : Texture(xPosition, yPosition, width, height, true, transparentColor)
+{
+}
+
+Texture::Texture(int xPosition, int yPosition, int width, int height, bool transparent, uint32_t transparentColor)
 {
 	this->xPosition = xPosition;
 	this->yPosition = yPosition;
-	this->width = width;
-	this->height = height;
 	this->transparent = transparent;
 	this->transparentColor = transparentColor;
 
-	this->initialize();
+	this->initialize(width, height);
+}
+
+Texture::Texture(int xPosition, int yPosition, bool transparent, std::string texturePath, uint32_t transparentColor)
+{
+	this->xPosition = xPosition;
+	this->yPosition = yPosition;
+	this->transparent = transparent;
+	this->transparentColor = transparentColor;
+
+	this->initialize(texturePath);
 }
 
 Texture::~Texture()
@@ -44,13 +62,13 @@ Uint32 Texture::getPixelFormat()
 	return SDL_GetWindowPixelFormat(Graphics::window);
 }
 
-void Texture::UpdateTexture()
+void Texture::updateTexture()
 {
-	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h); //pixelBuffer.size() * sizeof(uint32_t));//this->surface->pitch * this->surface->h);
+	memcpy(this->surface->pixels, &this->pixelBuffer[0], this->surface->pitch * this->surface->h);
 
 	if (this->transparent)
 	{
-		if (SDL_SetColorKey(this->surface, SDL_TRUE, SDL_MapRGB(this->surface->format, transparentColor.r, transparentColor.g, transparentColor.b)) != 0)
+		if (SDL_SetColorKey(this->surface, SDL_TRUE, transparentColor) != 0)
 		{
 			std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
 			exit(1);
@@ -66,26 +84,41 @@ void Texture::UpdateTexture()
 	this->texture = SDL_CreateTextureFromSurface(Graphics::renderer, this->surface);
 }
 
-void Texture::initialize()
+void Texture::initialize(int width, int height)
 {
-	this->width = width;
-	this->height = height;
-	this->texture = nullptr;
-	this->pixelBuffer.resize(width * height);
-
 	if ((this->surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0)) == nullptr)
 	{
 		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
 		exit(1);
 	}
 
-	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->width, this->height)) == nullptr)
+	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
 	{
 		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
 		exit(1);
 	}
 
-	SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
+	//SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
+	this->pixelBuffer.resize(width * height);
+}
+
+void Texture::initialize(std::string filePath)
+{
+	if ((this->surface = IMG_Load(filePath.c_str())) == nullptr)
+	{
+		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		exit(1);
+	}
+
+	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
+	{
+		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		exit(1);
+	}
+
+	//SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
+	this->pixelBuffer.resize(this->surface->w * this->surface->h);
+	memcpy(&this->pixelBuffer[0], this->surface->pixels, this->surface->pitch);
 }
 
 void Texture::quit()
@@ -99,12 +132,12 @@ void Texture::quit()
 
 int32_t Texture::getWidth()
 {
-	return this->width;
+	return this->surface->w;
 }
 
 int32_t Texture::getHeight()
 {
-	return this->height;
+	return this->surface->h;
 }
 
 int32_t Texture::getXPosition()
@@ -122,13 +155,13 @@ std::vector<uint32_t> Texture::getData()
 	return this->pixelBuffer;
 }
 
-void Texture::setTransparentColor(AgiColor transparentColor)
+void Texture::setTransparentColor(uint32_t transparentColor)
 {
 	this->transparent = true;
 	this->transparentColor = transparentColor;
 }
 
-AgiColor Texture::getTransparentColor()
+uint32_t Texture::getTransparentColor()
 {
 	return this->transparentColor;
 }
@@ -136,14 +169,12 @@ AgiColor Texture::getTransparentColor()
 void Texture::setData(std::vector<uint32_t> data)
 {
 	this->pixelBuffer.clear();
+	std::copy(data.begin(), data.end(), std::back_inserter(pixelBuffer));	
 
-	// Convert the pixel color from DOS to RGB.
-	for (int index = 0; index < data.size(); index++)
-	{
-		AgiColor color = AgiColor::getColorByDosColor(data.at(index));
-		uint32_t convColor = SDL_MapRGB(this->surface->format, color.r, color.g, color.b);
-		this->pixelBuffer.push_back(convColor);
-	}
+	updateTexture();
+}
 
-	UpdateTexture();
+SDL_Surface * Texture::getSDLSurface()
+{
+	return this->surface;
 }

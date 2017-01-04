@@ -84,11 +84,6 @@ void ViewCell::setColor(AgiColor color)
 	this->transparentColor = color;
 }
 
-//void ViewCell::setData(uint8_t ** data)
-//{
-//	this->data = data;
-//}
-
 void ViewCell::setMirrored(bool mirrored)
 {
 	this->mirrored = mirrored;

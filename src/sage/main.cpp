@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 		ViewTableEntry *entry = AgiInterpreter::viewTable[0];
 		cel = view.getViewLoops().at(entry->currentLoop).cels().at(entry->currentCel);
 		taran.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(taran, cel.getData()));
-		
+
 		bool windowEventWaiting = false;
 		Event event = Event::pollEvent();
 		switch (event.getEventType())
@@ -97,9 +97,9 @@ int main(int argc, char *argv[])
 				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
 					y--;
 				else*/ if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
-					x--;
+					ObjectControlCommands::set_loop(0, --x);
 				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
-					x++;
+					ObjectControlCommands::set_loop(0, ++x);
 
 			if (Keyboard::isKeyDown(Key::UpArrow) && scale < 4)
 			{

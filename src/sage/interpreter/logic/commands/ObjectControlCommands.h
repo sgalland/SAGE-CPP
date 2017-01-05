@@ -9,14 +9,14 @@ namespace sage
 		class ObjectControlCommands
 		{
 		public:
-			static void animate_obj();
+			static void animate_obj(uint8_t objectID);
 			static void unanimate_all();
 			static void set_view(uint8_t objectID, uint8_t resourceID);
 			static void set_view_v(uint8_t objectID, uint8_t variableID);
 			static void set_loop(uint8_t objectID, uint8_t loopID);
 			static void set_loop_v(uint8_t objectID, uint8_t variableID);
-			static void fix_loop();
-			static void release_loop();
+			static void fix_loop(uint8_t objectID);
+			static void release_loop(uint8_t objectID);
 			static void set_cel();
 			static void set_cel_v();
 			static void current_loop();

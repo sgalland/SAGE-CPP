@@ -30,7 +30,7 @@ namespace sage
 			static AgiLogic *logics[MAX_RESOURCES];
 			static AgiView *views[MAX_RESOURCES];
 			static AgiPicture *pictures[MAX_RESOURCES];
-			static ViewTableEntry *viewTable[MAX_RESOURCES];
+			
 			static GameControl gameControl;
 		public:
 			static uint8_t variables[256];
@@ -39,6 +39,7 @@ namespace sage
 			static std::string gameID; // this is probably the wrong place for this...
 			static AgiLogic* currentLogic;
 			static LogicProcessor logicProcessor;
+			static ViewTableEntry *viewTable[MAX_RESOURCES];
 
 			AgiInterpreter();
 			~AgiInterpreter();

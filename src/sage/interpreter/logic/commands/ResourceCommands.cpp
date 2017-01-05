@@ -3,7 +3,7 @@
 #include "../../resources/AgiPicture.h"
 #include "../../AgiInterpreter.h"
 
-AgiFile & sage::agi::ResourceCommands::load_resource(uint8_t resourceID, AgiFileType fileType)
+AgiFile sage::agi::ResourceCommands::load_resource(uint8_t resourceID, AgiFileType fileType)
 {
 	AgiFileReader reader(fileType);
 	return reader.GetFile(resourceID);
@@ -38,15 +38,14 @@ void sage::agi::ResourceCommands::load_pic(uint8_t variableID)
 
 void sage::agi::ResourceCommands::load_view(uint8_t resourceID)
 {
-	//AgiFile file = load_resource(resourceID, AgiFileType::Logic);
-	//AgiInterpreter::views[resourceID] = new AgiView(file);
+	AgiFile file = load_resource(resourceID, AgiFileType::View);
+	AgiInterpreter::views[resourceID] = new AgiView(file);
 }
 
 void sage::agi::ResourceCommands::load_view_v(uint8_t variableID)
 {
-	//uint8_t resourceID = AgiInterpreter::variables[variableID];
-	//AgiFile file = load_resource(resourceID, AgiFileType::Logic);
-	//AgiInterpreter::views[resourceID] = new AgiView(file);
+	uint8_t resourceID = AgiInterpreter::variables[variableID];
+	load_view(resourceID);
 }
 
 void sage::agi::ResourceCommands::load_sound(uint8_t resourceID)

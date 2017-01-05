@@ -11,7 +11,7 @@ namespace sage
 		class ResourceCommands
 		{
 		private:
-			static AgiFile& load_resource(uint8_t resourceID, AgiFileType fileType);
+			static AgiFile load_resource(uint8_t resourceID, AgiFileType fileType);
 		public:
 			static void load_logic(uint8_t resourceID);
 			static void load_logic_v(uint8_t variableID);

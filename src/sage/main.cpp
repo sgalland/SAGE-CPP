@@ -8,6 +8,8 @@
 
 #include "interpreter/AgiInterpreter.h"
 #include "interpreter/logic/LogicProcessor.h"
+#include "interpreter/logic/commands/ResourceCommands.h"
+#include "interpreter/logic/commands/ObjectControlCommands.h"
 
 #include <boost/filesystem.hpp>
 
@@ -66,12 +68,17 @@ int main(int argc, char *argv[])
 
 	MenuBar menuBar(engine, interpreter);
 
+	ResourceCommands::load_view(0);
+	ObjectControlCommands::set_view(0, 0);
+	ObjectControlCommands::set_loop(0, 2);
+
 	bool isRunning = true;
 	int x = 0, y = 0;
 	int scale = 1;
 	while (isRunning)
 	{
-		cel = view.getViewLoops().at(0).cels().at(x);
+		ViewTableEntry *entry = AgiInterpreter::viewTable[0];
+		cel = view.getViewLoops().at(entry->currentLoop).cels().at(entry->currentCel);
 		taran.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(taran, cel.getData()));
 		
 		bool windowEventWaiting = false;

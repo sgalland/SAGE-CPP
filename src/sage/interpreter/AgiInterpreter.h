@@ -17,8 +17,6 @@ namespace sage
 {
 	namespace agi
 	{
-		//class LogicProcessor;
-
 		class AgiInterpreter
 		{
 			friend class ResourceCommands;
@@ -29,10 +27,10 @@ namespace sage
 		private:
 			const static int MAX_RESOURCES = 256;
 			const static int MAX_STRINGS = 12;
-			static AgiLogic* logics[MAX_RESOURCES];
-			static AgiView* views[MAX_RESOURCES];
-			static AgiPicture* pictures[MAX_RESOURCES];
-			static ViewTableEntry* viewTable[MAX_RESOURCES];
+			static AgiLogic *logics[MAX_RESOURCES];
+			static AgiView *views[MAX_RESOURCES];
+			static AgiPicture *pictures[MAX_RESOURCES];
+			static ViewTableEntry *viewTable[MAX_RESOURCES];
 			static GameControl gameControl;
 		public:
 			static uint8_t variables[256];
@@ -46,11 +44,6 @@ namespace sage
 			~AgiInterpreter();
 
 			static std::string ReadGameID();
-
-			//bool ConfirmInterpreterVersion()
-			//{
-			//	std::string version = AgiVersion::GetVersion();
-			//}
 
 			void Execute();
 		};

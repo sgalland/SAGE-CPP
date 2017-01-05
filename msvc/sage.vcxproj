@@ -46,6 +46,7 @@
     <ClCompile Include="..\src\sage\interpreter\resources\Resource.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewCell.cpp" />
     <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewLoop.cpp" />
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewTableEntry.cpp" />
     <ClCompile Include="..\src\sage\main.cpp" />
   </ItemGroup>
   <ItemGroup>

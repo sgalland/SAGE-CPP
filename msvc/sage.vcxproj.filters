@@ -107,6 +107,9 @@
     <ClCompile Include="..\src\backend\sdl2\BitmapFont.cpp">
       <Filter>backend\sdl2</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sage\interpreter\resources\Views\ViewTableEntry.cpp">
+      <Filter>interpreter\resources\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="interpreter">

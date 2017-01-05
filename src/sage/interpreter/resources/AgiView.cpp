@@ -98,6 +98,10 @@ void AgiView::ReadCelHeader(AgiFile file)
 	}
 }
 
+AgiView::AgiView()
+{
+}
+
 AgiView::AgiView(AgiFile file)
 {
 	LoadViewHeader(file);

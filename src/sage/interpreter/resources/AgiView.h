@@ -25,6 +25,7 @@ protected:
 	void ReadLoopHeaders(AgiFile file);
 	void ReadCelHeader(AgiFile file);
 public:
+	AgiView();
 	AgiView(AgiFile file);
 	std::vector<ViewLoop> getViewLoops();
 };

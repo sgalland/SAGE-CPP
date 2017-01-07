@@ -4,6 +4,7 @@
 #include "commands/InitializationCommands.h"
 #include "commands/ArithmeticCommands.h"
 #include "commands/FlagCommands.h"
+#include "commands/ObjectControlCommands.h"
 #include "commands/ProgramControlCommands.h"
 #include "commands/ResourceCommands.h"
 #include "commands/SubroutineCommands.h"
@@ -42,6 +43,21 @@ sage::agi::ActionDispatcher::ActionDispatcher()
 	this->InsertMethod(new DispatcherContainer(30, "load.view", ResourceCommands::load_view));
 	this->InsertMethod(new DispatcherContainer(31, "load.view.v", ResourceCommands::load_view_v));
 	this->InsertMethod(new DispatcherContainer(32, "discard.view", ResourceCommands::discard_view));
+	this->InsertMethod(new DispatcherContainer(33, "animate.obj", ObjectControlCommands::animate_obj));
+	this->InsertMethod(new DispatcherContainer(34, "unanimate.all", ObjectControlCommands::unanimate_all));
+	//this->InsertMethod(new DispatcherContainer(35, "draw", ObjectControlCommands::unanimate_all));
+
+	this->InsertMethod(new DispatcherContainer(41, "set.view", ObjectControlCommands::set_view));
+	this->InsertMethod(new DispatcherContainer(42, "set.view.v", ObjectControlCommands::set_view_v));
+	this->InsertMethod(new DispatcherContainer(43, "set.loop", ObjectControlCommands::set_loop));
+	this->InsertMethod(new DispatcherContainer(44, "set.loop.v", ObjectControlCommands::set_loop_v));
+	this->InsertMethod(new DispatcherContainer(45, "fix.loop", ObjectControlCommands::fix_loop));
+	this->InsertMethod(new DispatcherContainer(46, "release.loop", ObjectControlCommands::release_loop));
+	this->InsertMethod(new DispatcherContainer(47, "set.cel", ObjectControlCommands::set_cel));
+	this->InsertMethod(new DispatcherContainer(48, "set.cel.v", ObjectControlCommands::set_cel_v));
+	this->InsertMethod(new DispatcherContainer(49, "last.cel", ObjectControlCommands::last_cel));
+	this->InsertMethod(new DispatcherContainer(50, "current.cel", ObjectControlCommands::current_cel));
+
 
 
 	this->InsertMethod(new DispatcherContainer(91, "set.scan.start", SubroutineCommands::set_scan_start));

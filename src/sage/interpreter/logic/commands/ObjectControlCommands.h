@@ -17,8 +17,10 @@ namespace sage
 			static void set_loop_v(uint8_t objectID, uint8_t variableID);
 			static void fix_loop(uint8_t objectID);
 			static void release_loop(uint8_t objectID);
-			static void set_cel();
-			static void set_cel_v();
+			static void set_cel(uint8_t objectID, uint8_t celID);
+			static void set_cel_v(uint8_t objectID, uint8_t variableID);
+			static void last_cel(uint8_t objectID, uint8_t variableID);
+			static void current_cel(uint8_t objectID, uint8_t variableID);
 			static void current_loop();
 			static void current_view();
 			static void set_priority();

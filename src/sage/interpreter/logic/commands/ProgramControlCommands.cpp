@@ -40,6 +40,25 @@ void ProgramControlCommands::exec_new_room(uint8_t roomID)
 	// * if Ego touched the bottom edge, put it on the horizon;
 	// * if Ego touched the top edge, put it on the bottom edge of the screen;
 	// * if Ego touched the right edge, put it at the left and vice versa.
+	// NOTE: This is based on my assumptions of how this would work and has not been tested -- SEAN
+	ViewTableEntry *entry = AgiInterpreter::viewTable[0];
+	switch (AgiInterpreter::variables[2])
+	{
+	case 0: // touched nothing
+		break;
+	case 1: // touched edge of screen or horizon
+		entry->y = 160;
+		break;
+	case 2: // touched right edge of screen
+		entry->x = 0;
+		break;
+	case 3: // touched bottom edge of screen
+		entry->y = 37;
+		break;
+	case 4: // touched left edge of screen
+		entry->x = 320 - entry->xSize * 2;
+		break;
+	}
 	// ** v2 is assigned 0 (meaning Ego has not touched any edges).
 	AgiInterpreter::variables[2] = 0;
 	// ** f5 is set to 1 (meaning in the first interpreter cycle after the new_room command all initialization parts of all logics loaded and called from the initialization part of the new room's logic will be called. In the subsequent cycle f5 is reset to 0 (see section Interpreter work cycle and the source of the "Thunderstorm" program. This is very important!).

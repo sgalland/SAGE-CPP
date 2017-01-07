@@ -108,3 +108,31 @@ void sage::agi::ObjectControlCommands::release_loop(uint8_t objectID)
 		}
 	}
 }
+
+void sage::agi::ObjectControlCommands::set_cel(uint8_t objectID, uint8_t celID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	ViewCell *cel = &entry->startOfData->getViewLoops().at(entry->currentLoop).cels().at(celID);
+	entry->currentCel = celID;
+	entry->pointerToStartOfCelData = cel;
+	entry->xSize = cel->getWidth();
+	entry->ySize = cel->getHeight();
+}
+
+void sage::agi::ObjectControlCommands::set_cel_v(uint8_t objectID, uint8_t variableID)
+{
+	uint8_t celID = AgiInterpreter::variables[variableID];
+	set_cel(objectID, celID);
+}
+
+void sage::agi::ObjectControlCommands::last_cel(uint8_t objectID, uint8_t variableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	AgiInterpreter::variables[variableID] = entry->startOfData->getViewLoops().at(entry->currentLoop).cels().size() - 1;
+}
+
+void sage::agi::ObjectControlCommands::current_cel(uint8_t objectID, uint8_t variableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	AgiInterpreter::variables[variableID] = entry->currentCel;
+}

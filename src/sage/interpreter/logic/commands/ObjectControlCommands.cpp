@@ -136,3 +136,15 @@ void sage::agi::ObjectControlCommands::current_cel(uint8_t objectID, uint8_t var
 	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
 	AgiInterpreter::variables[variableID] = entry->currentCel;
 }
+
+void sage::agi::ObjectControlCommands::current_loop(uint8_t objectID, uint8_t variableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	AgiInterpreter::variables[variableID] = entry->currentLoop;
+}
+
+void sage::agi::ObjectControlCommands::current_view(uint8_t objectID, uint8_t variableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	AgiInterpreter::variables[variableID] = entry->currentView;
+}

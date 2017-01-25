@@ -14,8 +14,6 @@ public:
 		int idx = 0;
 		for (int i = startPosition; i < this->size() && i <= endPosition; i++)
 		{
-			bool wtf = this[i] == true;
-			bool pp = this->test(i);
 			if (this->test(i))
 			{
 				r |= (uint8_t)(1 << idx);

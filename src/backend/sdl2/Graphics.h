@@ -5,7 +5,12 @@
 #include "../../sage/interpreter/helpers/AgiColor.h"
 
 #include <iostream>
+
+#ifdef linux
+#include <SDL2/SDL.h>
+#elif _WIN32
 #include <SDL.h>
+#endif
 
 class Graphics
 {

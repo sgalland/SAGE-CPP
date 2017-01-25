@@ -12,7 +12,7 @@ public:
 		return SDL_MapRGB(texture.getSDLSurface()->format, color.r, color.g, color.b);
 	}
 
-	static inline std::vector<uint32_t> convertVectorDosColorToVectorUint32(Texture &texture, std::vector<uint32_t> &pixels)
+	static inline std::vector<uint32_t> convertVectorDosColorToVectorUint32(Texture &texture, const std::vector<uint32_t> &pixels)
 	{
 		std::vector<uint32_t> retPixels;
 		for (int i = 0; i < pixels.size(); i++)

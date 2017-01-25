@@ -18,7 +18,7 @@ namespace sage
 			DispatcherBase();
 			~DispatcherBase();
 
-			DispatcherContainer* DispatcherBase::operator[](const uint8_t index);
+			DispatcherContainer* operator[](const uint8_t index);
 
 			void InsertMethod(DispatcherContainer* container);
 			R ExecuteTest(int id, std::vector<uint8_t> args);

@@ -1,6 +1,6 @@
 #include "Texture.h"
 #include "Graphics.h"
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include <iterator>
 
 Texture::Texture(int width, int height) :Texture(width, height, 0)

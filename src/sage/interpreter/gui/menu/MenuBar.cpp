@@ -1,5 +1,5 @@
 #include "MenuBar.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "../../../../backend/sdl2/Graphics.h"
 #include "../../helpers/AgiColor.h"
 

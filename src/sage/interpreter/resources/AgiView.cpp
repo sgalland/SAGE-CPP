@@ -3,7 +3,7 @@
 #include "../../../core/BitConverter.h"
 #include "../../../core/BitSetHelper.h"
 
-#include <bitset>
+//#include <bitset>
 #include <iostream>
 #include <fstream>
 

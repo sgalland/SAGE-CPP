@@ -1,7 +1,13 @@
 #pragma once
 
+#ifdef linux
+#include <SDL2/SDL.h>
+#elif _WIN32
 #include <SDL.h>
+#endif
+
 #include <vector>
+#include <string>
 
 class Texture
 {

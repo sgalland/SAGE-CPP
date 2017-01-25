@@ -1,8 +1,6 @@
-#ifdef define(WIN32) && define(_DEBUG)
+#ifdef _WIN32
 #include <vld.h>
 #endif
-
-#include <SDL.h>
 
 #include <iostream>
 
@@ -28,15 +26,13 @@
 #include "interpreter/gui/menu/MenuBar.h"
 #include "interpreter/helpers/AgiColorConverter.h"
 
-#include <SDL.h>
-
 
 namespace game = sage::agi;
 namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
+	fs::current_path("/home/sean/Downloads/The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
@@ -91,14 +87,17 @@ int main(int argc, char *argv[])
 			if ((Keyboard::isKeyDown(Key::LeftShift) || Keyboard::isKeyDown(Key::RightShift)) && Keyboard::isKeyDown(Key::Enter))
 				if (!engine.graphics->getIsFullscreen())
 					engine.graphics->fullscreen();
-				else engine.graphics->windowed();
+				else 
+                {
+                    engine.graphics->windowed();                    
+                }
 				/*if (Keyboard::isKeyDown(Key::UpArrow) && y < view.getViewLoops().size() - 1)
 					y++;
 				else if (Keyboard::isKeyDown(Key::DownArrow) && y > 0)
 					y--;
 				else*/ if (Keyboard::isKeyDown(Key::LeftArrow) && x > 0)
 					ObjectControlCommands::set_loop(0, --x);
-				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().at(y).cels().size() - 1)
+				else if (Keyboard::isKeyDown(Key::RightArrow) && x < view.getViewLoops().size() - 1)
 					ObjectControlCommands::set_loop(0, ++x);
 
 			if (Keyboard::isKeyDown(Key::UpArrow) && scale < 4)
@@ -119,6 +118,8 @@ int main(int argc, char *argv[])
 				break;
 			}
 			break;
+        case EventType::NOT_SET:
+            break;
 		}
 
 		if (!windowEventWaiting)

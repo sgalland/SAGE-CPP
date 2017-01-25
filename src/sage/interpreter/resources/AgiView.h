@@ -4,9 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../resources/AgiFileReader.h"
+#include "AgiFileReader.h"
 #include "Views/ViewLoop.h"
-#include "../../../core/BitConverter.h"
 
 const unsigned char MAX_CEL = 255;
 

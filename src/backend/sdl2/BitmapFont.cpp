@@ -1,5 +1,11 @@
 #include "BitmapFont.h"
-#include <SDL_image.h>
+
+#ifdef linux
+#include <SDL2/SDL.h>
+#elif _WIN32
+#include <SDL.h>
+#endif
+
 #include "Graphics.h"
 
 BitmapFont::BitmapFont(std::string fontPath)

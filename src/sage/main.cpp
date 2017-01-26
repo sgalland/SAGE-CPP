@@ -32,7 +32,7 @@ namespace fs = boost::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("/home/sean/Downloads/The Black Cauldron.1987");
+	fs::current_path("C:\\Users\\sgalland\\Desktop\\Stuff\\The Black Cauldron.1987");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 

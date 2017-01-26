@@ -19,6 +19,24 @@ sage::agi::AgiInterpreter::AgiInterpreter()
 
 sage::agi::AgiInterpreter::~AgiInterpreter()
 {
+	for (unsigned int index = 0; index < MAX_RESOURCES; index++)
+	{
+		AgiView *view = this->views[index];
+		if (view != nullptr)
+			delete view;
+
+		AgiPicture *picture = this->pictures[index];
+		if (picture != nullptr)
+			delete picture;
+
+		AgiLogic *logic = this->logics[index];
+		if (logic != nullptr)
+			delete logic;
+
+		ViewTableEntry *entry = this->viewTable[index];
+		if (entry != nullptr)
+			delete entry;
+	}
 }
 
 std::string sage::agi::AgiInterpreter::ReadGameID()

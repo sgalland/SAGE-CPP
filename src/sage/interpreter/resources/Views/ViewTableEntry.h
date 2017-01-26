@@ -35,6 +35,7 @@ namespace sage
 			ViewDirection direction;
 			ViewMotion motion;
 			ViewCycle cycle;
+			uint8_t priority;
 			ViewFlags flags;
 		};
 	}

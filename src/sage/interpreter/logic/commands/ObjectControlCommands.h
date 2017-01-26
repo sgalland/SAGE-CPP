@@ -23,9 +23,9 @@ namespace sage
 			static void current_cel(uint8_t objectID, uint8_t variableID);
 			static void current_loop(uint8_t objectID, uint8_t variableID);
 			static void current_view(uint8_t objectID, uint8_t variableID);
-			static void set_priority();
-			static void set_priority_v();
-			static void release_priority();
+			static void set_priority(uint8_t objectID, uint8_t number);
+			static void set_priority_v(uint8_t objectID, uint8_t variable);
+			static void release_priority(uint8_t objectID);
 			static void get_priority();
 			static void position();
 			static void position_n();

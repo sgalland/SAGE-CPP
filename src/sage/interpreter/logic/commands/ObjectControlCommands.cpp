@@ -148,3 +148,23 @@ void sage::agi::ObjectControlCommands::current_view(uint8_t objectID, uint8_t va
 	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
 	AgiInterpreter::variables[variableID] = entry->currentView;
 }
+
+void sage::agi::ObjectControlCommands::set_priority(uint8_t objectID, uint8_t number)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->priority = number;
+		entry->flags |= ViewFlags::FixedPriority;
+	}
+
+}
+
+void sage::agi::ObjectControlCommands::set_priority_v(uint8_t objectID, uint8_t variable)
+{
+	set_priority(objectID, AgiInterpreter::variables[variable]);
+}
+
+void sage::agi::ObjectControlCommands::release_priority(uint8_t objectID)
+{
+}

@@ -1,5 +1,9 @@
 #include "MenuBar.h"
+
+#ifdef LINUX
 #include <SDL2/SDL.h>
+#endif
+
 #include "../../../../backend/sdl2/Graphics.h"
 #include "../../helpers/AgiColor.h"
 

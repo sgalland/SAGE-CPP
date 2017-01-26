@@ -1,5 +1,10 @@
 #include "Keyboard.h"
+
+#ifdef LINUX
 #include <SDL2/SDL.h>
+#elif WIN32
+#include <SDL.h>
+#endif
 
 Uint8* Keyboard::keystate = NULL;
 std::map<Key, SDL_Scancode> Keyboard::keyboardMapping;

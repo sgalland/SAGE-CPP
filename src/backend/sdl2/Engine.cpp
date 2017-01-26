@@ -1,6 +1,9 @@
 #include "Engine.h"
 
+#ifdef LINUX
 #include <SDL2/SDL.h>
+#endif
+
 #include <cstdlib>
 
 Engine::Engine(int width, int height)

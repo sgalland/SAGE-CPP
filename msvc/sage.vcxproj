@@ -204,8 +204,6 @@
   <Import Project="..\lib\boost_wave-vc140.1.61.0.0\build\native\boost_wave-vc140.targets" Condition="Exists('..\lib\boost_wave-vc140.1.61.0.0\build\native\boost_wave-vc140.targets')" />
   <Import Project="..\lib\boost_wserialization-vc140.1.61.0.0\build\native\boost_wserialization-vc140.targets" Condition="Exists('..\lib\boost_wserialization-vc140.1.61.0.0\build\native\boost_wserialization-vc140.targets')" />
   <Import Project="..\lib\boost-vc140.1.61.0.0\build\native\boost-vc140.targets" Condition="Exists('..\lib\boost-vc140.1.61.0.0\build\native\boost-vc140.targets')" />
-  <Import Project="..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets" Condition="Exists('..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets')" />
-  <Import Project="..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets" Condition="Exists('..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets')" />
   <Import Project="..\lib\boost.1.62.0.0\build\native\boost.targets" Condition="Exists('..\lib\boost.1.62.0.0\build\native\boost.targets')" />
   <Import Project="..\lib\libjpeg.redist.9.0.1.4\build\native\libjpeg.redist.targets" Condition="Exists('..\lib\libjpeg.redist.9.0.1.4\build\native\libjpeg.redist.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -217,6 +215,8 @@
     <Error Condition="!Exists('..\lib\libtiff.redist.4.0.6.2\build\native\libtiff.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\libtiff.redist.4.0.6.2\build\native\libtiff.redist.targets'))" />
     <Error Condition="!Exists('..\lib\libwebp.v140.redist.0.5.0.1\build\native\libwebp.v140.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\libwebp.v140.redist.0.5.0.1\build\native\libwebp.v140.redist.targets'))" />
     <Error Condition="!Exists('..\lib\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets'))" />
+    <Error Condition="!Exists('..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets'))" />
     <Error Condition="!Exists('..\lib\sdl2_image.v140.redist.2.0.1\build\native\sdl2_image.v140.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\sdl2_image.v140.redist.2.0.1\build\native\sdl2_image.v140.redist.targets'))" />
     <Error Condition="!Exists('..\lib\sdl2_image.v140.2.0.1\build\native\sdl2_image.v140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\lib\sdl2_image.v140.2.0.1\build\native\sdl2_image.v140.targets'))" />
   </Target>
@@ -224,6 +224,8 @@
   <Import Project="..\lib\libtiff.redist.4.0.6.2\build\native\libtiff.redist.targets" Condition="Exists('..\lib\libtiff.redist.4.0.6.2\build\native\libtiff.redist.targets')" />
   <Import Project="..\lib\libwebp.v140.redist.0.5.0.1\build\native\libwebp.v140.redist.targets" Condition="Exists('..\lib\libwebp.v140.redist.0.5.0.1\build\native\libwebp.v140.redist.targets')" />
   <Import Project="..\lib\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.targets" Condition="Exists('..\lib\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\zlib.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" />
+  <Import Project="..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets" Condition="Exists('..\lib\sdl2.v140.redist.2.0.4\build\native\sdl2.v140.redist.targets')" />
+  <Import Project="..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets" Condition="Exists('..\lib\sdl2.v140.2.0.4\build\native\sdl2.v140.targets')" />
   <Import Project="..\lib\sdl2_image.v140.redist.2.0.1\build\native\sdl2_image.v140.redist.targets" Condition="Exists('..\lib\sdl2_image.v140.redist.2.0.1\build\native\sdl2_image.v140.redist.targets')" />
   <Import Project="..\lib\sdl2_image.v140.2.0.1\build\native\sdl2_image.v140.targets" Condition="Exists('..\lib\sdl2_image.v140.2.0.1\build\native\sdl2_image.v140.targets')" />
 </Project>

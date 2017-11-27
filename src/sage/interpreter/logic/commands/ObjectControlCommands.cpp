@@ -167,4 +167,44 @@ void sage::agi::ObjectControlCommands::set_priority_v(uint8_t objectID, uint8_t 
 
 void sage::agi::ObjectControlCommands::release_priority(uint8_t objectID)
 {
+	// I am pretty sure this is correct but needs to be verified
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags &= ~ViewFlags::FixedPriority;
+	}
+}
+
+void sage::agi::ObjectControlCommands::get_priority(uint8_t objectID, uint8_t variableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr) 
+	{
+		AgiInterpreter::variables[variableID] = entry->priority;
+	}
+}
+
+void sage::agi::ObjectControlCommands::position(uint8_t objectID, uint8_t x, uint8_t y)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr) 
+	{
+		entry->x = x;
+		entry->y = y;
+	}
+}
+
+void sage::agi::ObjectControlCommands::position_v(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID)
+{
+	position(objectID, AgiInterpreter::variables[xVariableID], AgiInterpreter::variables[yVariableID]);
+}
+
+void sage::agi::ObjectControlCommands::draw(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		//entry->flags &= ViewFlags::Updating
+		set_cel(objectID, entry->currentCel);
+	}
 }

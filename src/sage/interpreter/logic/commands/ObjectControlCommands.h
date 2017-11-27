@@ -24,12 +24,12 @@ namespace sage
 			static void current_loop(uint8_t objectID, uint8_t variableID);
 			static void current_view(uint8_t objectID, uint8_t variableID);
 			static void set_priority(uint8_t objectID, uint8_t number);
-			static void set_priority_v(uint8_t objectID, uint8_t variable);
+			static void set_priority_v(uint8_t objectID, uint8_t variableID);
 			static void release_priority(uint8_t objectID);
-			static void get_priority();
-			static void position();
-			static void position_n();
-			static void draw();
+			static void get_priority(uint8_t objectID, uint8_t variableID);
+			static void position(uint8_t objectID, uint8_t x, uint8_t y);
+			static void position_v(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID);
+			static void draw(uint8_t objectID);
 			static void erase();
 			static void get_posn();
 			static void start_cycling();

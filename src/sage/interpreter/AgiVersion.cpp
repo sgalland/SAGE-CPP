@@ -62,11 +62,6 @@ std::string sage::agi::AgiVersion::GetGameID()
 			{
 				auto it = std::find(gameIDs.begin(), gameIDs.end(), message);
 
-				if (message != "" && message.length() >= 2 && message.length() <= 3)
-				{
-					int i = 0;
-				}
-
 				if (message.length() >= 2 && message.length() <= 3 && isalpha(message[0]) && isalpha(message[1]) && it != gameIDs.end())
 				{
 					gameID = message;

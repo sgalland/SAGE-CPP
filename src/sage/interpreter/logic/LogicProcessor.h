@@ -1,6 +1,5 @@
 #pragma once
 
-#include <boost/any.hpp> // TODO: Remove boost reference from code and make sure it is in the backend
 #include <cinttypes>
 
 #include "ActionDispatcher.h"

@@ -11,6 +11,7 @@ void LogicProcessor::Execute(uint8_t resourceID)
 	AgiFileReader logicReader(AgiFileType::Logic);
 	AgiLogic logic(logicReader.GetFile(resourceID), resourceID);
 	AgiInterpreter::currentLogic = &logic;
+	std::vector<uint8_t> logicData = logic.GetLogicData();
 
 	bool isRunning = true;
 	logicIndex = -1;
@@ -18,22 +19,16 @@ void LogicProcessor::Execute(uint8_t resourceID)
 
 	do
 	{
-		currentByte = AgiInterpreter::currentLogic->GetLogicData().at(++logicIndex);
+		currentByte = logicData.at(++logicIndex);
 		switch (currentByte)
 		{
 		case 0x00: isRunning = false; break; // return statement
-
-
-
-
-
-
 		case 0xFF: ProcessIf(); break; // if statement
-		default:
+		default: // All normal logic functions
 			ProcessAction(currentByte);
 			break;
 		}
-	} while (logicIndex < AgiInterpreter::currentLogic->GetLogicData().size() && isRunning);
+	} while (logicIndex < logicData.size() && isRunning);
 }
 
 void LogicProcessor::ProcessIf()
@@ -81,12 +76,12 @@ void LogicProcessor::ProcessIf()
 
 void LogicProcessor::ProcessAction(uint8_t currentByte)
 {
-	/*DispatcherContainer* action = this->actionDispatcher[currentByte];
+	DispatcherContainer* action = this->actionDispatcher[currentByte];
 	if (action != nullptr)
 	{
 		std::vector<uint8_t> args = GetArguments(action->getArgumentCount());
 		actionDispatcher.ExecuteAction(currentByte, args);
-	}	*/
+	}
 }
 
 int LogicProcessor::ReadCodeBlockSize()

@@ -47,6 +47,8 @@ sage::agi::ActionDispatcher::ActionDispatcher()
 	this->InsertMethod(new DispatcherContainer(34, "unanimate.all", ObjectControlCommands::unanimate_all));
 	//this->InsertMethod(new DispatcherContainer(35, "draw", ObjectControlCommands::unanimate_all));
 
+	this->InsertMethod(new DispatcherContainer(39, "get.posn", ObjectControlCommands::get_posn));
+
 	this->InsertMethod(new DispatcherContainer(41, "set.view", ObjectControlCommands::set_view));
 	this->InsertMethod(new DispatcherContainer(42, "set.view.v", ObjectControlCommands::set_view_v));
 	this->InsertMethod(new DispatcherContainer(43, "set.loop", ObjectControlCommands::set_loop));

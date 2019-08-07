@@ -208,3 +208,13 @@ void sage::agi::ObjectControlCommands::draw(uint8_t objectID)
 		set_cel(objectID, entry->currentCel);
 	}
 }
+
+void sage::agi::ObjectControlCommands::get_posn(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		AgiInterpreter::variables[xVariableID] = entry->x;
+		AgiInterpreter::variables[yVariableID] = entry->y;
+	}
+}

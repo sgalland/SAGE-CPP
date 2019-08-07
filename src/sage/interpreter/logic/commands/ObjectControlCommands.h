@@ -31,7 +31,7 @@ namespace sage
 			static void position_v(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID);
 			static void draw(uint8_t objectID);
 			static void erase();
-			static void get_posn();
+			static void get_posn(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID);
 			static void start_cycling();
 			static void stop_cycling();
 			static void normal_cycling();

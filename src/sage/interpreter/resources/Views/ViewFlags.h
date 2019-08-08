@@ -25,7 +25,7 @@ namespace sage
 			//10  ??
 			Update = 0x10,
 			//11  1 = view on land
-			OnLine = 64,
+			OnLand = 64,
 			//12  ??
 			//13  0 = loop released, 1 = loop fixed
 			LoopFixed = 128,
@@ -37,6 +37,8 @@ namespace sage
 			//28  ?? (storage for some view related command parameters)
 			//29  ?? (storage for some view related command parameters)
 			//2A  ?? (storage for some view related command parameters)
+
+			ReverseCycling = 1024,
 		};
 
 		inline ViewFlags operator |(ViewFlags l, ViewFlags r)

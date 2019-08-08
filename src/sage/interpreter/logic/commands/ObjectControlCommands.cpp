@@ -209,6 +209,15 @@ void sage::agi::ObjectControlCommands::draw(uint8_t objectID)
 	}
 }
 
+void sage::agi::ObjectControlCommands::erase(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags = ~ViewFlags::Update; // We might need another flag for this.
+	}
+}
+
 void sage::agi::ObjectControlCommands::get_posn(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID)
 {
 	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
@@ -216,5 +225,41 @@ void sage::agi::ObjectControlCommands::get_posn(uint8_t objectID, uint8_t xVaria
 	{
 		AgiInterpreter::variables[xVariableID] = entry->x;
 		AgiInterpreter::variables[yVariableID] = entry->y;
+	}
+}
+
+void sage::agi::ObjectControlCommands::start_cycling(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags &= ViewFlags::Cycling;
+	}
+}
+
+void sage::agi::ObjectControlCommands::stop_cycling(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags &= ~ViewFlags::Cycling;
+	}
+}
+
+void sage::agi::ObjectControlCommands::normal_cycling(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags &= ~ViewFlags::ReverseCycling;
+	}
+}
+
+void sage::agi::ObjectControlCommands::reverse_cycle(uint8_t objectID)
+{
+	ViewTableEntry *entry = AgiInterpreter::viewTable[objectID];
+	if (entry != nullptr)
+	{
+		entry->flags &= ViewFlags::ReverseCycling;
 	}
 }

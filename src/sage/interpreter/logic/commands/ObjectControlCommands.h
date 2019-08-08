@@ -30,15 +30,15 @@ namespace sage
 			static void position(uint8_t objectID, uint8_t x, uint8_t y);
 			static void position_v(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID);
 			static void draw(uint8_t objectID);
-			static void erase();
+			static void erase(uint8_t objectID);
 			static void get_posn(uint8_t objectID, uint8_t xVariableID, uint8_t yVariableID);
-			static void start_cycling();
-			static void stop_cycling();
-			static void normal_cycling();
-			static void reverse_cycle();
-			static void end_of_loop();
-			static void reverse_loop();
-			static void cycle_time();
+			static void start_cycling(uint8_t objectID);
+			static void stop_cycling(uint8_t objectID);
+			static void normal_cycling(uint8_t objectID);
+			static void reverse_cycle(uint8_t objectID);
+			static void end_of_loop(uint8_t objectID, uint8_t flagID);
+			static void reverse_loop(uint8_t objectID, uint8_t flagID);
+			static void cycle_time(uint8_t objectID, uint8_t flagID);
 
 		};
 	}

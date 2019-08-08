@@ -1,6 +1,5 @@
 #pragma once
 
-#include <boost/type_traits.hpp>
 #include <cinttypes>
 #include "../../resources/AgiFileReader.h"
 

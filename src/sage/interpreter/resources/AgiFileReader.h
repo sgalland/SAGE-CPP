@@ -2,7 +2,6 @@
 
 #include <cinttypes>
 #include <boost/filesystem.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
 #include <string>
 #include <vector>

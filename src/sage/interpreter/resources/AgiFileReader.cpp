@@ -101,8 +101,7 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 		if (entry.resourceId == resourceId)
 			dirEntry = entry;
 
-	//AgiDirectoryEntry dirEntry = directoryEntries.at(resourceId);
-	std::string fileName = "VOL." + boost::lexical_cast<std::string>(static_cast<int>(dirEntry.volNumber));
+	std::string fileName = "VOL." + std::to_string(dirEntry.volNumber);
 	fs::path filePath{ fs::current_path() / fileName };
 	fs::ifstream file(filePath, fs::ifstream::binary);
 	AgiFile agiFile;
@@ -131,7 +130,7 @@ void AgiFileReader::ExtractFile(uint8_t resourceId, fs::path filePath)
 {
 	AgiFile agiData = GetFile(resourceId);
 	boost::format formatter("%03i");
-	std::string fileName = GetAgiFileFullName() + "." + boost::str(formatter % static_cast<int>(resourceId)); //boost::lexical_cast<std::string>(static_cast<int>(resourceId));
+	std::string fileName = GetAgiFileFullName() + "." + boost::str(formatter % static_cast<int>(resourceId));
 	fs::path outputPath = fs::path(filePath / fileName);
 	fs::ofstream out(outputPath, fs::ifstream::binary | fs::ifstream::out);
 

@@ -51,33 +51,31 @@ void sage::agi::ResourceCommands::load_view_v(uint8_t variableID)
 void sage::agi::ResourceCommands::load_sound(uint8_t resourceID)
 {
 	// implement me when we have sound
+
+	//if (AgiInterpreter::sounds[resourceID] != nullptr)
+	//	delete AgiInterpreter::sounds[resourceID]; // theoretically we should never run into this...
+
+	//AgiSound file = load_resource(resourceID, AgiFileType::Sound);
+	//AgiInterpreter::sounds[resourceID] = new AgiSound(file, resourceID);
 }
 
 void sage::agi::ResourceCommands::discard_pic(uint8_t variableID)
 {
 	uint8_t resourceID = AgiInterpreter::variables[variableID];
-	//if (resourceID < 256 && AgiInterpreter::pictures[resourceID] != nullptr)
-	//{
-	//	delete AgiInterpreter::pictures[resourceID];
-	//	AgiInterpreter::pictures[resourceID] = nullptr;
-	//}
+	delete AgiInterpreter::pictures[resourceID];
+	AgiInterpreter::pictures[resourceID] = nullptr;
 }
 
 void sage::agi::ResourceCommands::discard_view(uint8_t resourceID)
 {
-	//if (resourceID < 256 && AgiInterpreter::pictures[resourceID] != nullptr)
-	//{
-	//	delete AgiInterpreter::views[resourceID];
-	//	AgiInterpreter::views[resourceID] = nullptr;
-	//}
+	delete AgiInterpreter::views[resourceID];
+	AgiInterpreter::views[resourceID] = nullptr;
 }
 
 void sage::agi::ResourceCommands::discard_view_v(uint8_t variableID)
 {
-	//uint8_t resourceID = AgiInterpreter::variables[variableID];
-	//if (resourceID < 256 && AgiInterpreter::pictures[resourceID] != nullptr)
-	//{
-	//	delete AgiInterpreter::views[resourceID];
-	//	AgiInterpreter::views[resourceID] = nullptr;
-	//}
+	uint8_t resourceID = AgiInterpreter::variables[variableID];
+
+	delete AgiInterpreter::views[resourceID];
+	AgiInterpreter::views[resourceID] = nullptr;
 }

@@ -2,16 +2,16 @@
 #include "../resources/AgiLogic.h"
 #include "../AgiInterpreter.h"
 
-sage::agi::LogicProcessor::LogicProcessor()
+AgiLogic * LogicProcessor::currentLogic;
+
+sage::agi::LogicProcessor::LogicProcessor(AgiInterpreter* interpreter)
 {
+	this->interpreter = interpreter;
 }
 
 void LogicProcessor::Execute(uint8_t resourceID)
 {
-	AgiFileReader logicReader(AgiFileType::Logic);
-	AgiLogic logic(logicReader.GetFile(resourceID), resourceID);
-	AgiInterpreter::currentLogic = &logic;
-	std::vector<uint8_t> logicData = logic.GetLogicData();
+	this->currentLogic = this->interpreter->logics[resourceID];
 
 	bool isRunning = true;
 	logicIndex = -1;
@@ -19,16 +19,17 @@ void LogicProcessor::Execute(uint8_t resourceID)
 
 	do
 	{
-		currentByte = logicData.at(++logicIndex);
+		currentByte = currentLogic->GetLogicData().at(++logicIndex);
 		switch (currentByte)
 		{
-		case 0x00: isRunning = false; break; // return statement
-		case 0xFF: ProcessIf(); break; // if statement
+		case 0x00: isRunning = false; break;
+		case 0xFF: ProcessIf(); break;
+		case 0xFE: ProcessElse(); break;
 		default: // All normal logic functions
 			ProcessAction(currentByte);
 			break;
 		}
-	} while (logicIndex < logicData.size() && isRunning);
+	} while (logicIndex < currentLogic->GetLogicData().size() && isRunning);
 }
 
 void LogicProcessor::ProcessIf()
@@ -41,7 +42,7 @@ void LogicProcessor::ProcessIf()
 
 	do
 	{
-		currentByte = AgiInterpreter::currentLogic->GetLogicData().at(++logicIndex);
+		currentByte = currentLogic->GetLogicData().at(++logicIndex);
 
 		switch (currentByte)
 		{
@@ -74,6 +75,14 @@ void LogicProcessor::ProcessIf()
 	}
 }
 
+void LogicProcessor::ProcessElse()
+{
+	logicIndex++;
+	int16_t functionSize = BitConverter::ToInt16(this->currentLogic->GetLogicData(), logicIndex);
+	if (this->processActions)
+		logicIndex += functionSize;
+}
+
 void LogicProcessor::ProcessAction(uint8_t currentByte)
 {
 	DispatcherContainer* action = this->actionDispatcher[currentByte];
@@ -86,7 +95,7 @@ void LogicProcessor::ProcessAction(uint8_t currentByte)
 
 int LogicProcessor::ReadCodeBlockSize()
 {
-	return AgiInterpreter::currentLogic->GetLogicData().at(++this->logicIndex) + (AgiInterpreter::currentLogic->GetLogicData().at(++this->logicIndex) << 8);
+	return this->currentLogic->GetLogicData().at(++this->logicIndex) + (this->currentLogic->GetLogicData().at(++this->logicIndex) << 8);
 }
 
 std::vector<uint8_t> sage::agi::LogicProcessor::GetArguments(int argumentCount)
@@ -96,7 +105,7 @@ std::vector<uint8_t> sage::agi::LogicProcessor::GetArguments(int argumentCount)
 
 	for (int i = 0; i < argumentCount; i++)
 	{
-		arguments.push_back(AgiInterpreter::currentLogic->GetLogicData().at(logicIndex + i));
+		arguments.push_back(this->currentLogic->GetLogicData().at(logicIndex + i));
 	}
 
 	logicIndex += argumentCount - 1;

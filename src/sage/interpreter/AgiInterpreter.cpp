@@ -4,16 +4,18 @@ uint8_t AgiInterpreter::variables[AgiInterpreter::MAX_RESOURCES];
 uint8_t AgiInterpreter::flags[AgiInterpreter::MAX_RESOURCES];
 std::string AgiInterpreter::strings[MAX_STRINGS];
 std::string AgiInterpreter::gameID;
-AgiLogic *AgiInterpreter::currentLogic;
+//AgiLogic *AgiInterpreter::currentLogic; // TODO: Remove
 AgiLogic *AgiInterpreter::logics[AgiInterpreter::MAX_RESOURCES];
 AgiView *AgiInterpreter::views[AgiInterpreter::MAX_RESOURCES];
 ViewTableEntry *AgiInterpreter::viewTable[AgiInterpreter::MAX_RESOURCES];
 AgiPicture* AgiInterpreter::pictures[AgiInterpreter::MAX_RESOURCES];
-LogicProcessor AgiInterpreter::logicProcessor;
+//LogicProcessor AgiInterpreter::logicProcessor;
 GameControl AgiInterpreter::gameControl;
 
 sage::agi::AgiInterpreter::AgiInterpreter()
 {
+	this->logicProcessor = LogicProcessor(this);
+	ResourceCommands::load_logic(0);
 }
 
 
@@ -52,6 +54,17 @@ void sage::agi::AgiInterpreter::Execute()
 	//		Flag(2) -> 0
 	//		Flag(4) -> 0
 	// 3. Poll keyboard and joystick
-	// ...
+	flags[2] = false; // Reset player entered a command
+	flags[4] = false; // Reset the said command
+	// 4. Poll the keyboard and the joystick - this is a function of the host API's event system. We might need to hook into it.
+	
+	logicProcessor.Execute(0);
 
+	// 6. Reset dir of ego
+	// if score v3 or flag 9 have changed their values reset variables
+	variables[5] = 0;
+	variables[4] = 0;
+	flags[5] = false;
+	flags[6] = false;
+	flags[12] = false;
 }

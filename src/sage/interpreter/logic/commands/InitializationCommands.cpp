@@ -2,8 +2,8 @@
 
 void InitializationCommands::set_game_id(uint8_t arg1)
 {
-	if (AgiInterpreter::currentLogic != nullptr)
+	if (LogicProcessor::currentLogic != nullptr)
 	{
-		AgiInterpreter::gameID = AgiInterpreter::currentLogic->GetMessage(arg1);
+		AgiInterpreter::gameID = LogicProcessor::currentLogic->GetMessage(arg1);
 	}
 }

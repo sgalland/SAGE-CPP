@@ -14,7 +14,7 @@ GameControl AgiInterpreter::gameControl;
 
 sage::agi::AgiInterpreter::AgiInterpreter()
 {
-	this->logicProcessor = LogicProcessor(this);
+	//this->logicProcessor = LogicProcessor(this);
 	ResourceCommands::load_logic(0);
 }
 
@@ -58,7 +58,7 @@ void sage::agi::AgiInterpreter::Execute()
 	flags[4] = false; // Reset the said command
 	// 4. Poll the keyboard and the joystick - this is a function of the host API's event system. We might need to hook into it.
 	
-	logicProcessor.Execute(0);
+	//logicProcessor.Execute(0);
 
 	// 6. Reset dir of ego
 	// if score v3 or flag 9 have changed their values reset variables

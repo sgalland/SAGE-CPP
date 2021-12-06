@@ -1,12 +1,12 @@
 #pragma once
 
 #include <cinttypes>
-#include <boost/filesystem.hpp>
-#include <boost/format.hpp>
+#include <filesystem>
+#include <fstream>
 #include <string>
 #include <vector>
 
-namespace fs = boost::filesystem; // TODO: Code should not directly rely on boost but rather a backend
+namespace fs = std::filesystem;
 
 const int EMPTY_DIRECTORY = 0xFFFFF;
 const int VALID_SIGNATURE = 0x3412;

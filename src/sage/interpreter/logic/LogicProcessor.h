@@ -23,7 +23,6 @@ namespace sage
 			int logicIndex;
 			bool processActions;
 			int codeBlockSize;
-			AgiLogic* currentLogic;
 			AgiInterpreter* interpreter;
 
 			void ProcessIf();
@@ -35,6 +34,7 @@ namespace sage
 		public:
 			LogicProcessor(AgiInterpreter* interpreter);
 			void Execute(uint8_t resourceID);
+			AgiLogic* currentLogic;
 		};
 	}
 }

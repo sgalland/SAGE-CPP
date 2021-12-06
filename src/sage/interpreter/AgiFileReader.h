@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cinttypes>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
 #include <string>

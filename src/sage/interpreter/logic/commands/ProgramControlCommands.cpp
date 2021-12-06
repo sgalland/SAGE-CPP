@@ -34,7 +34,7 @@ void ProgramControlCommands::exec_new_room(uint8_t roomID)
 	AgiInterpreter::variables[5] = 0;
 	AgiInterpreter::variables[16] = 0; // ID of view resource that is the Ego - Ego is ALWAYS view 0
 	// Logic(i) resource is loaded where i is the value of v0 !
-	AgiInterpreter::logicProcessor.Execute(AgiInterpreter::variables[0]);
+	//AgiInterpreter::logicProcessor.Execute(AgiInterpreter::variables[0]);
 	SubroutineCommands::call(AgiInterpreter::variables[0]);
 	// Set Ego coordinates according to v2:
 	// * if Ego touched the bottom edge, put it on the horizon;

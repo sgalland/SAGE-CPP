@@ -2,7 +2,7 @@
 #include "../resources/AgiLogic.h"
 #include "../AgiInterpreter.h"
 
-AgiLogic * LogicProcessor::currentLogic;
+//AgiLogic * LogicProcessor::currentLogic;
 
 sage::agi::LogicProcessor::LogicProcessor(AgiInterpreter* interpreter)
 {

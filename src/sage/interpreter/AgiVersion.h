@@ -1,10 +1,10 @@
 #pragma once
 
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <iostream>
 #include <string>
 
-namespace fs = boost::filesystem; // TODO: Code should not directly rely on boost but rather a backend
+namespace fs = std::filesystem; // TODO: Code should not directly rely on boost but rather a backend
 
 namespace sage
 {

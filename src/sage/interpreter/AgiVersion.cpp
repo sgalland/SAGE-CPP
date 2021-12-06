@@ -12,7 +12,7 @@ std::string sage::agi::AgiVersion::GetVersion()
 	const std::string fileName = "AGIDATA.OVL";
 
 	fs::path path = { fs::current_path() / fileName };
-	fs::ifstream agiData{ path, fs::ifstream::binary };
+	std::ifstream agiData{ path, std::ifstream::binary };
 
 	if (agiData.is_open())
 	{

@@ -41,7 +41,7 @@ namespace sage
 			//static AgiSound* sounds[MAX_RESOURCES];
 			static ViewTableEntry *viewTable[MAX_RESOURCES];
 
-			static LogicProcessor logicProcessor;
+			//static LogicProcessor logicProcessor;
 
 			AgiInterpreter();
 			~AgiInterpreter();

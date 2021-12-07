@@ -10,7 +10,7 @@
 
 BitmapFont::BitmapFont(std::string fontPath)
 {
-	this->font = new Texture(fontPath.c_str());
+	//this->font = new Texture(fontPath.c_str());
 	//this->font->setTransparentColor(SDL_MapRGB(this->font->getSDLSurface()->format, 255, 255, 255));
 }
 

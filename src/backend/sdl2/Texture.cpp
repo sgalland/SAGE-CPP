@@ -9,48 +9,48 @@
 
 #include <iterator>
 
-Texture::Texture(int width, int height) :Texture(width, height, 0)
+Texture::Texture(SDL_Renderer* renderer, int width, int height) :Texture(renderer, width, height, 0)
 {
 }
 
-Texture::Texture(int width, int height, uint32_t transparentColor) : Texture(0, 0, width, height, true, transparentColor)
+Texture::Texture(SDL_Renderer* renderer, int width, int height, uint32_t transparentColor) : Texture(renderer, 0, 0, width, height, true, transparentColor)
 {
 }
 
-Texture::Texture(std::string texturePath) : Texture(0, 0, true, texturePath, transparentColor)
+Texture::Texture(SDL_Renderer* renderer, std::string texturePath) : Texture(renderer, 0, 0, true, texturePath, transparentColor)
 {
 }
 
-Texture::Texture(std::string texturePath, bool transparent, uint32_t transparentColor) : Texture(0, 0, transparent, texturePath, transparentColor)
+Texture::Texture(SDL_Renderer* renderer, std::string texturePath, bool transparent, uint32_t transparentColor) : Texture(renderer, 0, 0, transparent, texturePath, transparentColor)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height) : Texture(xPosition, yPosition, width, height, false, 0)
+Texture::Texture(SDL_Renderer* renderer, int xPosition, int yPosition, int width, int height) : Texture(renderer, xPosition, yPosition, width, height, false, 0)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height, uint32_t transparentColor) : Texture(xPosition, yPosition, width, height, true, transparentColor)
+Texture::Texture(SDL_Renderer* renderer, int xPosition, int yPosition, int width, int height, uint32_t transparentColor) : Texture(renderer, xPosition, yPosition, width, height, true, transparentColor)
 {
 }
 
-Texture::Texture(int xPosition, int yPosition, int width, int height, bool transparent, uint32_t transparentColor)
+Texture::Texture(SDL_Renderer* renderer, int xPosition, int yPosition, int width, int height, bool transparent, uint32_t transparentColor)
 {
 	this->xPosition = xPosition;
 	this->yPosition = yPosition;
 	this->transparent = transparent;
 	this->transparentColor = transparentColor;
 
-	this->initialize(width, height);
+	this->initialize(renderer, width, height);
 }
 
-Texture::Texture(int xPosition, int yPosition, bool transparent, std::string texturePath, uint32_t transparentColor)
+Texture::Texture(SDL_Renderer* renderer, int xPosition, int yPosition, bool transparent, std::string texturePath, uint32_t transparentColor)
 {
 	this->xPosition = xPosition;
 	this->yPosition = yPosition;
 	this->transparent = transparent;
 	this->transparentColor = transparentColor;
 
-	this->initialize(texturePath);
+	this->initialize(renderer, texturePath);
 }
 
 Texture::~Texture()
@@ -58,7 +58,7 @@ Texture::~Texture()
 	this->quit();
 }
 
-uint32_t & Texture::operator[](int index)
+uint32_t& Texture::operator[](int index)
 {
 	return pixelBuffer.at(index);
 }
@@ -71,31 +71,32 @@ void Texture::updateTexture()
 	{
 		if (SDL_SetColorKey(this->surface, SDL_TRUE, transparentColor) != 0)
 		{
-			std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+			SDL_Log("SDL Error:\n\t%s", SDL_GetError());
 			exit(1);
 		}
 	}
 
-	if (this->texture != nullptr)
+	/*if (this->texture != nullptr)
 	{
 		SDL_DestroyTexture(this->texture);
 		this->texture = nullptr;
-	}
+	}*/
 
-	this->texture = SDL_CreateTextureFromSurface(Graphics::renderer, this->surface);
+	this->texture = SDL_CreateTextureFromSurface(this->renderer, this->surface);
 }
 
-void Texture::initialize(int width, int height)
+void Texture::initialize(SDL_Renderer* renderer, int width, int height)
 {
+	this->renderer = renderer;
 	if ((this->surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0)) == nullptr)
 	{
-		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		SDL_Log("SDL Error:\n\t%s", SDL_GetError());
 		exit(1);
 	}
 
-	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
+	if ((this->texture = SDL_CreateTexture(renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
 	{
-		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		SDL_Log("SDL Error:\n\t%s", SDL_GetError());
 		exit(1);
 	}
 
@@ -103,17 +104,17 @@ void Texture::initialize(int width, int height)
 	this->pixelBuffer.resize(width * height);
 }
 
-void Texture::initialize(std::string filePath)
+void Texture::initialize(SDL_Renderer* renderer, std::string filePath)
 {
 	if ((this->surface = IMG_Load(filePath.c_str())) == nullptr)
 	{
-		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		SDL_Log("SDL Error:\n\t%s", SDL_GetError());
 		exit(1);
 	}
 
-	if ((this->texture = SDL_CreateTexture(Graphics::renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
+	if ((this->texture = SDL_CreateTexture(renderer, this->surface->format->format, SDL_TEXTUREACCESS_STREAMING, this->surface->w, this->surface->h)) == nullptr)
 	{
-		std::cout << "SDL Error:\n\t" << SDL_GetError() << std::endl;
+		SDL_Log("SDL Error:\n\t%s", SDL_GetError());
 		exit(1);
 	}
 
@@ -170,12 +171,17 @@ uint32_t Texture::getTransparentColor()
 void Texture::setData(std::vector<uint32_t> data)
 {
 	this->pixelBuffer.clear();
-	std::copy(data.begin(), data.end(), std::back_inserter(pixelBuffer));	
+	std::copy(data.begin(), data.end(), std::back_inserter(pixelBuffer));
 
 	updateTexture();
 }
 
-SDL_Surface * Texture::getSDLSurface()
+SDL_Surface* Texture::getSDLSurface()
 {
 	return this->surface;
+}
+
+SDL_Texture* Texture::getSDLTexture()
+{
+	return this->texture;
 }

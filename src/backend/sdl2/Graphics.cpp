@@ -1,8 +1,8 @@
 #include "Graphics.h"
 
-SDL_Renderer *Graphics::renderer = nullptr;
-SDL_Window *Graphics::window = nullptr;
-SDL_Palette *Graphics::palette = nullptr;
+//SDL_Renderer* Graphics::renderer = nullptr;
+//SDL_Window* Graphics::window = nullptr;
+//SDL_Palette* Graphics::palette = nullptr;
 
 Graphics::Graphics(int width, int height)
 {
@@ -11,22 +11,23 @@ Graphics::Graphics(int width, int height)
 
 Graphics::~Graphics()
 {
+	quit();
 }
 
-void Graphics::push(Texture * texture)
+void Graphics::push(Texture* texture)
 {
 	this->batchList.push_back(texture);
 }
 
 void Graphics::initialize(int width, int height)
 {
-	window = nullptr;
-	renderer = nullptr;
+	//window = nullptr;
+	//renderer = nullptr;
 	isFullscreen = false;
 
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0)
 	{
-		std::cout << "Error initializing Video Subsystem: " << SDL_GetError() << std::endl;
+		SDL_Log("Error initializing Video Subsystem: %s", SDL_GetError());
 		exit(1);
 	}
 
@@ -34,7 +35,7 @@ void Graphics::initialize(int width, int height)
 
 	if (window == nullptr || renderer == nullptr)
 	{
-		std::cout << "Error initializing Video Subsystem: " << SDL_GetError() << std::endl;
+		SDL_Log("Error initializing Video Subsystem: %s", SDL_GetError());
 		exit(1);
 	}
 
@@ -88,7 +89,7 @@ void Graphics::render()
 	for (auto texture : batchList)
 	{
 		SDL_Rect destSize = { texture->getXPosition(), texture->getYPosition(), texture->getWidth(), texture->getHeight() };
-		SDL_RenderCopy(renderer, texture->texture, nullptr, &destSize);
+		SDL_RenderCopy(renderer, texture->getSDLTexture(), nullptr, &destSize);
 	}
 
 	batchList.clear();
@@ -115,7 +116,7 @@ bool Graphics::getIsFullscreen()
 
 void Graphics::setWindowTitle(std::string windowTitle)
 {
-	SDL_SetWindowTitle(Graphics::window, windowTitle.c_str());
+	SDL_SetWindowTitle(window, windowTitle.c_str());
 }
 
 std::vector<DisplayMode> Graphics::getDisplayModes()
@@ -160,7 +161,7 @@ void Graphics::recreateRenderer()
 	this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
 	if (renderer == nullptr)
 	{
-		std::cout << "Error initializing renderer: " << SDL_GetError() << std::endl;
+		SDL_Log("Error initializing renderer: %s", SDL_GetError());
 		exit(1);
 	}
 }

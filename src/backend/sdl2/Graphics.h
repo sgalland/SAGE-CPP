@@ -14,19 +14,13 @@
 
 class Graphics
 {
-	friend class Texture;
-	friend class MenuBar;
-	friend class BitmapFont;
 private:
-	static SDL_Window *window;
-	static SDL_Renderer *renderer;
-	static SDL_Palette *palette;
 	std::vector<Texture*> batchList;
 	bool isFullscreen;
 public:
 	Graphics(int width, int height);
 	~Graphics();
-	void push(Texture * texture);
+	void push(Texture* texture);
 
 	// Inherited via BaseGraphics
 	void initialize(int width, int height);
@@ -42,4 +36,10 @@ public:
 	void setWindowSize(int width, int height);
 	void setScale(int scale);
 	void recreateRenderer();
+
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	SDL_Palette* palette;
+
+	SDL_Renderer* getSDLRenderer();
 };

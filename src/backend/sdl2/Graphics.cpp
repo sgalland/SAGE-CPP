@@ -165,3 +165,8 @@ void Graphics::recreateRenderer()
 		exit(1);
 	}
 }
+
+SDL_Renderer* Graphics::getSDLRenderer()
+{
+	return renderer;
+}

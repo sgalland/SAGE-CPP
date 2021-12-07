@@ -1,11 +1,8 @@
 #pragma once
 
 #include <map>
-#ifdef linux
-#include <SDL2/SDL.h>
-#elif _WIN32
 #include <SDL.h>
-#endif
+
 
 enum class EventType
 {

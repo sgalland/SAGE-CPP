@@ -120,11 +120,10 @@ void Texture::initialize(SDL_Renderer* renderer, std::string filePath)
 
 	SDL_SetSurfaceRLE(this->surface, SDL_TRUE);
 	this->pixelBuffer.resize(this->surface->w * this->surface->h);
-	memcpy(&this->pixelBuffer[0], this->surface->pixels, this->surface->pitch);
+	memcpy(&this->pixelBuffer[0], this->surface->pixels, this->surface->pitch); //! TODO: Do we need this?
 }
 
-void Texture::quit()
-{
+void Texture::quit() {
 	if (this->texture != nullptr)
 		SDL_DestroyTexture(this->texture);
 
@@ -132,56 +131,46 @@ void Texture::quit()
 		SDL_FreeSurface(this->surface);
 }
 
-int32_t Texture::getWidth()
-{
+int32_t Texture::getWidth() {
 	return this->surface->w;
 }
 
-int32_t Texture::getHeight()
-{
+int32_t Texture::getHeight(){
 	return this->surface->h;
 }
 
-int32_t Texture::getXPosition()
-{
+int32_t Texture::getXPosition() {
 	return this->xPosition;
 }
 
-int32_t Texture::getYPosition()
-{
+int32_t Texture::getYPosition() {
 	return this->yPosition;
 }
 
-std::vector<uint32_t> Texture::getData()
-{
+std::vector<uint32_t> Texture::getData() {
 	return this->pixelBuffer;
 }
 
-void Texture::setTransparentColor(uint32_t transparentColor)
-{
+void Texture::setTransparentColor(uint32_t transparentColor) {
 	this->transparent = true;
 	this->transparentColor = transparentColor;
 }
 
-uint32_t Texture::getTransparentColor()
-{
+uint32_t Texture::getTransparentColor() {
 	return this->transparentColor;
 }
 
-void Texture::setData(std::vector<uint32_t> data)
-{
+void Texture::setData(std::vector<uint32_t> data) {
 	this->pixelBuffer.clear();
 	std::copy(data.begin(), data.end(), std::back_inserter(pixelBuffer));
 
 	updateTexture();
 }
 
-SDL_Surface* Texture::getSDLSurface()
-{
+SDL_Surface* Texture::getSDLSurface() {
 	return this->surface;
 }
 
-SDL_Texture* Texture::getSDLTexture()
-{
+SDL_Texture* Texture::getSDLTexture() {
 	return this->texture;
 }

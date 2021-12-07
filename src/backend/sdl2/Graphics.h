@@ -4,8 +4,6 @@
 #include "Texture.h"
 #include "../../sage/interpreter/helpers/AgiColor.h"
 
-#include <iostream>
-
 #ifdef linux
 #include <SDL2/SDL.h>
 #elif _WIN32
@@ -15,6 +13,9 @@
 class Graphics
 {
 private:
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	SDL_Palette* palette;
 	std::vector<Texture*> batchList;
 	bool isFullscreen;
 public:
@@ -37,9 +38,7 @@ public:
 	void setScale(int scale);
 	void recreateRenderer();
 
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	SDL_Palette* palette;
+
 
 	SDL_Renderer* getSDLRenderer();
 };

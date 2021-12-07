@@ -96,8 +96,8 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 		//TODO: blow up
 	}
 
-	AgiDirectoryEntry dirEntry;
-	for (auto entry : directoryEntries)
+	AgiDirectoryEntry dirEntry = {};
+	for (const auto& entry : directoryEntries)
 		if (entry.resourceId == resourceId)
 			dirEntry = entry;
 

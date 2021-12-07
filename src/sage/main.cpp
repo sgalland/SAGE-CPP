@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	AgiFileReader pictureReader(AgiFileType::Picture);
 	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();
 	AgiPicture pic(pictureReader.GetFile(71));
-	Texture t(engine.graphics->renderer, 0, 9, 320, 200);
+	Texture t(engine.graphics->getSDLRenderer(), 0, 9, 320, 200);
 	std::vector<uint32_t> picBuffer(320 * 200);
 	memcpy(&picBuffer[0], pic.pictureBuffer, 320 * 200 * sizeof(picBuffer[0]));
 	t.setData(AgiColorConverter::convertVectorDosColorToVectorUint32(t, picBuffer));

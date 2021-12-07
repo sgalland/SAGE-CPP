@@ -48,14 +48,14 @@ void AgiFileReader::LoadDirectoryEntries(AgiFileType fileType)
 {
 	this->fileType = fileType;
 	const std::string fileName = GetAgiFileName();
-	fs::path path{ fs::current_path() / fileName };
+	std::filesystem::path path{ std::filesystem::current_path() / fileName };
 	std::ifstream file(path, std::ifstream::binary);
 
 	int resourceCount = 0;
 
 	if (file.is_open())
 	{
-		uintmax_t fileSize = fs::file_size(path);
+		uintmax_t fileSize = std::filesystem::file_size(path);
 		while (file.tellg() < fileSize)
 		{
 			uint8_t b1 = file.get();
@@ -102,7 +102,7 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 			dirEntry = entry;
 
 	std::string fileName = "VOL." + std::to_string(dirEntry.volNumber);
-	fs::path filePath{ fs::current_path() / fileName };
+	std::filesystem::path filePath{ std::filesystem::current_path() / fileName };
 	std::ifstream file(filePath, std::ifstream::binary);
 	AgiFile agiFile;
 
@@ -126,13 +126,13 @@ AgiFile AgiFileReader::GetFile(uint8_t resourceId)
 	return agiFile;
 }
 
-void AgiFileReader::ExtractFile(uint8_t resourceId, fs::path filePath)
+void AgiFileReader::ExtractFile(uint8_t resourceId, std::filesystem::path filePath)
 {
 	//AgiFile agiData = GetFile(resourceId);
 	//boost::format formatter("%03i");
 	//std::string fileName = GetAgiFileFullName() + "." + boost::str(formatter % static_cast<int>(resourceId));
-	//fs::path outputPath = fs::path(filePath / fileName);
-	//fs::ofstream out(outputPath, fs::ifstream::binary | fs::ifstream::out);
+	//std::filesystem::path outputPath = fs::path(filePath / fileName);
+	//std::ofstream out(outputPath, std::ifstream::binary | std::ifstream::out);
 
 	//if (!out.is_open())
 	//{

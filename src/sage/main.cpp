@@ -28,19 +28,18 @@
 
 
 namespace game = sage::agi;
-namespace fs = std::filesystem;
 
 int main(int argc, char *argv[])
 {
-	fs::current_path("C:\\Users\\s_gal\\Documents\\GitHub\\sage-cpp-demo\\x64\\Debug");
+	std::filesystem::current_path("C:\\Users\\sgalland\\Documents\\GitHub\\SAGE-CPP\\bin");
 	std::cout << "Emulating AGI version: " << game::AgiVersion::GetVersion() << std::endl;
 	std::cout << "Game ID: " << game::AgiVersion::GetGameID() << std::endl;
 
 	Engine engine(320, 200);
 	engine.graphics->setWindowTitle("SAGE - " + game::AgiVersion::GetGameID() + " v" + game::AgiVersion::GetVersion());
 
-	AgiInterpreter interpreter;
-	interpreter.Execute();
+	/*AgiInterpreter interpreter;
+	interpreter.Execute();*/
 
 	AgiFileReader pictureReader(AgiFileType::Picture);
 	std::vector<AgiDirectoryEntry> entries = pictureReader.GetDirectoryEntries();

@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 
-namespace fs = std::filesystem;
-
 const int EMPTY_DIRECTORY = 0xFFFFF;
 const int VALID_SIGNATURE = 0x3412;
 
@@ -56,6 +54,6 @@ public:
 	std::vector<AgiDirectoryEntry> GetDirectoryEntries();
 	AgiFile GetFile(uint8_t resourceId);
 
-	void ExtractFile(uint8_t resourceId, fs::path filePath);
+	void ExtractFile(uint8_t resourceId, std::filesystem::path filePath);
 };
 
